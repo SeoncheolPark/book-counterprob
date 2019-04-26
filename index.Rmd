@@ -9,7 +9,7 @@ documentclass: scrbook
 bibliography: [packages.bib]
 biblio-style: apalike
 link-citations: yes
-github-repo: SeoncheolPark/book
+github-repo: SeoncheolPark/book-counterprob
 papersize: b5
 geometry: [inner=0.75in,outer=0.75in, top=0.6in, bottom=0.9in]
 linkcolor: Cerulean
