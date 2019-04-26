@@ -1,4 +1,6 @@
 book_filename: "book-counterprob"
+repo: https://github.com/SeoncheolPark/book-counterprob
+output_dir: _book
 delete_merged_file: true
 language:
   ui:
