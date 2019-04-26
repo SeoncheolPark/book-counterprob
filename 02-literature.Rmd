@@ -1,0 +1,63 @@
+# Classes of Random Events
+
+Let $\Omega$ (the **sample space** of all possible outcomes of an experiments) be an arbitrary non-empty set. Its elements, denoted by $\omega$, will be interpreted as **outcomes (results)** of some experiment. As usual, we use $A \cup B$ and $A \cap B$ to represent the union and the intersection of any two subsets $A$ and $B$ of $\Omega$, respectively. Also, $A^c$ is the complement of $A\subset \Omega$. In particular, $\Omega^c=\theta$, where $\theta$ is the empty set.
+
+```{definition, name="Field"}
+The class $\mathcal{A}$ of subsets of $\Omega$ is called a **field** if it contains $\Omega$ and is closed under the formation of complements and finite unions, that is if:
+  
+1. $\Omega \in \mathcal{A}$;
+
+2. $A \in \mathcal{A} \Rightarrow A^c \in \mathcal{A}$;
+
+3. $A_{1}, A_{2}\in\mathcal{A} \Rightarrow A_{1} \cup A_{2} \in \mathcal{A}$.
+
+```
+
+```{proposition, name="Definition of a field"}
+The condition 3 of the definition of a field can be replaced by
+
+3. $A_{1}, A_{2} \in \mathcal{A} \Rightarrow A_{1} \cap A_{2} \in \mathcal{A}$.
+
+That means, $\mathcal{A}$ is closed under finite intersections.
+
+```
+
+```{proof}
+By de Morgan laws, $(A_{1} \cap A_{2})^{c} = A_{1}^{c} \cup A_{2}^{c}$ and $(A_{1} \cup A_{2})^{c} = A_{1}^{c} \cap A_{2}^{c}$. By the condition 2 of the definition of a field, we can get the desired result.
+
+```
+
+```{definition, name="Signa-field"}
+The class $\mathcal{F}$ of subsets of $\Omega$ is called a $\sigma$**-field** if it is a field and closed under the formation of countable unions, that is if:
+  
+4. $A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcup_{n=1}^{\infty}A_{n} \in \mathcal{F}$.
+
+```
+
+```{proposition, name="Definition of a sigma-field"}
+The condition 4 of the definition of a sigma-field can be replaced by
+
+4. $A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcap_{n=1}^{\infty}A_{n} \in \mathcal{F}$.
+
+That means, $\sigma$-field $\mathcal{F}$ is closed under countable intersections.
+
+```
+
+```{proof}
+By de Morgan lawsand condition 2 of the definition of a field, $(\bigcap_{n=1}^{\infty}A_{n})^{c}=\bigcup_{n=1}^{\infty}A_{n}^{c}\in\mathcal{F}$ and $(\bigcup_{n=1}^{\infty}A_{n})^{c}=\bigcap_{n=1}^{\infty}A_{n}^{c}\in\mathcal{F}$. So, we can change the condition 4.
+
+```
+
+Usually, $\mathcal{F}$ is the set of events (subsets of $\Omega$) we are allowed to consider.
+
+```{definition, name="Random events (events)"}
+The elements of any field of $\sigma$-field are called **random events** (or simply, **events**).
+
+```
+
+```{example, name="A class of events which is a field but not a sigma-field"}
+Let $\Omega = [0, \infty)$ and $\mathcal{F}_{1}$ be the class of all intervals of the type $[a,b)$ or $[a,\infty)$, where $0 \leq a < b < \infty$. Let $\mathcal{F}_{2}$ be the class of all finite sums of intervals of $\mathcal{F}_{1}$. Then $\mathcal{F}_{1}$ is not a field, and $\mathcal{F}_{2}$ is a field but not a $\sigma$-field.
+
+```
+
+
