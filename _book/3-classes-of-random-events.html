@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Counterexamples of Probability</title>
+  <title>Chapter 3 Classes of Random Events | Counterexamples of Probability</title>
   <meta name="description" content="하루에 한 개씩!">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Counterexamples of Probability" />
+  <meta property="og:title" content="Chapter 3 Classes of Random Events | Counterexamples of Probability" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="SeoncheolPark/book-counterprob" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Counterexamples of Probability" />
+  <meta name="twitter:title" content="Chapter 3 Classes of Random Events | Counterexamples of Probability" />
   
   <meta name="twitter:description" content="하루에 한 개씩!" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="2-intro.html">
+<link rel="prev" href="2-intro.html">
+<link rel="next" href="4-methods.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -160,20 +160,66 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Counterexamples of Probability</h1>
-<p class="author"><em>Seoncheol Park</em></p>
-<p class="date"><em>2019-04-26</em></p>
+<div id="classes-of-random-events" class="section level1">
+<h1><span class="header-section-number">Chapter 3</span> Classes of Random Events</h1>
+<p>Let <span class="math inline">\(\Omega\)</span> (the <strong>sample space</strong> of all possible outcomes of an experiments) be an arbitrary non-empty set. Its elements, denoted by <span class="math inline">\(\omega\)</span>, will be interpreted as <strong>outcomes (results)</strong> of some experiment. As usual, we use <span class="math inline">\(A \cup B\)</span> and <span class="math inline">\(A \cap B\)</span> to represent the union and the intersection of any two subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of <span class="math inline">\(\Omega\)</span>, respectively. Also, <span class="math inline">\(A^c\)</span> is the complement of <span class="math inline">\(A\subset \Omega\)</span>. In particular, <span class="math inline">\(\Omega^c=\theta\)</span>, where <span class="math inline">\(\theta\)</span> is the empty set.</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-3" class="definition"><strong>Definition 3.1  (Field)  </strong></span>The class <span class="math inline">\(\mathcal{A}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <strong>field</strong> if it contains <span class="math inline">\(\Omega\)</span> and is closed under the formation of complements and finite unions, that is if:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\Omega \in \mathcal{A}\)</span>;</p></li>
+<li><p><span class="math inline">\(A \in \mathcal{A} \Rightarrow A^c \in \mathcal{A}\)</span>;</p></li>
+<li><span class="math inline">\(A_{1}, A_{2}\in\mathcal{A} \Rightarrow A_{1} \cup A_{2} \in \mathcal{A}\)</span>.</li>
+</ol>
 </div>
-<div id="prerequisites" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Prerequisites</h1>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)
-<span class="co"># or the development version</span>
-<span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></code></pre>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
+
+
+<div class="proposition">
+<p><span id="prp:unnamed-chunk-4" class="proposition"><strong>Proposition 3.1  (Definition of a field)  </strong></span>The condition 3 of the definition of a field can be replaced by</p>
+<ol start="3" style="list-style-type: decimal">
+<li><span class="math inline">\(A_{1}, A_{2} \in \mathcal{A} \Rightarrow A_{1} \cap A_{2} \in \mathcal{A}\)</span>.</li>
+</ol>
+<p>That means, <span class="math inline">\(\mathcal{A}\)</span> is closed under finite intersections.</p>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> By de Morgan laws, <span class="math inline">\((A_{1} \cap A_{2})^{c} = A_{1}^{c} \cup A_{2}^{c}\)</span> and <span class="math inline">\((A_{1} \cup A_{2})^{c} = A_{1}^{c} \cap A_{2}^{c}\)</span>. By the condition 2 of the definition of a field, we can get the desired result.</p>
+</div>
+
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-6" class="definition"><strong>Definition 3.2  (Signa-field)  </strong></span>The class <span class="math inline">\(\mathcal{F}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <span class="math inline">\(\sigma\)</span><strong>-field</strong> if it is a field and closed under the formation of countable unions, that is if:</p>
+<ol start="4" style="list-style-type: decimal">
+<li><span class="math inline">\(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcup_{n=1}^{\infty}A_{n} \in \mathcal{F}\)</span>.</li>
+</ol>
+</div>
+
+
+<div class="proposition">
+<p><span id="prp:unnamed-chunk-7" class="proposition"><strong>Proposition 3.2  (Definition of a sigma-field)  </strong></span>The condition 4 of the definition of a sigma-field can be replaced by</p>
+<ol start="4" style="list-style-type: decimal">
+<li><span class="math inline">\(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcap_{n=1}^{\infty}A_{n} \in \mathcal{F}\)</span>.</li>
+</ol>
+<p>That means, <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathcal{F}\)</span> is closed under countable intersections.</p>
+</div>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> By de Morgan lawsand condition 2 of the definition of a field, <span class="math inline">\((\bigcap_{n=1}^{\infty}A_{n})^{c}=\bigcup_{n=1}^{\infty}A_{n}^{c}\in\mathcal{F}\)</span> and <span class="math inline">\((\bigcup_{n=1}^{\infty}A_{n})^{c}=\bigcap_{n=1}^{\infty}A_{n}^{c}\in\mathcal{F}\)</span>. So, we can change the condition 4.</p>
+</div>
+
+<p>Usually, <span class="math inline">\(\mathcal{F}\)</span> is the set of events (subsets of <span class="math inline">\(\Omega\)</span>) we are allowed to consider.</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-9" class="definition"><strong>Definition 3.3  (Random events (events))  </strong></span>The elements of any field of <span class="math inline">\(\sigma\)</span>-field are called <strong>random events</strong> (or simply, <strong>events</strong>).</p>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-10" class="example"><strong>Example 3.1  (A class of events which is a field but not a sigma-field)  </strong></span>Let <span class="math inline">\(\Omega = [0, \infty)\)</span> and <span class="math inline">\(\mathcal{F}_{1}\)</span> be the class of all intervals of the type <span class="math inline">\([a,b)\)</span> or <span class="math inline">\([a,\infty)\)</span>, where <span class="math inline">\(0 \leq a &lt; b &lt; \infty\)</span>. Let <span class="math inline">\(\mathcal{F}_{2}\)</span> be the class of all finite sums of intervals of <span class="math inline">\(\mathcal{F}_{1}\)</span>. Then <span class="math inline">\(\mathcal{F}_{1}\)</span> is not a field, and <span class="math inline">\(\mathcal{F}_{2}\)</span> is a field but not a <span class="math inline">\(\sigma\)</span>-field.</p>
+</div>
+
 
 </div>
             </section>
@@ -181,8 +227,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-
-<a href="2-intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="2-intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
