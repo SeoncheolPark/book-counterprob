@@ -1,11 +1,15 @@
 # Classes of Random Events
 
+## Sample space and Event
+
 Let $\Omega$ (the **sample space** of all possible outcomes of an experiments) be an arbitrary non-empty set. Its elements, denoted by $\omega$, will be interpreted as **outcomes (results)** of some experiment. These outcomes sometimes called **simple events** or **elements** becaus they cannot be decomposed further. Other events (subsets of $\Omega$) are **compound events** because they are composed of two or more simple events. An **event** $A$ occurs if and only if the randomly selected $\omega$ belongs to $A$. As usual, we use $A \cup B$ and $A \cap B$ to represent the union and the intersection of any two subsets $A$ and $B$ of $\Omega$, respectively. Also, $A^c$ is the complement of $A\subset \Omega$. In particular, $\Omega^c=\theta$, where $\theta$ is the empty set.
 
 ```{example, name="an example of sample space and event"}
 When drawing randomly from $[0,1]$ the sample space is $\Omega = [0,1]$, each $\omega \in [0,1]$ is a sample event, and the interval $A=(\frac{1}{2},1]$ is an example of a compound event.
 
 ```
+
+## Field and sigma-field
 
 ```{definition, name="Field"}
 The class $\mathcal{A}$ of subsets of $\Omega$ is called a **field** if it contains $\Omega$ and is closed under the formation of complements and finite unions, that is if:
@@ -77,7 +81,7 @@ The elements of any field of $\sigma$-field are called **random events** (or sim
 ```{example, name="A class of events which is a field but not a sigma-field", label="efnsf"}
 Let $\Omega = [0, \infty)$ and $\mathcal{F}_{1}$ be the class of all intervals of the type $[a,b)$ or $[a,\infty)$, where $0 \leq a < b < \infty$. Let $\mathcal{F}_{2}$ be the class of all finite sums of intervals of $\mathcal{F}_{1}$. Then $\mathcal{F}_{1}$ is not a field, and $\mathcal{F}_{2}$ is a field but not a $\sigma$-field.
 
-Take arbitrary numbers $a$ and $b$, $0<a<b<\infty$. Then $A=[a,b)\in \mathcal{F}_{1}$. However, $A^{c} = [0, a) \cup [b, \infty)\neq \mathcal{F}_{1}$ and thus $\mathcal{F}_{1}$ is not a field.
+Take arbitrary numbers $a$ and $b$, $0<a<b<\infty$. Then $A=[a,b)\in \mathcal{F}_{1}$. However, $A^{C} = [0, a) \cup [b, \infty)\neq \mathcal{F}_{1}$ and thus $\mathcal{F}_{1}$ is not a field.
 
 It is easy to see that
 
@@ -104,7 +108,7 @@ However, $(x,\infty)^{C} = (-\infty, x]\notin\mathcal{A}$.
 ```
 
 ```{remark}
-Because any field or $\sigma$-field $\mathcal{F}$ is nonempty, it contains a set $A$, and therefore $A^{c}$. Consequently, any field or $\sigma$-field contains $\Omega = A \cup A^{c}$ and $\emptyset = \Omega^{c}$.
+Because any field or $\sigma$-field $\mathcal{F}$ is nonempty, it contains a set $A$, and therefore $A^{C}$. Consequently, any field or $\sigma$-field contains $\Omega = A \cup A^{C}$ and $\emptyset = \Omega^{C}$.
 
 ```
 
@@ -130,11 +134,24 @@ Take $\Omega = \{\omega_{1}, \omega_{2}, \ldots, \omega_{2n}\}, n\in\mathbb{N}$.
 
 Note that a D-system $\mathcal{D}$ is a $\sigma$-field if and only if the intersection of any two sets in $\mathcal{D}$ is again in $\mathcal{D}$.
 
-```{example, name="trivial and total sigma-fields"}
+```{example, name="Trivial and total sigma-fields"}
 For any sample space $\Omega$, the smallest and largest $\sigma$-fields are the **trivial** $\sigma$**-field** $t(\Omega)=\{\emptyset, \Omega\}$ and the **total** $\sigma$**-field** (also called the power $\sigma$-field) $T(\Omega)=\{ \text{all subsets of } \Omega \}$, respectively.
 
 ```
 
 Remember that we are allowed to determine only whether or not event $A$ occured for $A\in \mathcal{F}$, not for sets outside $\mathcal{F}$. The trivial $\sigma$-field is not very useful because the only events that we are allowed to consider are the entire sample space and the empty set. In other 
 
+```{example, name="The union of a sequence of sigma-fields need not be a sigma-field"}
+Let $\mathcal{F}_{1},\mathcal{F}_{2}, \ldots$ be a sequence of $\sigma$-fields of subsets of the set $\Omega$. Then their intersection $\bigcap_{n=1}^{\infty} \mathcal{F}_{n}$ is always a $\sigma$-field and it is natural to ask whether the union $\cup_{n=1}^{\infty}\mathcal{F}_{n}$ is a $\sigma$-field. We shall now show that the answer to this question is negative.
+
+Consider the set $\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}$ and the following two classes of its subsets: $\mathcal{F}_{1}=\{\emptyset, \{\omega_{1}\}, \{\omega_{2},\omega_{3}\}, \Omega \}$, $\mathcal{F}_{2}=\{\emptyset, \{\omega_{2}\}, \{\omega_{1},\omega_{3}\}$, \Omega \}.$ Then $\mathcal{F}_{1}$ and $\mathcal{F}_{2}$ are fields and hence $\sigma$-fields. Obviously the intersection $\mathcal{F}_{1}\cap \mathcal{F}_{2} =\{ \emptyset, \Omega \}$, the trivial $\sigma$-field. However, the union
+
+\begin{align*}
+\mathcal{F}&=\mathcal{F}_{1} \cup \mathcal{F}_{2}\\
+&= \{\emptyset, \{\omega_{1}\}, \{\omega_{2}\}, \{\omega_{2},\omega_{3} \}, \{\omega_{1},\omega_{3} \},\Omega \}\\
+\end{align*}
+  
+is not a field, and hence not a $\sigma$-field because the element $\{\omega_{1}\}\cup \{\omega_{2}\}=\{\omega_{1},\omega_{2}\}\notin\mathcal{F}$.
+
+```
 
