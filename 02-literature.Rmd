@@ -184,7 +184,7 @@ Suppose that $\Omega$ is uncountable. Then $\Omega$ contains a subset $A$ such t
 ```
 
 ```{example, name="Sigma-field of countable and co-countable sets: too small"}
-Suppose that $\Omega$ is uncountable set like $\mathbb{R}$ or $[0,1]$. If we want $\mathcal{F}$ to include each singleton $\omega$, then $\mathcal{F}$ must contain each countable subset $A$. It must also contain the complement of each countable set. Therefore, any $\sigma$-field containing the singletons must contain all countable and co-countable sets. Unfortunately, this $\sigma$-field is not large enough to be useful. For instance, if $\Omeag=[0,1]$, then we are not allowed to consider events like $[0,\frac{1}{2}]$ because it is neither countable nor co-countable.
+Suppose that $\Omega$ is uncountable set like $\mathbb{R}$ or $[0,1]$. If we want $\mathcal{F}$ to include each singleton $\omega$, then $\mathcal{F}$ must contain each countable subset $A$. It must also contain the complement of each countable set. Therefore, any $\sigma$-field containing the singletons must contain all countable and co-countable sets. Unfortunately, this $\sigma$-field is not large enough to be useful. For instance, if $\Omega=[0,1]$, then we are not allowed to consider events like $[0,\frac{1}{2}]$ because it is neither countable nor co-countable.
 
 ```
 
