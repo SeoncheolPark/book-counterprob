@@ -390,15 +390,21 @@ It is obvious that every \(\sigma\)-field is a D-system, but the converse may no
 Note that a D-system \(\mathcal{D}\) is a \(\sigma\)-field if and only if the intersection of any two sets in \(\mathcal{D}\) is again in \(\mathcal{D}\).
 
 \BeginKnitrBlock{example}[Trivial and total sigma-fields]
-\protect\hypertarget{exm:unnamed-chunk-17}{}{\label{exm:unnamed-chunk-17} \iffalse (Trivial and total sigma-fields) \fi{} }For any sample space \(\Omega\), the smallest and largest \(\sigma\)-fields are the \textbf{trivial} \(\sigma\)\textbf{-field} \(t(\Omega)=\{\emptyset, \Omega\}\) and the \textbf{total} \(\sigma\)\textbf{-field} (also called the power \(\sigma\)-field) \(T(\Omega)=\{ \text{all subsets of } \Omega \}\), respectively.
+\protect\hypertarget{exm:unnamed-chunk-17}{}{\label{exm:unnamed-chunk-17} \iffalse (Trivial and total sigma-fields) \fi{} }For any sample space \(\Omega\), the smallest and largest \(\sigma\)-fields are the \textbf{trivial} \(\sigma\)\textbf{-field} \(2^{\Omega}=\{\emptyset, \Omega\}\) and the \textbf{total} \(\sigma\)\textbf{-field} (also called the power \(\sigma\)-field) \((\Omega)=\{ \text{all subsets of } \Omega \}\), respectively.
 \EndKnitrBlock{example}
 
-Remember that we are allowed to determine only whether or not event \(A\) occured for \(A\in \mathcal{F}\), not for sets outside \(\mathcal{F}\). The trivial \(\sigma\)-field is not very useful because the only events that we are allowed to consider are the entire sample space and the empty set. In other
+Remember that we are allowed to determine only whether or not event \(A\) occured for \(A\in \mathcal{F}\), not for sets outside \(\mathcal{F}\). The trivial \(\sigma\)-field is not very useful because the only events that we are allowed to consider are the entire sample space and the empty set. In other words, we can determine only whether something or nothing happened. With the total \(\sigma\)-field we can determine, for each subset \(A\subset \Omega\), whether or not event \(A\) occurred. The trouble with \(2^{\Omega}\) is that it may be too large to ensure that the properties we desire for a probability measure hold for all \(A\in\mathcal{F}\).
+
+Therefore, we want \(\mathcal{F}\) to be large, but not too large.
+
+\BeginKnitrBlock{example}[For countable sample sapce, the sigma-field should be the total sigma-field]
+\protect\hypertarget{exm:unnamed-chunk-18}{}{\label{exm:unnamed-chunk-18} \iffalse (For countable sample sapce, the sigma-field should be the total sigma-field) \fi{} }Suppose \(\Omega\) is a countable set like \(\{0,1,2,\ldots, \}\). We certainly want \(\mathcal{F}\) to contain each singleton. But any \(\sigma\)-field that contains each singleton \(\omega\) must contain all subsets of \(\Omega\). This follows from the fact that any subset \(A\) of \(\Omega\) is a countable union \(\bigcup_{n=1}^{\infty}\{\omega_{i}\}\) of singletons, and \(\sigma\)-fields are closed under countable unions. Therefore, when the sample space is countable, we should always use the total \(\sigma\)-field.
+\EndKnitrBlock{example}
 
 \BeginKnitrBlock{example}[The union of a sequence of sigma-fields need not be a sigma-field]
-\protect\hypertarget{exm:unnamed-chunk-18}{}{\label{exm:unnamed-chunk-18} \iffalse (The union of a sequence of sigma-fields need not be a sigma-field) \fi{} }Let \(\mathcal{F}_{1},\mathcal{F}_{2}, \ldots\) be a sequence of \(\sigma\)-fields of subsets of the set \(\Omega\). Then their intersection \(\bigcap_{n=1}^{\infty} \mathcal{F}_{n}\) is always a \(\sigma\)-field and it is natural to ask whether the union \(\cup_{n=1}^{\infty}\mathcal{F}_{n}\) is a \(\sigma\)-field. We shall now show that the answer to this question is negative.
+\protect\hypertarget{exm:unnamed-chunk-19}{}{\label{exm:unnamed-chunk-19} \iffalse (The union of a sequence of sigma-fields need not be a sigma-field) \fi{} }Let \(\mathcal{F}_{1},\mathcal{F}_{2}, \ldots\) be a sequence of \(\sigma\)-fields of subsets of the set \(\Omega\). Then their intersection \(\bigcap_{n=1}^{\infty} \mathcal{F}_{n}\) is always a \(\sigma\)-field and it is natural to ask whether the union \(\bigcup_{n=1}^{\infty}\mathcal{F}_{n}\) is a \(\sigma\)-field. We shall now show that the answer to this question is negative.
 
-Consider the set \(\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}\) and the following two classes of its subsets: \(\mathcal{F}_{1}=\{\emptyset, \{\omega_{1}\}, \{\omega_{2},\omega_{3}\}, \Omega \}\), \(\mathcal{F}_{2}=\{\emptyset, \{\omega_{2}\}, \{\omega_{1},\omega_{3}\}\), \Omega \}.\$ Then \(\mathcal{F}_{1}\) and \(\mathcal{F}_{2}\) are fields and hence \(\sigma\)-fields. Obviously the intersection \(\mathcal{F}_{1}\cap \mathcal{F}_{2} =\{ \emptyset, \Omega \}\), the trivial \(\sigma\)-field. However, the union
+Consider the set \(\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}\) and the following two classes of its subsets: \(\mathcal{F}_{1}=\{\emptyset, \{\omega_{1}\}, \{\omega_{2},\omega_{3}\}, \Omega \}\), \(\mathcal{F}_{2}=\{\emptyset, \{\omega_{2}\}, \{\omega_{1},\omega_{3}\}, \Omega \}.\) Then \(\mathcal{F}_{1}\) and \(\mathcal{F}_{2}\) are fields and hence \(\sigma\)-fields. Obviously the intersection \(\mathcal{F}_{1}\cap \mathcal{F}_{2} =\{ \emptyset, \Omega \}\), the trivial \(\sigma\)-field. However, the union
 
 \begin{align*}
 \mathcal{F}&=\mathcal{F}_{1} \cup \mathcal{F}_{2}\\
@@ -407,6 +413,11 @@ Consider the set \(\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}\) and the followi
 
 is not a field, and hence not a \(\sigma\)-field because the element \(\{\omega_{1}\}\cup \{\omega_{2}\}=\{\omega_{1},\omega_{2}\}\notin\mathcal{F}\).
 \EndKnitrBlock{example}
+
+\hypertarget{sigma-fields-in-real-line}{%
+\section{Sigma-fields in real line}\label{sigma-fields-in-real-line}}
+
+We next consider \(\sigma\)-fields when \(\Omega\) is the uncountable set \(\mathbb{R}\) (or an interval). Again, any useful \(\sigma\)-field must contain each singleton \(\omega\).
 
 \hypertarget{methods}{%
 \chapter{Methods}\label{methods}}

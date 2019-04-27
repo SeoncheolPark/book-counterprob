@@ -135,16 +135,23 @@ Take $\Omega = \{\omega_{1}, \omega_{2}, \ldots, \omega_{2n}\}, n\in\mathbb{N}$.
 Note that a D-system $\mathcal{D}$ is a $\sigma$-field if and only if the intersection of any two sets in $\mathcal{D}$ is again in $\mathcal{D}$.
 
 ```{example, name="Trivial and total sigma-fields"}
-For any sample space $\Omega$, the smallest and largest $\sigma$-fields are the **trivial** $\sigma$**-field** $t(\Omega)=\{\emptyset, \Omega\}$ and the **total** $\sigma$**-field** (also called the power $\sigma$-field) $T(\Omega)=\{ \text{all subsets of } \Omega \}$, respectively.
+For any sample space $\Omega$, the smallest and largest $\sigma$-fields are the **trivial** $\sigma$**-field** $2^{\Omega}=\{\emptyset, \Omega\}$ and the **total** $\sigma$**-field** (also called the power $\sigma$-field) $(\Omega)=\{ \text{all subsets of } \Omega \}$, respectively.
 
 ```
 
-Remember that we are allowed to determine only whether or not event $A$ occured for $A\in \mathcal{F}$, not for sets outside $\mathcal{F}$. The trivial $\sigma$-field is not very useful because the only events that we are allowed to consider are the entire sample space and the empty set. In other 
+Remember that we are allowed to determine only whether or not event $A$ occured for $A\in \mathcal{F}$, not for sets outside $\mathcal{F}$. The trivial $\sigma$-field is not very useful because the only events that we are allowed to consider are the entire sample space and the empty set. In other words, we can determine only whether something or nothing happened. With the total $\sigma$-field we can determine, for each subset $A\subset \Omega$, whether or not event $A$ occurred. The trouble with $2^{\Omega}$ is that it may be too large to ensure that the properties we desire for a probability measure hold for all $A\in\mathcal{F}$.
+
+Therefore, we want $\mathcal{F}$ to be large, but not too large.
+
+```{example, name="For countable sample sapce, the sigma-field should be the total sigma-field"}
+Suppose $\Omega$ is a countable set like $\{0,1,2,\ldots, \}$. We certainly want $\mathcal{F}$ to contain each singleton. But any $\sigma$-field that contains each singleton $\omega$ must contain all subsets of $\Omega$. This follows from the fact that any subset $A$ of $\Omega$ is a countable union $\bigcup_{n=1}^{\infty}\{\omega_{i}\}$ of singletons, and $\sigma$-fields are closed under countable unions. Therefore, when the sample space is countable, we should always use the total $\sigma$-field.
+
+```
 
 ```{example, name="The union of a sequence of sigma-fields need not be a sigma-field"}
-Let $\mathcal{F}_{1},\mathcal{F}_{2}, \ldots$ be a sequence of $\sigma$-fields of subsets of the set $\Omega$. Then their intersection $\bigcap_{n=1}^{\infty} \mathcal{F}_{n}$ is always a $\sigma$-field and it is natural to ask whether the union $\cup_{n=1}^{\infty}\mathcal{F}_{n}$ is a $\sigma$-field. We shall now show that the answer to this question is negative.
+Let $\mathcal{F}_{1},\mathcal{F}_{2}, \ldots$ be a sequence of $\sigma$-fields of subsets of the set $\Omega$. Then their intersection $\bigcap_{n=1}^{\infty} \mathcal{F}_{n}$ is always a $\sigma$-field and it is natural to ask whether the union $\bigcup_{n=1}^{\infty}\mathcal{F}_{n}$ is a $\sigma$-field. We shall now show that the answer to this question is negative.
 
-Consider the set $\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}$ and the following two classes of its subsets: $\mathcal{F}_{1}=\{\emptyset, \{\omega_{1}\}, \{\omega_{2},\omega_{3}\}, \Omega \}$, $\mathcal{F}_{2}=\{\emptyset, \{\omega_{2}\}, \{\omega_{1},\omega_{3}\}$, \Omega \}.$ Then $\mathcal{F}_{1}$ and $\mathcal{F}_{2}$ are fields and hence $\sigma$-fields. Obviously the intersection $\mathcal{F}_{1}\cap \mathcal{F}_{2} =\{ \emptyset, \Omega \}$, the trivial $\sigma$-field. However, the union
+Consider the set $\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}$ and the following two classes of its subsets: $\mathcal{F}_{1}=\{\emptyset, \{\omega_{1}\}, \{\omega_{2},\omega_{3}\}, \Omega \}$, $\mathcal{F}_{2}=\{\emptyset, \{\omega_{2}\}, \{\omega_{1},\omega_{3}\}, \Omega \}.$ Then $\mathcal{F}_{1}$ and $\mathcal{F}_{2}$ are fields and hence $\sigma$-fields. Obviously the intersection $\mathcal{F}_{1}\cap \mathcal{F}_{2} =\{ \emptyset, \Omega \}$, the trivial $\sigma$-field. However, the union
 
 \begin{align*}
 \mathcal{F}&=\mathcal{F}_{1} \cup \mathcal{F}_{2}\\
@@ -155,3 +162,30 @@ is not a field, and hence not a $\sigma$-field because the element $\{\omega_{1}
 
 ```
 
+## Sigma-fields in real line
+
+We next consider $\sigma$-fields when $\Omega$ is the uncountable set $\mathbb{R}$ (or an interval). Again, any useful $\sigma$-field must contain each singleton $\omega$.
+
+```{definition, name="Co-finite and co-countable"}
+The set $A\in\Omega$ is called **co-finite** set if its complement $A^C$ is finnite. Further, the set $A\in\Omega$ is called a **co-countable** set if $A^C$ is countable.
+
+```
+
+Let $\mathcal{F}_{1}$ consist of the finite and co-finite subsets of $\Omega$. Then, $\mathcal{F}_{1}$ is a field. It is a $\sigma$-field if and only if $\Omega$ is finite. Let $\mathcal{F}_{2}$ consist of the countable and the co-countable subsets of $\Omega$. Then it is easy to check that $\mathcal{F}_{2}$ is a $\sigma$-field. 
+
+```{exercise}
+Prove that the collection of countable and co-countable sets is itself a $\sigma$-field.
+
+```
+
+```{example, name="A sigma-field of subsets of sample space need not contain all subsets of sample space"}
+Suppose that $\Omega$ is uncountable. Then $\Omega$ contains a subset $A$ such that $A$ and $A^C$ are both uncountable. This show that in general a $\sigma$-field of $\Omega$ need not contain all subsets of $\Omega$ and need not be closed under the formation of arbitrary uncountable unions.
+
+```
+
+```{example, name="Sigma-field of countable and co-countable sets: too small"}
+Suppose that $\Omega$ is uncountable set like $\mathbb{R}$ or $[0,1]$. If we want $\mathcal{F}$ to include each singleton $\omega$, then $\mathcal{F}$ must contain each countable subset $A$. It must also contain the complement of each countable set. Therefore, any $\sigma$-field containing the singletons must contain all countable and co-countable sets. Unfortunately, this $\sigma$-field is not large enough to be useful. For instance, if $\Omeag=[0,1]$, then we are not allowed to consider events like $[0,\frac{1}{2}]$ because it is neither countable nor co-countable.
+
+```
+
+## High-dimensional sigmal fields

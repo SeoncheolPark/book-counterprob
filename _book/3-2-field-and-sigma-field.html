@@ -25,7 +25,7 @@
 <meta name="author" content="Seoncheol Park">
 
 
-<meta name="date" content="2019-04-27">
+<meta name="date" content="2019-04-28">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="3-1-sample-space-and-event.html">
-<link rel="next" href="4-methods.html">
+<link rel="next" href="3-3-sigma-fields-in-real-line.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -135,6 +135,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3" data-path="3-classes-of-random-events.html"><a href="3-classes-of-random-events.html"><i class="fa fa-check"></i><b>3</b> Classes of Random Events</a><ul>
 <li class="chapter" data-level="3.1" data-path="3-1-sample-space-and-event.html"><a href="3-1-sample-space-and-event.html"><i class="fa fa-check"></i><b>3.1</b> Sample space and Event</a></li>
 <li class="chapter" data-level="3.2" data-path="3-2-field-and-sigma-field.html"><a href="3-2-field-and-sigma-field.html"><i class="fa fa-check"></i><b>3.2</b> Field and sigma-field</a></li>
+<li class="chapter" data-level="3.3" data-path="3-3-sigma-fields-in-real-line.html"><a href="3-3-sigma-fields-in-real-line.html"><i class="fa fa-check"></i><b>3.3</b> Sigma-fields in real line</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-high-dimensional-sigmal-fields.html"><a href="3-4-high-dimensional-sigmal-fields.html"><i class="fa fa-check"></i><b>3.4</b> High-dimensional sigmal fields</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-methods.html"><a href="4-methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
 <li class="chapter" data-level="5" data-path="5-applications.html"><a href="5-applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
@@ -281,14 +283,20 @@ However, <span class="math inline">\((x,\infty)^{C} = (-\infty, x]\notin\mathcal
 <p>Note that a D-system <span class="math inline">\(\mathcal{D}\)</span> is a <span class="math inline">\(\sigma\)</span>-field if and only if the intersection of any two sets in <span class="math inline">\(\mathcal{D}\)</span> is again in <span class="math inline">\(\mathcal{D}\)</span>.</p>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-17" class="example"><strong>Example 2.6  (Trivial and total sigma-fields)  </strong></span>For any sample space <span class="math inline">\(\Omega\)</span>, the smallest and largest <span class="math inline">\(\sigma\)</span>-fields are the <strong>trivial</strong> <span class="math inline">\(\sigma\)</span><strong>-field</strong> <span class="math inline">\(t(\Omega)=\{\emptyset, \Omega\}\)</span> and the <strong>total</strong> <span class="math inline">\(\sigma\)</span><strong>-field</strong> (also called the power <span class="math inline">\(\sigma\)</span>-field) <span class="math inline">\(T(\Omega)=\{ \text{all subsets of } \Omega \}\)</span>, respectively.</p>
+<p><span id="exm:unnamed-chunk-17" class="example"><strong>Example 2.6  (Trivial and total sigma-fields)  </strong></span>For any sample space <span class="math inline">\(\Omega\)</span>, the smallest and largest <span class="math inline">\(\sigma\)</span>-fields are the <strong>trivial</strong> <span class="math inline">\(\sigma\)</span><strong>-field</strong> <span class="math inline">\(2^{\Omega}=\{\emptyset, \Omega\}\)</span> and the <strong>total</strong> <span class="math inline">\(\sigma\)</span><strong>-field</strong> (also called the power <span class="math inline">\(\sigma\)</span>-field) <span class="math inline">\((\Omega)=\{ \text{all subsets of } \Omega \}\)</span>, respectively.</p>
 </div>
 
-<p>Remember that we are allowed to determine only whether or not event <span class="math inline">\(A\)</span> occured for <span class="math inline">\(A\in \mathcal{F}\)</span>, not for sets outside <span class="math inline">\(\mathcal{F}\)</span>. The trivial <span class="math inline">\(\sigma\)</span>-field is not very useful because the only events that we are allowed to consider are the entire sample space and the empty set. In other</p>
+<p>Remember that we are allowed to determine only whether or not event <span class="math inline">\(A\)</span> occured for <span class="math inline">\(A\in \mathcal{F}\)</span>, not for sets outside <span class="math inline">\(\mathcal{F}\)</span>. The trivial <span class="math inline">\(\sigma\)</span>-field is not very useful because the only events that we are allowed to consider are the entire sample space and the empty set. In other words, we can determine only whether something or nothing happened. With the total <span class="math inline">\(\sigma\)</span>-field we can determine, for each subset <span class="math inline">\(A\subset \Omega\)</span>, whether or not event <span class="math inline">\(A\)</span> occurred. The trouble with <span class="math inline">\(2^{\Omega}\)</span> is that it may be too large to ensure that the properties we desire for a probability measure hold for all <span class="math inline">\(A\in\mathcal{F}\)</span>.</p>
+<p>Therefore, we want <span class="math inline">\(\mathcal{F}\)</span> to be large, but not too large.</p>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-18" class="example"><strong>Example 2.7  (The union of a sequence of sigma-fields need not be a sigma-field)  </strong></span>Let <span class="math inline">\(\mathcal{F}_{1},\mathcal{F}_{2}, \ldots\)</span> be a sequence of <span class="math inline">\(\sigma\)</span>-fields of subsets of the set <span class="math inline">\(\Omega\)</span>. Then their intersection <span class="math inline">\(\bigcap_{n=1}^{\infty} \mathcal{F}_{n}\)</span> is always a <span class="math inline">\(\sigma\)</span>-field and it is natural to ask whether the union <span class="math inline">\(\cup_{n=1}^{\infty}\mathcal{F}_{n}\)</span> is a <span class="math inline">\(\sigma\)</span>-field. We shall now show that the answer to this question is negative.</p>
-<p>Consider the set <span class="math inline">\(\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}\)</span> and the following two classes of its subsets: <span class="math inline">\(\mathcal{F}_{1}=\{\emptyset, \{\omega_{1}\}, \{\omega_{2},\omega_{3}\}, \Omega \}\)</span>, <span class="math inline">\(\mathcal{F}_{2}=\{\emptyset, \{\omega_{2}\}, \{\omega_{1},\omega_{3}\}\)</span>, }.$ Then <span class="math inline">\(\mathcal{F}_{1}\)</span> and <span class="math inline">\(\mathcal{F}_{2}\)</span> are fields and hence <span class="math inline">\(\sigma\)</span>-fields. Obviously the intersection <span class="math inline">\(\mathcal{F}_{1}\cap \mathcal{F}_{2} =\{ \emptyset, \Omega \}\)</span>, the trivial <span class="math inline">\(\sigma\)</span>-field. However, the union</p>
+<p><span id="exm:unnamed-chunk-18" class="example"><strong>Example 2.7  (For countable sample sapce, the sigma-field should be the total sigma-field)  </strong></span>Suppose <span class="math inline">\(\Omega\)</span> is a countable set like <span class="math inline">\(\{0,1,2,\ldots, \}\)</span>. We certainly want <span class="math inline">\(\mathcal{F}\)</span> to contain each singleton. But any <span class="math inline">\(\sigma\)</span>-field that contains each singleton <span class="math inline">\(\omega\)</span> must contain all subsets of <span class="math inline">\(\Omega\)</span>. This follows from the fact that any subset <span class="math inline">\(A\)</span> of <span class="math inline">\(\Omega\)</span> is a countable union <span class="math inline">\(\bigcup_{n=1}^{\infty}\{\omega_{i}\}\)</span> of singletons, and <span class="math inline">\(\sigma\)</span>-fields are closed under countable unions. Therefore, when the sample space is countable, we should always use the total <span class="math inline">\(\sigma\)</span>-field.</p>
+</div>
+
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-19" class="example"><strong>Example 2.8  (The union of a sequence of sigma-fields need not be a sigma-field)  </strong></span>Let <span class="math inline">\(\mathcal{F}_{1},\mathcal{F}_{2}, \ldots\)</span> be a sequence of <span class="math inline">\(\sigma\)</span>-fields of subsets of the set <span class="math inline">\(\Omega\)</span>. Then their intersection <span class="math inline">\(\bigcap_{n=1}^{\infty} \mathcal{F}_{n}\)</span> is always a <span class="math inline">\(\sigma\)</span>-field and it is natural to ask whether the union <span class="math inline">\(\bigcup_{n=1}^{\infty}\mathcal{F}_{n}\)</span> is a <span class="math inline">\(\sigma\)</span>-field. We shall now show that the answer to this question is negative.</p>
+<p>Consider the set <span class="math inline">\(\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}\)</span> and the following two classes of its subsets: <span class="math inline">\(\mathcal{F}_{1}=\{\emptyset, \{\omega_{1}\}, \{\omega_{2},\omega_{3}\}, \Omega \}\)</span>, <span class="math inline">\(\mathcal{F}_{2}=\{\emptyset, \{\omega_{2}\}, \{\omega_{1},\omega_{3}\}, \Omega \}.\)</span> Then <span class="math inline">\(\mathcal{F}_{1}\)</span> and <span class="math inline">\(\mathcal{F}_{2}\)</span> are fields and hence <span class="math inline">\(\sigma\)</span>-fields. Obviously the intersection <span class="math inline">\(\mathcal{F}_{1}\cap \mathcal{F}_{2} =\{ \emptyset, \Omega \}\)</span>, the trivial <span class="math inline">\(\sigma\)</span>-field. However, the union</p>
 <p><span class="math display">\[\begin{align*}
 \mathcal{F}&amp;=\mathcal{F}_{1} \cup \mathcal{F}_{2}\\
 &amp;= \{\emptyset, \{\omega_{1}\}, \{\omega_{2}\}, \{\omega_{2},\omega_{3} \}, \{\omega_{1},\omega_{3} \},\Omega \}\\
@@ -296,16 +304,14 @@ However, <span class="math inline">\((x,\infty)^{C} = (-\infty, x]\notin\mathcal
 <p>is not a field, and hence not a <span class="math inline">\(\sigma\)</span>-field because the element <span class="math inline">\(\{\omega_{1}\}\cup \{\omega_{2}\}=\{\omega_{1},\omega_{2}\}\notin\mathcal{F}\)</span>.</p>
 </div>
 
-
 </div>
-<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
 <a href="3-1-sample-space-and-event.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="4-methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3-3-sigma-fields-in-real-line.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
