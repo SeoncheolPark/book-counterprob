@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="3-2-field-and-sigma-field.html">
-<link rel="next" href="3-4-high-dimensional-sigmal-fields.html">
+<link rel="next" href="3-4-borel-sigma-field.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -136,7 +136,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.1" data-path="3-1-sample-space-and-event.html"><a href="3-1-sample-space-and-event.html"><i class="fa fa-check"></i><b>3.1</b> Sample space and Event</a></li>
 <li class="chapter" data-level="3.2" data-path="3-2-field-and-sigma-field.html"><a href="3-2-field-and-sigma-field.html"><i class="fa fa-check"></i><b>3.2</b> Field and sigma-field</a></li>
 <li class="chapter" data-level="3.3" data-path="3-3-sigma-fields-in-real-line.html"><a href="3-3-sigma-fields-in-real-line.html"><i class="fa fa-check"></i><b>3.3</b> Sigma-fields in real line</a></li>
-<li class="chapter" data-level="3.4" data-path="3-4-high-dimensional-sigmal-fields.html"><a href="3-4-high-dimensional-sigmal-fields.html"><i class="fa fa-check"></i><b>3.4</b> High-dimensional sigmal fields</a></li>
+<li class="chapter" data-level="3.4" data-path="3-4-borel-sigma-field.html"><a href="3-4-borel-sigma-field.html"><i class="fa fa-check"></i><b>3.4</b> Borel sigma-field</a></li>
+<li class="chapter" data-level="3.5" data-path="3-5-high-dimensional-sigmal-fields.html"><a href="3-5-high-dimensional-sigmal-fields.html"><i class="fa fa-check"></i><b>3.5</b> High-dimensional sigmal fields</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="4-methods.html"><a href="4-methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
 <li class="chapter" data-level="5" data-path="5-applications.html"><a href="5-applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
@@ -170,25 +171,37 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>We next consider <span class="math inline">\(\sigma\)</span>-fields when <span class="math inline">\(\Omega\)</span> is the uncountable set <span class="math inline">\(\mathbb{R}\)</span> (or an interval). Again, any useful <span class="math inline">\(\sigma\)</span>-field must contain each singleton <span class="math inline">\(\omega\)</span>.</p>
 
 <div class="definition">
-<p><span id="def:unnamed-chunk-20" class="definition"><strong>Definition 2.6  (Co-finite and co-countable)  </strong></span>The set <span class="math inline">\(A\in\Omega\)</span> is called <strong>co-finite</strong> set if its complement <span class="math inline">\(A^C\)</span> is finnite. Further, the set <span class="math inline">\(A\in\Omega\)</span> is called a <strong>co-countable</strong> set if <span class="math inline">\(A^C\)</span> is countable.</p>
+<p><span id="def:unnamed-chunk-22" class="definition"><strong>Definition 2.6  (Co-finite and co-countable)  </strong></span>The set <span class="math inline">\(A\in\Omega\)</span> is called <strong>co-finite</strong> set if its complement <span class="math inline">\(A^C\)</span> is finnite. Further, the set <span class="math inline">\(A\in\Omega\)</span> is called a <strong>co-countable</strong> set if <span class="math inline">\(A^C\)</span> is countable.</p>
 </div>
 
 <p>Let <span class="math inline">\(\mathcal{F}_{1}\)</span> consist of the finite and co-finite subsets of <span class="math inline">\(\Omega\)</span>. Then, <span class="math inline">\(\mathcal{F}_{1}\)</span> is a field. It is a <span class="math inline">\(\sigma\)</span>-field if and only if <span class="math inline">\(\Omega\)</span> is finite. Let <span class="math inline">\(\mathcal{F}_{2}\)</span> consist of the countable and the co-countable subsets of <span class="math inline">\(\Omega\)</span>. Then it is easy to check that <span class="math inline">\(\mathcal{F}_{2}\)</span> is a <span class="math inline">\(\sigma\)</span>-field.</p>
 
 <div class="exercise">
-<p><span id="exr:unnamed-chunk-21" class="exercise"><strong>Exercise 2.1  </strong></span>Prove that the collection of countable and co-countable sets is itself a <span class="math inline">\(\sigma\)</span>-field.</p>
+<p><span id="exr:unnamed-chunk-23" class="exercise"><strong>Exercise 2.1  </strong></span>Prove that the collection of countable and co-countable sets is itself a <span class="math inline">\(\sigma\)</span>-field.</p>
 </div>
 
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-22" class="example"><strong>Example 2.9  (A sigma-field of subsets of sample space need not contain all subsets of sample space)  </strong></span>Suppose that <span class="math inline">\(\Omega\)</span> is uncountable. Then <span class="math inline">\(\Omega\)</span> contains a subset <span class="math inline">\(A\)</span> such that <span class="math inline">\(A\)</span> and <span class="math inline">\(A^C\)</span> are both uncountable. This show that in general a <span class="math inline">\(\sigma\)</span>-field of <span class="math inline">\(\Omega\)</span> need not contain all subsets of <span class="math inline">\(\Omega\)</span> and need not be closed under the formation of arbitrary uncountable unions.</p>
+<p><span id="exm:unnamed-chunk-24" class="example"><strong>Example 2.9  (A sigma-field of subsets of sample space need not contain all subsets of sample space)  </strong></span>Suppose that <span class="math inline">\(\Omega\)</span> is uncountable. Then <span class="math inline">\(\Omega\)</span> contains a subset <span class="math inline">\(A\)</span> such that <span class="math inline">\(A\)</span> and <span class="math inline">\(A^C\)</span> are both uncountable. This show that in general a <span class="math inline">\(\sigma\)</span>-field of <span class="math inline">\(\Omega\)</span> need not contain all subsets of <span class="math inline">\(\Omega\)</span> and need not be closed under the formation of arbitrary uncountable unions.</p>
 </div>
 
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-23" class="example"><strong>Example 2.10  (Sigma-field of countable and co-countable sets: too small)  </strong></span>Suppose that <span class="math inline">\(\Omega\)</span> is uncountable set like <span class="math inline">\(\mathbb{R}\)</span> or <span class="math inline">\([0,1]\)</span>. If we want <span class="math inline">\(\mathcal{F}\)</span> to include each singleton <span class="math inline">\(\omega\)</span>, then <span class="math inline">\(\mathcal{F}\)</span> must contain each countable subset <span class="math inline">\(A\)</span>. It must also contain the complement of each countable set. Therefore, any <span class="math inline">\(\sigma\)</span>-field containing the singletons must contain all countable and co-countable sets. Unfortunately, this <span class="math inline">\(\sigma\)</span>-field is not large enough to be useful. For instance, if <span class="math inline">\(\Omega=[0,1]\)</span>, then we are not allowed to consider events like <span class="math inline">\([0,\frac{1}{2}]\)</span> because it is neither countable nor co-countable.</p>
+<p><span id="exm:unnamed-chunk-25" class="example"><strong>Example 2.10  (Sigma-field of countable and co-countable sets: too small)  </strong></span>Suppose that <span class="math inline">\(\Omega\)</span> is uncountable set like <span class="math inline">\(\mathbb{R}\)</span> or <span class="math inline">\([0,1]\)</span>. If we want <span class="math inline">\(\mathcal{F}\)</span> to include each singleton <span class="math inline">\(\omega\)</span>, then <span class="math inline">\(\mathcal{F}\)</span> must contain each countable subset <span class="math inline">\(A\)</span>. It must also contain the complement of each countable set. Therefore, any <span class="math inline">\(\sigma\)</span>-field containing the singletons must contain all countable and co-countable sets. Unfortunately, this <span class="math inline">\(\sigma\)</span>-field is not large enough to be useful. For instance, if <span class="math inline">\(\Omega=[0,1]\)</span>, then we are not allowed to consider events like <span class="math inline">\([0,\frac{1}{2}]\)</span> because it is neither countable nor co-countable.</p>
 </div>
 
+<p>We continue our quest for the smalles <span class="math inline">\(\sigma\)</span>-field that contains all of the “useful” subsets of the uncountable set <span class="math inline">\(\mathbb{R}\)</span>. We have seen that the collection of countable and co-countable sets is not a good choice because it excludes common sets like <span class="math inline">\([0,\frac{1}{2}]\)</span>. We certainly want <span class="math inline">\(\mathcal{F}\)</span> to include all intervals. But remember that we do not want <span class="math inline">\(\mathcal{F}\)</span> to be too large, else it might contain “pathological sets” that cause probability to behave strangely. Therefore, we would like to find the <strong>smallest</strong> <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathcal{F}\)</span> that contains all of the intervals. That is, we want <span class="math inline">\(\mathcal{F}\)</span> to contain all intervals, and if <span class="math inline">\(\mathcal{G}\)</span> is any other <span class="math inline">\(\sigma\)</span>-field containing the intervals, then <span class="math inline">\(\mathcal{F}\subset\mathcal{G}\)</span>. The smallest <span class="math inline">\(\sigma\)</span>-field containing a collection <span class="math inline">\(\mathcal{A}\)</span>, denoted <span class="math inline">\(\sigma(\mathcal{A})\)</span>, is called the <strong>sigma-field generated by</strong> <span class="math inline">\(\mathcal{A}\)</span>. We want to find <span class="math inline">\(\sigma(\text{intervals})\)</span>. Any <span class="math inline">\(\sigma\)</span>-field containing the intervals must also contain all finite unions of disjoint sets of the form <span class="math inline">\((a,b]\)</span>, <span class="math inline">\((-\infty, a]\)</span>, or <span class="math inline">\((b,\infty)\)</span>. Therefore, if this latter collection is a <span class="math inline">\(\sigma\)</span>-field, it must be <span class="math inline">\(\sigma(\text{intervals})\)</span>. Unfortunately, it is not a <span class="math inline">\(\sigma\)</span>-field.</p>
+
+<div class="example">
+<p><span id="exm:unnamed-chunk-26" class="example"><strong>Example 2.11  (Very important field)  </strong></span>If <span class="math inline">\(\Omega =\mathbb{R}\)</span>, the collection <span class="math inline">\(\mathcal{F}_{0}\)</span> of finite unions of disjoint sets of the form <span class="math inline">\((a,b]\)</span>, <span class="math inline">\((-\infty,a]\)</span>, or <span class="math inline">\((b,\infty)\)</span> is a field, but not a <span class="math inline">\(\sigma\)</span>-field. It generates <span class="math inline">\(\sigma(\text{intervals})\)</span>.</p>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-27" class="exercise"><strong>Exercise 2.2  </strong></span>Prove the above example.</p>
+</div>
+
+<p>Continuing aour search for <span class="math inline">\(\sigma(\text{intervals})\)</span>, consider the collection <span class="math inline">\(\{\mathcal{F}_{t}\}_{t\in T}\)</span> of all <span class="math inline">\(\sigma\)</span>-fields containing the intervals. There are at least one, namely the total <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(2^{\mathbb{R}}\)</span> of all subsets of the line. Let <span class="math inline">\(\mathcal{F} = \bigcap_{t}\mathcal{F}_{t}\)</span>. We claim that <span class="math inline">\(\mathcal{F}=\sigma(\text{intervals})\)</span>. We need only show that <span class="math inline">\(\mathcal{F}\)</span> is a <span class="math inline">\(\sigma\)</span>-field, because any other <span class="math inline">\(\sigma\)</span>-field containing the intervals clearly contains <span class="math inline">\(\mathcal{F}\)</span>.</p>
 </div>
             </section>
 
@@ -196,7 +209,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="3-2-field-and-sigma-field.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="3-4-high-dimensional-sigmal-fields.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3-4-borel-sigma-field.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

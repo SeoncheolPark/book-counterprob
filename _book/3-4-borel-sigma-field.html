@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>3.1 Sample space and Event | Counterexamples of Probability</title>
+  <title>3.4 Borel sigma-field | Counterexamples of Probability</title>
   <meta name="description" content="하루에 한 개씩!">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="3.1 Sample space and Event | Counterexamples of Probability" />
+  <meta property="og:title" content="3.4 Borel sigma-field | Counterexamples of Probability" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="SeoncheolPark/book-counterprob" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="3.1 Sample space and Event | Counterexamples of Probability" />
+  <meta name="twitter:title" content="3.4 Borel sigma-field | Counterexamples of Probability" />
   
   <meta name="twitter:description" content="하루에 한 개씩!" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="3-classes-of-random-events.html">
-<link rel="next" href="3-2-field-and-sigma-field.html">
+<link rel="prev" href="3-3-sigma-fields-in-real-line.html">
+<link rel="next" href="3-5-high-dimensional-sigmal-fields.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -166,22 +166,46 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="sample-space-and-event" class="section level2">
-<h2><span class="header-section-number">3.1</span> Sample space and Event</h2>
-<p>Let <span class="math inline">\(\Omega\)</span> (the <strong>sample space</strong> of all possible outcomes of an experiments) be an arbitrary non-empty set. Its elements, denoted by <span class="math inline">\(\omega\)</span>, will be interpreted as <strong>outcomes (results)</strong> of some experiment. These outcomes sometimes called <strong>simple events</strong> or <strong>elements</strong> becaus they cannot be decomposed further. Other events (subsets of <span class="math inline">\(\Omega\)</span>) are <strong>compound events</strong> because they are composed of two or more simple events. An <strong>event</strong> <span class="math inline">\(A\)</span> occurs if and only if the randomly selected <span class="math inline">\(\omega\)</span> belongs to <span class="math inline">\(A\)</span>. As usual, we use <span class="math inline">\(A \cup B\)</span> and <span class="math inline">\(A \cap B\)</span> to represent the union and the intersection of any two subsets <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> of <span class="math inline">\(\Omega\)</span>, respectively. Also, <span class="math inline">\(A^c\)</span> is the complement of <span class="math inline">\(A\subset \Omega\)</span>. In particular, <span class="math inline">\(\Omega^c=\theta\)</span>, where <span class="math inline">\(\theta\)</span> is the empty set.</p>
+<div id="borel-sigma-field" class="section level2">
+<h2><span class="header-section-number">3.4</span> Borel sigma-field</h2>
 
-<div class="example">
-<p><span id="exm:unnamed-chunk-3" class="example"><strong>Example 2.1  (an example of sample space and event)  </strong></span>When drawing randomly from <span class="math inline">\([0,1]\)</span> the sample space is <span class="math inline">\(\Omega = [0,1]\)</span>, each <span class="math inline">\(\omega \in [0,1]\)</span> is a sample event, and the interval <span class="math inline">\(A=(\frac{1}{2},1]\)</span> is an example of a compound event.</p>
+<div class="definition">
+<p><span id="def:unnamed-chunk-28" class="definition"><strong>Definition 2.7  (1-dimensional Borel sigma-field)  </strong></span>The smallest <span class="math inline">\(\sigma\)</span>-field containing the intervals of <span class="math inline">\(\mathbb{R}\)</span>, namely the intersection of all <span class="math inline">\(\sigma\)</span>-fields containing the intervals, is called the <strong>Borel sigma-field</strong> and denoted <span class="math inline">\(\mathcal{B}\)</span> or <span class="math inline">\(\mathcal{B}^{1}\)</span>. The sets in <span class="math inline">\(\mathcal{B}\)</span> are called <strong>Borel sets</strong>. The Borel sets of <span class="math inline">\(\mathbb{R}\)</span> that are subsets of <span class="math inline">\([0,1]\)</span> are denoted <span class="math inline">\(\mathcal{B}_{[0,1]}\)</span>.</p>
 </div>
 
+<p>The definition of the Borel <span class="math inline">\(\sigma\)</span>-field is somewhat dissatisfying because it is hard to picture the intersection of all <span class="math inline">\(\sigma\)</span>-fields containing the intervals. It would be more pleasing if we could begin with the intervals <span class="math inline">\(\mathcal{I}_1\)</span>, throw in all complements and countable unions of sets in <span class="math inline">\(\mathcal{I}_{1}\)</span> to create <span class="math inline">\(\mathcal{I}_{2}\)</span>, then throw in all complements and countable unions of sets in <span class="math inline">\(\mathcal{I}_{2}\)</span> to create <span class="math inline">\(\mathcal{I}_{3}\)</span>, etc. It would still be difficult to picture all of the sets, but at least we could imagine how to construct them. Unfortunately, this process must be continued indefinitely. In fact, even <span class="math inline">\(\bigcup_{i=1}^{\infty}\mathcal{I}_{i}\)</span> does not produce all of the Borel sets. <span class="citation">(Billingsley <a href="#ref-Billingsley2012">2012</a>)</span></p>
+
+<div class="remark">
+<p> <span class="remark"><em>Remark</em> (The Bore sigma-field is very broad). </span> The Borel <span class="math inline">\(\sigma\)</span>-field contains many sets other than intervals, including, for example:</p>
+<ol style="list-style-type: decimal">
+<li><p>Countable unions of intervals, and therefore all open sets by (Proposition A.15.)</p></li>
+<li><p>All closed sets by part 1 and the fact that complements of sets in <span class="math inline">\(\mathcal{B}\)</span> are in <span class="math inline">\(\mathcal{B}\)</span>.</p></li>
+<li><p>The rational numbers by part 2 because each rational <span class="math inline">\(r\)</span> is a closed set (it is easy to see that its complement is open), and the set of rational numbers is a countable union of these closed sets.</p></li>
+<li>The irrational numbers, being the complement of the Borel set of rational numbers.</li>
+</ol>
+</div>
+
+<p>It is actually difficult to construct a set that is <strong>not a Borel set</strong>. Nevertheless, we will see later that an even larger <span class="math inline">\(\sigma\)</span>-field, called the <strong>Lebesgue sets</strong>, is also useful in probability and measure theory.</p>
+<p>It is sometimes helpful to consider the events <span class="math inline">\(\{-\infty\}\)</span> or <span class="math inline">\(\{+\infty\}\)</span>. These sets are not in the Borel <span class="math inline">\(\sigma\)</span>-field because they are not subsets of <span class="math inline">\(\mathbb{R} = (-\infty, \infty)\)</span>. To consider them as events, we must extend the real line by augmenting it with <span class="math inline">\(\{-\infty, +\infty\}\)</span>.</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-30" class="definition"><strong>Definition 2.8  (Extended line and extended intervals)  </strong></span>The <strong>extended line</strong> <span class="math inline">\(\bar{\mathbb{R}}\)</span> is <span class="math inline">\([-\infty, \infty]\)</span>, meaning <span class="math inline">\((-\infty, \infty)\cup \{-\infty, \infty \}\)</span>. An extended interval is of the form <span class="math inline">\([x,y]\)</span>, <span class="math inline">\([x,y)\)</span>, <span class="math inline">\((x,y]\)</span>, or <span class="math inline">\((x,y)\)</span>, where <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span> can be numbers or <span class="math inline">\(\pm \infty\)</span>; <span class="math inline">\([a,\infty]\)</span> means <span class="math inline">\([a,\infty)\cup \{\infty\}\)</span>, <span class="math inline">\([-\infty, b]\)</span> means <span class="math inline">\((-\infty, b] \cup \{-\infty\}\)</span>, etc.</p>
+</div>
+
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-Billingsley2012">
+<p>Billingsley, Patrick. 2012. <em>Probability and Measure</em>. 3rd ed. John Wiley; Sons.</p>
+</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="3-classes-of-random-events.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="3-2-field-and-sigma-field.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3-3-sigma-fields-in-real-line.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="3-5-high-dimensional-sigmal-fields.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

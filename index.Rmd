@@ -6,7 +6,7 @@ header-includes: \usepackage{amsthm, amsmath, kotex, bm, indentfirst, lmodern, g
 knit: "bookdown::render_book"
 site: bookdown::bookdown_site
 documentclass: scrbook
-bibliography: [packages.bib]
+bibliography: [book.bib]
 biblio-style: apalike
 link-citations: yes
 github-repo: SeoncheolPark/book-counterprob
