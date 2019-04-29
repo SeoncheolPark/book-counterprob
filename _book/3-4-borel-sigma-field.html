@@ -25,7 +25,7 @@
 <meta name="author" content="Seoncheol Park">
 
 
-<meta name="date" content="2019-04-28">
+<meta name="date" content="2019-04-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -138,8 +138,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="3-3-sigma-fields-in-real-line.html"><a href="3-3-sigma-fields-in-real-line.html"><i class="fa fa-check"></i><b>3.3</b> Sigma-fields in real line</a></li>
 <li class="chapter" data-level="3.4" data-path="3-4-borel-sigma-field.html"><a href="3-4-borel-sigma-field.html"><i class="fa fa-check"></i><b>3.4</b> Borel sigma-field</a></li>
 <li class="chapter" data-level="3.5" data-path="3-5-high-dimensional-sigmal-fields.html"><a href="3-5-high-dimensional-sigmal-fields.html"><i class="fa fa-check"></i><b>3.5</b> High-dimensional sigmal fields</a></li>
+<li class="chapter" data-level="3.6" data-path="3-6-infinitely-often-event.html"><a href="3-6-infinitely-often-event.html"><i class="fa fa-check"></i><b>3.6</b> Infinitely often event</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="4-methods.html"><a href="4-methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="4-measures-and-probability-measures.html"><a href="4-measures-and-probability-measures.html"><i class="fa fa-check"></i><b>4</b> Measures and Probability Measures</a></li>
 <li class="chapter" data-level="5" data-path="5-applications.html"><a href="5-applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
 <li class="chapter" data-level="5.1" data-path="5-1-example-one.html"><a href="5-1-example-one.html"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
 <li class="chapter" data-level="5.2" data-path="5-2-example-two.html"><a href="5-2-example-two.html"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
@@ -170,7 +171,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">3.4</span> Borel sigma-field</h2>
 
 <div class="definition">
-<p><span id="def:unnamed-chunk-28" class="definition"><strong>Definition 2.7  (1-dimensional Borel sigma-field)  </strong></span>The smallest <span class="math inline">\(\sigma\)</span>-field containing the intervals of <span class="math inline">\(\mathbb{R}\)</span>, namely the intersection of all <span class="math inline">\(\sigma\)</span>-fields containing the intervals, is called the <strong>Borel sigma-field</strong> and denoted <span class="math inline">\(\mathcal{B}\)</span> or <span class="math inline">\(\mathcal{B}^{1}\)</span>. The sets in <span class="math inline">\(\mathcal{B}\)</span> are called <strong>Borel sets</strong>. The Borel sets of <span class="math inline">\(\mathbb{R}\)</span> that are subsets of <span class="math inline">\([0,1]\)</span> are denoted <span class="math inline">\(\mathcal{B}_{[0,1]}\)</span>.</p>
+<p><span id="def:unnamed-chunk-29" class="definition"><strong>Definition 2.7  (1-dimensional Borel sigma-field)  </strong></span>The smallest <span class="math inline">\(\sigma\)</span>-field containing the intervals of <span class="math inline">\(\mathbb{R}\)</span>, namely the intersection of all <span class="math inline">\(\sigma\)</span>-fields containing the intervals, is called the <strong>Borel sigma-field</strong> and denoted <span class="math inline">\(\mathcal{B}\)</span> or <span class="math inline">\(\mathcal{B}^{1}\)</span>. The sets in <span class="math inline">\(\mathcal{B}\)</span> are called <strong>Borel sets</strong>. The Borel sets of <span class="math inline">\(\mathbb{R}\)</span> that are subsets of <span class="math inline">\([0,1]\)</span> are denoted <span class="math inline">\(\mathcal{B}_{[0,1]}\)</span>.</p>
 </div>
 
 <p>The definition of the Borel <span class="math inline">\(\sigma\)</span>-field is somewhat dissatisfying because it is hard to picture the intersection of all <span class="math inline">\(\sigma\)</span>-fields containing the intervals. It would be more pleasing if we could begin with the intervals <span class="math inline">\(\mathcal{I}_1\)</span>, throw in all complements and countable unions of sets in <span class="math inline">\(\mathcal{I}_{1}\)</span> to create <span class="math inline">\(\mathcal{I}_{2}\)</span>, then throw in all complements and countable unions of sets in <span class="math inline">\(\mathcal{I}_{2}\)</span> to create <span class="math inline">\(\mathcal{I}_{3}\)</span>, etc. It would still be difficult to picture all of the sets, but at least we could imagine how to construct them. Unfortunately, this process must be continued indefinitely. In fact, even <span class="math inline">\(\bigcup_{i=1}^{\infty}\mathcal{I}_{i}\)</span> does not produce all of the Borel sets. <span class="citation">(Billingsley <a href="#ref-Billingsley2012">2012</a>)</span></p>
@@ -189,7 +190,28 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>It is sometimes helpful to consider the events <span class="math inline">\(\{-\infty\}\)</span> or <span class="math inline">\(\{+\infty\}\)</span>. These sets are not in the Borel <span class="math inline">\(\sigma\)</span>-field because they are not subsets of <span class="math inline">\(\mathbb{R} = (-\infty, \infty)\)</span>. To consider them as events, we must extend the real line by augmenting it with <span class="math inline">\(\{-\infty, +\infty\}\)</span>.</p>
 
 <div class="definition">
-<p><span id="def:unnamed-chunk-30" class="definition"><strong>Definition 2.8  (Extended line and extended intervals)  </strong></span>The <strong>extended line</strong> <span class="math inline">\(\bar{\mathbb{R}}\)</span> is <span class="math inline">\([-\infty, \infty]\)</span>, meaning <span class="math inline">\((-\infty, \infty)\cup \{-\infty, \infty \}\)</span>. An extended interval is of the form <span class="math inline">\([x,y]\)</span>, <span class="math inline">\([x,y)\)</span>, <span class="math inline">\((x,y]\)</span>, or <span class="math inline">\((x,y)\)</span>, where <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span> can be numbers or <span class="math inline">\(\pm \infty\)</span>; <span class="math inline">\([a,\infty]\)</span> means <span class="math inline">\([a,\infty)\cup \{\infty\}\)</span>, <span class="math inline">\([-\infty, b]\)</span> means <span class="math inline">\((-\infty, b] \cup \{-\infty\}\)</span>, etc.</p>
+<p><span id="def:unnamed-chunk-31" class="definition"><strong>Definition 2.8  (Extended line and extended intervals)  </strong></span>The <strong>extended line</strong> <span class="math inline">\(\bar{\mathbb{R}}\)</span> is <span class="math inline">\([-\infty, \infty]\)</span>, meaning <span class="math inline">\((-\infty, \infty)\cup \{-\infty, \infty \}\)</span>. An extended interval is of the form <span class="math inline">\([x,y]\)</span>, <span class="math inline">\([x,y)\)</span>, <span class="math inline">\((x,y]\)</span>, or <span class="math inline">\((x,y)\)</span>, where <span class="math inline">\(x\)</span> or <span class="math inline">\(y\)</span> can be numbers or <span class="math inline">\(\pm \infty\)</span>; <span class="math inline">\([a,\infty]\)</span> means <span class="math inline">\([a,\infty)\cup \{\infty\}\)</span>, <span class="math inline">\([-\infty, b]\)</span> means <span class="math inline">\((-\infty, b] \cup \{-\infty\}\)</span>, etc.</p>
+</div>
+
+<p>When considering <span class="math inline">\(\bar{\mathbb{R}}\)</span> instead of <span class="math inline">\(\mathbb{R}\)</span>, we must remember to take complements with respect to <span class="math inline">\(\mathbb{R}\)</span>. For instance, the complement of <span class="math inline">\((0,1]\)</span> is <span class="math inline">\(\bar{\mathbb{R}}\backslash (0,1] = [-\infty, 0]\cup (1,\infty]\)</span>, and the complement of <span class="math inline">\(\mathbb{R}=(-\infty, \infty)\)</span> is <span class="math inline">\(\bar{\mathbb{R}}\backslash\mathbb{R} =\{-\infty, \infty\}\)</span>.</p>
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-32" class="definition"><strong>Definition 2.9  (Extended Borel sigma-field)  </strong></span>The extended Borel <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\bar{\mathcal{B}}\)</span> is the smallest <span class="math inline">\(\sigma\)</span>-field of subsets of <span class="math inline">\(\bar{\mathbb{R}}\)</span> that contains all of the extended intervals.</p>
+</div>
+
+
+<div class="proposition">
+<p><span id="prp:unnamed-chunk-33" class="proposition"><strong>Proposition 2.4  (Equivalent formulations of extended Borel sigma-field)  </strong></span>The flollowing are equivalent.</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(\bar{\mathcal{B}}\)</span> is the extended Borel <span class="math inline">\(\sigma\)</span>-field.</p></li>
+<li><p><span class="math inline">\(\bar{\mathcal{B}}\)</span> is the smallest <span class="math inline">\(\sigma\)</span>-field that contains the two sets <span class="math inline">\(\{-\infty\}\)</span> and <span class="math inline">\(\{+\infty\}\)</span> and all Borel subsets of <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
+<li><span class="math inline">\(\bar{\mathcal{B}}\)</span> consists of all Borel subsets <span class="math inline">\(\mathcal{B}\)</span> of <span class="math inline">\(\mathbb{R}\)</span>, together with all augumentations <span class="math inline">\(\bar{mathcal{B}}\)</span> of <span class="math inline">\(\mathcal{B}\)</span> by <span class="math inline">\(-\infty\)</span>, <span class="math inline">\(\infty\)</span>, or both.</li>
+</ol>
+</div>
+
+
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-34" class="exercise"><strong>Exercise 2.4  </strong></span>Prove the above proposition.</p>
 </div>
 
 </div>

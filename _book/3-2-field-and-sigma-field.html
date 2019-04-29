@@ -25,7 +25,7 @@
 <meta name="author" content="Seoncheol Park">
 
 
-<meta name="date" content="2019-04-28">
+<meta name="date" content="2019-04-29">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -138,8 +138,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.3" data-path="3-3-sigma-fields-in-real-line.html"><a href="3-3-sigma-fields-in-real-line.html"><i class="fa fa-check"></i><b>3.3</b> Sigma-fields in real line</a></li>
 <li class="chapter" data-level="3.4" data-path="3-4-borel-sigma-field.html"><a href="3-4-borel-sigma-field.html"><i class="fa fa-check"></i><b>3.4</b> Borel sigma-field</a></li>
 <li class="chapter" data-level="3.5" data-path="3-5-high-dimensional-sigmal-fields.html"><a href="3-5-high-dimensional-sigmal-fields.html"><i class="fa fa-check"></i><b>3.5</b> High-dimensional sigmal fields</a></li>
+<li class="chapter" data-level="3.6" data-path="3-6-infinitely-often-event.html"><a href="3-6-infinitely-often-event.html"><i class="fa fa-check"></i><b>3.6</b> Infinitely often event</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="4-methods.html"><a href="4-methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
+<li class="chapter" data-level="4" data-path="4-measures-and-probability-measures.html"><a href="4-measures-and-probability-measures.html"><i class="fa fa-check"></i><b>4</b> Measures and Probability Measures</a></li>
 <li class="chapter" data-level="5" data-path="5-applications.html"><a href="5-applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
 <li class="chapter" data-level="5.1" data-path="5-1-example-one.html"><a href="5-1-example-one.html"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
 <li class="chapter" data-level="5.2" data-path="5-2-example-two.html"><a href="5-2-example-two.html"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
@@ -193,14 +194,29 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 
 
+<div class="exercise">
+<p><span id="exr:unnamed-chunk-7" class="exercise"><strong>Exercise 2.1  </strong></span>Which of the followings are <span class="math inline">\(\sigma\)</span>-fields of subsets of <span class="math inline">\(\Omega=\{1,2,3,4,5,6\}?\)</span></p>
+<ol style="list-style-type: lower-alpha">
+<li><p><span class="math inline">\(\{ \{1,2,\}, \{1,2,3,\}, \{4,5,6\}, \emptyset, \Omega \}\)</span>.</p></li>
+<li><p><span class="math inline">\(\{ \{1,2\}, \{3,4,5,6\}, \emptyset, \Omega \}\)</span>.</p></li>
+<li><span class="math inline">\(\{ \{1\}, \{3,4,5,6\}, \{1,3,4,5,6\},\Omega \}\)</span>.</li>
+</ol>
+</div>
+
+
+<div class="solution">
+<p> <span class="solution"><em>Solution. </em></span> b.</p>
+</div>
+
+
 <div class="definition">
-<p><span id="def:unnamed-chunk-7" class="definition"><strong>Definition 2.2  (Semi-field)  </strong></span>Let <span class="math inline">\(\Omega\)</span> be an arbitrary set. A non-empty class <span class="math inline">\(\mathcal{J}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <strong>semi-field</strong> if <span class="math inline">\(\Omega = \mathcal{J}, \emptyset \in \mathcal{J}\)</span>, <span class="math inline">\(\mathcal{J}\)</span> is closed under the formation of finite intersections, and the complement of any set in <span class="math inline">\(\mathcal{J}\)</span> is a finite sum of disjoint sets of <span class="math inline">\(\mathcal{J}\)</span>.</p>
+<p><span id="def:unnamed-chunk-9" class="definition"><strong>Definition 2.2  (Semi-field)  </strong></span>Let <span class="math inline">\(\Omega\)</span> be an arbitrary set. A non-empty class <span class="math inline">\(\mathcal{J}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <strong>semi-field</strong> if <span class="math inline">\(\Omega = \mathcal{J}, \emptyset \in \mathcal{J}\)</span>, <span class="math inline">\(\mathcal{J}\)</span> is closed under the formation of finite intersections, and the complement of any set in <span class="math inline">\(\mathcal{J}\)</span> is a finite sum of disjoint sets of <span class="math inline">\(\mathcal{J}\)</span>.</p>
 </div>
 
 <p>It is easy to see that any field of subsets of <span class="math inline">\(\Omega\)</span> is also a semi-field. However, the following simple examples show that the converse is not true.</p>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-8" class="example"><strong>Example 2.2  (A class of events which is a semi-field but not a field)  </strong></span>1. Let <span class="math inline">\(\Omega=[-\infty, \infty)\)</span> and <span class="math inline">\(\mathcal{J}_{1}\)</span>, contain <span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\{\infty\}\)</span> and all intervals of the type <span class="math inline">\([a,b)\)</span> where <span class="math inline">\(-\infty &lt; a \leq b \leq \infty\)</span>. Then, <span class="math inline">\(\emptyset \in \mathcal{J}_{1}\)</span>, <span class="math inline">\(\Omega \in \mathcal{J}_{1}\)</span>, <span class="math inline">\([a_{1}, b_{1}) \cap [a_{2}, b_{2})=[a_{1} \vee a_{2}, b_{1} \wedge b_{2})\in\mathcal{J}_{1}\)</span>, and <span class="math inline">\([a,b)^{C}=[-\infty, a)\cup[b, \infty)\)</span>. So, <span class="math inline">\(\mathcal{J}_{1}\)</span>, is a semi-field. Obviously <span class="math inline">\(\mathcal{J}_{1}\)</span> is not a field (Check <a href="3-2-field-and-sigma-field.html#exm:efnsf">2.3</a>).</p>
+<p><span id="exm:unnamed-chunk-10" class="example"><strong>Example 2.2  (A class of events which is a semi-field but not a field)  </strong></span>1. Let <span class="math inline">\(\Omega=[-\infty, \infty)\)</span> and <span class="math inline">\(\mathcal{J}_{1}\)</span>, contain <span class="math inline">\(\Omega\)</span>, <span class="math inline">\(\{\infty\}\)</span> and all intervals of the type <span class="math inline">\([a,b)\)</span> where <span class="math inline">\(-\infty &lt; a \leq b \leq \infty\)</span>. Then, <span class="math inline">\(\emptyset \in \mathcal{J}_{1}\)</span>, <span class="math inline">\(\Omega \in \mathcal{J}_{1}\)</span>, <span class="math inline">\([a_{1}, b_{1}) \cap [a_{2}, b_{2})=[a_{1} \vee a_{2}, b_{1} \wedge b_{2})\in\mathcal{J}_{1}\)</span>, and <span class="math inline">\([a,b)^{C}=[-\infty, a)\cup[b, \infty)\)</span>. So, <span class="math inline">\(\mathcal{J}_{1}\)</span>, is a semi-field. Obviously <span class="math inline">\(\mathcal{J}_{1}\)</span> is not a field (Check <a href="3-2-field-and-sigma-field.html#exm:efnsf">2.3</a>).</p>
 <ol start="2" style="list-style-type: decimal">
 <li>Take <span class="math inline">\(\Omega = \mathbb{R}^{1}\)</span> and denote by <span class="math inline">\(\mathcal{J}_{2}\)</span> the class of all subsets of the form <span class="math inline">\(A\cap B\)</span> where <span class="math inline">\(A\)</span> is closed and <span class="math inline">\(B\)</span> is an open set in <span class="math inline">\(\Omega\)</span>. Then again, <span class="math inline">\(\mathcal{J}_{2}\)</span> is a semi-field but not a field.</li>
 </ol>
@@ -208,7 +224,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <div class="definition">
-<p><span id="def:unnamed-chunk-9" class="definition"><strong>Definition 2.3  (Sigma-field)  </strong></span>The class <span class="math inline">\(\mathcal{F}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <span class="math inline">\(\sigma\)</span><strong>-field</strong> if it is a field and closed under the formation of countable unions, that is if:</p>
+<p><span id="def:unnamed-chunk-11" class="definition"><strong>Definition 2.3  (Sigma-field)  </strong></span>The class <span class="math inline">\(\mathcal{F}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <span class="math inline">\(\sigma\)</span><strong>-field</strong> if it is a field and closed under the formation of countable unions, that is if:</p>
 <ol start="4" style="list-style-type: decimal">
 <li><span class="math inline">\(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcup_{n=1}^{\infty}A_{n} \in \mathcal{F}\)</span>.</li>
 </ol>
@@ -216,7 +232,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <div class="proposition">
-<p><span id="prp:unnamed-chunk-10" class="proposition"><strong>Proposition 2.2  (Definition of a sigma-field)  </strong></span>The condition 4 of the definition of a sigma-field can be replaced by</p>
+<p><span id="prp:sigmafield" class="proposition"><strong>Proposition 2.2  (Definition of a sigma-field)  </strong></span>The condition 4 of the definition of a sigma-field can be replaced by</p>
 <ol start="4" style="list-style-type: decimal">
 <li><span class="math inline">\(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcap_{n=1}^{\infty}A_{n} \in \mathcal{F}\)</span>.</li>
 </ol>
@@ -231,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Usually, <span class="math inline">\(\mathcal{F}\)</span> is the set of events (subsets of <span class="math inline">\(\Omega\)</span>) we are allowed to consider.</p>
 
 <div class="definition">
-<p><span id="def:unnamed-chunk-12" class="definition"><strong>Definition 2.4  (Random events (events))  </strong></span>The elements of any field of <span class="math inline">\(\sigma\)</span>-field are called <strong>random events</strong> (or simply, <strong>events</strong>).</p>
+<p><span id="def:unnamed-chunk-13" class="definition"><strong>Definition 2.4  (Random events (events))  </strong></span>The elements of any field of <span class="math inline">\(\sigma\)</span>-field are called <strong>random events</strong> (or simply, <strong>events</strong>).</p>
 </div>
 
 
@@ -253,7 +269,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-13" class="example"><strong>Example 2.4  (A class of events can be closed under finite unions and finite intersections but not under complements)  </strong></span>Let <span class="math inline">\(\Omega = \mathbb{R}\)</span> and the class <span class="math inline">\(\mathcal{A}\)</span> consist of intervals of the type <span class="math inline">\((x,\infty)\)</span>, <span class="math inline">\(x\in\Omega\)</span>. Then using the notations <span class="math inline">\(u = x\wedge y:= \min\{x,y\}\)</span> and <span class="math inline">\(v=x\vee y:=\max \{x,y\}\)</span> we have:
+<p><span id="exm:unnamed-chunk-14" class="example"><strong>Example 2.4  (A class of events can be closed under finite unions and finite intersections but not under complements)  </strong></span>Let <span class="math inline">\(\Omega = \mathbb{R}\)</span> and the class <span class="math inline">\(\mathcal{A}\)</span> consist of intervals of the type <span class="math inline">\((x,\infty)\)</span>, <span class="math inline">\(x\in\Omega\)</span>. Then using the notations <span class="math inline">\(u = x\wedge y:= \min\{x,y\}\)</span> and <span class="math inline">\(v=x\vee y:=\max \{x,y\}\)</span> we have:
 <span class="math display">\[(x,\infty) \cup (y,\infty) = (u,\infty)\in\mathcal{A}\]</span>
 <span class="math display">\[(x,\infty) \cap (y,\infty) = (v,\infty)\in\mathcal{A}.\]</span>
 However, <span class="math inline">\((x,\infty)^{C} = (-\infty, x]\notin\mathcal{A}\)</span>.</p>
@@ -267,7 +283,7 @@ However, <span class="math inline">\((x,\infty)^{C} = (-\infty, x]\notin\mathcal
 <p>A <span class="math inline">\(\sigma\)</span>-field is more restrictive than a field. Because we want to be able to consider countable unions, we require the allowable sets <span class="math inline">\(\mathcal{F}\)</span> to be a <span class="math inline">\(\sigma\)</span>-field. Therefore, it is understood in probability theory and throughout the remainder we are allowed to consider only the events belonging to the <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathcal{F}\)</span>. We will see that fields also play an important role in probability because a common technique is first to define a probability measure on a field and then extend it to a <span class="math inline">\(\sigma\)</span>-field.</p>
 
 <div class="definition">
-<p><span id="def:unnamed-chunk-15" class="definition"><strong>Definition 2.5  (D-system)  </strong></span>A system <span class="math inline">\(\mathcal{D}\)</span> of subsets of a given set <span class="math inline">\(\Omega\)</span> is called a <strong>D-system</strong> (Dynkin system) in <span class="math inline">\(\Omega\)</span> if the following three conditions hold:</p>
+<p><span id="def:unnamed-chunk-16" class="definition"><strong>Definition 2.5  (D-system)  </strong></span>A system <span class="math inline">\(\mathcal{D}\)</span> of subsets of a given set <span class="math inline">\(\Omega\)</span> is called a <strong>D-system</strong> (Dynkin system) in <span class="math inline">\(\Omega\)</span> if the following three conditions hold:</p>
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\Omega \in \mathcal{D}\)</span>;</p></li>
 <li><p><span class="math inline">\(A,B\in \mathcal{D}\)</span> and <span class="math inline">\(A\subset B \Rightarrow B\backslash A\in\mathcal{D}\)</span>;</p></li>
@@ -278,25 +294,25 @@ However, <span class="math inline">\((x,\infty)^{C} = (-\infty, x]\notin\mathcal
 <p>It is obvious that every <span class="math inline">\(\sigma\)</span>-field is a D-system, but the converse may not be true.</p>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-16" class="example"><strong>Example 2.5  (Every sigma-field of events is a D-system, but the converse does not always hold)  </strong></span>Take <span class="math inline">\(\Omega = \{\omega_{1}, \omega_{2}, \ldots, \omega_{2n}\}, n\in\mathbb{N}\)</span>. Denote by <span class="math inline">\(\mathcal{D}_{e}\)</span> the collection of all subsets <span class="math inline">\(D\in\Omega\)</span> consisting of an even number of elements. Conditions 1, 2, and 3 above are satisfied, and hence <span class="math inline">\(\mathcal{D}_{e}\)</span> is a D-system. However, if <span class="math inline">\(n&lt;1\)</span> and we take <span class="math inline">\(A=\{\omega_{1}, \omega_{2}\}\)</span> and <span class="math inline">\(B=\{\omega_{2}, \omega_{3}\}\)</span>, we see that <span class="math inline">\(A\in\mathcal{D}_{e}, B\in \mathcal{D}_{e}\)</span> and <span class="math inline">\(A\cap B =\{\omega_{2}\}\notin \mathcal{D}_{e}\)</span>. Thus <span class="math inline">\(\mathcal{D}_{e}\)</span> is not even a field and hence not a <span class="math inline">\(\sigma\)</span>-field.</p>
+<p><span id="exm:unnamed-chunk-17" class="example"><strong>Example 2.5  (Every sigma-field of events is a D-system, but the converse does not always hold)  </strong></span>Take <span class="math inline">\(\Omega = \{\omega_{1}, \omega_{2}, \ldots, \omega_{2n}\}, n\in\mathbb{N}\)</span>. Denote by <span class="math inline">\(\mathcal{D}_{e}\)</span> the collection of all subsets <span class="math inline">\(D\in\Omega\)</span> consisting of an even number of elements. Conditions 1, 2, and 3 above are satisfied, and hence <span class="math inline">\(\mathcal{D}_{e}\)</span> is a D-system. However, if <span class="math inline">\(n&lt;1\)</span> and we take <span class="math inline">\(A=\{\omega_{1}, \omega_{2}\}\)</span> and <span class="math inline">\(B=\{\omega_{2}, \omega_{3}\}\)</span>, we see that <span class="math inline">\(A\in\mathcal{D}_{e}, B\in \mathcal{D}_{e}\)</span> and <span class="math inline">\(A\cap B =\{\omega_{2}\}\notin \mathcal{D}_{e}\)</span>. Thus <span class="math inline">\(\mathcal{D}_{e}\)</span> is not even a field and hence not a <span class="math inline">\(\sigma\)</span>-field.</p>
 </div>
 
 <p>Note that a D-system <span class="math inline">\(\mathcal{D}\)</span> is a <span class="math inline">\(\sigma\)</span>-field if and only if the intersection of any two sets in <span class="math inline">\(\mathcal{D}\)</span> is again in <span class="math inline">\(\mathcal{D}\)</span>.</p>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-17" class="example"><strong>Example 2.6  (Trivial and total sigma-fields)  </strong></span>For any sample space <span class="math inline">\(\Omega\)</span>, the smallest and largest <span class="math inline">\(\sigma\)</span>-fields are the <strong>trivial</strong> <span class="math inline">\(\sigma\)</span><strong>-field</strong> <span class="math inline">\(2^{\Omega}=\{\emptyset, \Omega\}\)</span> and the <strong>total</strong> <span class="math inline">\(\sigma\)</span><strong>-field</strong> (also called the power <span class="math inline">\(\sigma\)</span>-field) <span class="math inline">\((\Omega)=\{ \text{all subsets of } \Omega \}\)</span>, respectively.</p>
+<p><span id="exm:unnamed-chunk-18" class="example"><strong>Example 2.6  (Trivial and total sigma-fields)  </strong></span>For any sample space <span class="math inline">\(\Omega\)</span>, the smallest and largest <span class="math inline">\(\sigma\)</span>-fields are the <strong>trivial</strong> <span class="math inline">\(\sigma\)</span><strong>-field</strong> <span class="math inline">\(2^{\Omega}=\{\emptyset, \Omega\}\)</span> and the <strong>total</strong> <span class="math inline">\(\sigma\)</span><strong>-field</strong> (also called the power <span class="math inline">\(\sigma\)</span>-field) <span class="math inline">\((\Omega)=\{ \text{all subsets of } \Omega \}\)</span>, respectively.</p>
 </div>
 
 <p>Remember that we are allowed to determine only whether or not event <span class="math inline">\(A\)</span> occured for <span class="math inline">\(A\in \mathcal{F}\)</span>, not for sets outside <span class="math inline">\(\mathcal{F}\)</span>. The trivial <span class="math inline">\(\sigma\)</span>-field is not very useful because the only events that we are allowed to consider are the entire sample space and the empty set. In other words, we can determine only whether something or nothing happened. With the total <span class="math inline">\(\sigma\)</span>-field we can determine, for each subset <span class="math inline">\(A\subset \Omega\)</span>, whether or not event <span class="math inline">\(A\)</span> occurred. The trouble with <span class="math inline">\(2^{\Omega}\)</span> is that it may be too large to ensure that the properties we desire for a probability measure hold for all <span class="math inline">\(A\in\mathcal{F}\)</span>.</p>
 <p>Therefore, we want <span class="math inline">\(\mathcal{F}\)</span> to be large, but not too large.</p>
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-18" class="example"><strong>Example 2.7  (For countable sample sapce, the sigma-field should be the total sigma-field)  </strong></span>Suppose <span class="math inline">\(\Omega\)</span> is a countable set like <span class="math inline">\(\{0,1,2,\ldots, \}\)</span>. We certainly want <span class="math inline">\(\mathcal{F}\)</span> to contain each singleton. But any <span class="math inline">\(\sigma\)</span>-field that contains each singleton <span class="math inline">\(\omega\)</span> must contain all subsets of <span class="math inline">\(\Omega\)</span>. This follows from the fact that any subset <span class="math inline">\(A\)</span> of <span class="math inline">\(\Omega\)</span> is a countable union <span class="math inline">\(\bigcup_{n=1}^{\infty}\{\omega_{i}\}\)</span> of singletons, and <span class="math inline">\(\sigma\)</span>-fields are closed under countable unions. Therefore, when the sample space is countable, we should always use the total <span class="math inline">\(\sigma\)</span>-field.</p>
+<p><span id="exm:unnamed-chunk-19" class="example"><strong>Example 2.7  (For countable sample space, the sigma-field should be the total sigma-field)  </strong></span>Suppose <span class="math inline">\(\Omega\)</span> is a countable set like <span class="math inline">\(\{0,1,2,\ldots, \}\)</span>. We certainly want <span class="math inline">\(\mathcal{F}\)</span> to contain each singleton. But any <span class="math inline">\(\sigma\)</span>-field that contains each singleton <span class="math inline">\(\omega\)</span> must contain all subsets of <span class="math inline">\(\Omega\)</span>. This follows from the fact that any subset <span class="math inline">\(A\)</span> of <span class="math inline">\(\Omega\)</span> is a countable union <span class="math inline">\(\cup_{n=1}^{\infty}\{\omega_{i}\}\)</span> of singletons, and <span class="math inline">\(\sigma\)</span>-fields are closed under countable unions. Therefore, when the sample space is countable, we should always use the total <span class="math inline">\(\sigma\)</span>-field.</p>
 </div>
 
 
 <div class="proposition">
-<p><span id="prp:unnamed-chunk-19" class="proposition"><strong>Proposition 2.3  (The intersection of sigma-fields are sigma-fields)  </strong></span>The intersection <span class="math inline">\(\bigcap_{t} \mathcal{F}_{t}\)</span> of any collection of <span class="math inline">\(\sigma\)</span>-fields of <span class="math inline">\(\Omega\)</span> is a <span class="math inline">\(\sigma\)</span>-field.</p>
+<p><span id="prp:unnamed-chunk-20" class="proposition"><strong>Proposition 2.3  (The intersection of sigma-fields are sigma-fields)  </strong></span>The intersection <span class="math inline">\(\bigcap_{t} \mathcal{F}_{t}\)</span> of any collection of <span class="math inline">\(\sigma\)</span>-fields of <span class="math inline">\(\Omega\)</span> is a <span class="math inline">\(\sigma\)</span>-field.</p>
 </div>
 
 
@@ -306,7 +322,7 @@ However, <span class="math inline">\((x,\infty)^{C} = (-\infty, x]\notin\mathcal
 
 
 <div class="example">
-<p><span id="exm:unnamed-chunk-21" class="example"><strong>Example 2.8  (The union of a sequence of sigma-fields need not be a sigma-field)  </strong></span>Let <span class="math inline">\(\mathcal{F}_{1},\mathcal{F}_{2}, \ldots\)</span> be a sequence of <span class="math inline">\(\sigma\)</span>-fields of subsets of the set <span class="math inline">\(\Omega\)</span>. Then their intersection <span class="math inline">\(\bigcap_{n=1}^{\infty} \mathcal{F}_{n}\)</span> is always a <span class="math inline">\(\sigma\)</span>-field and it is natural to ask whether the union <span class="math inline">\(\bigcup_{n=1}^{\infty}\mathcal{F}_{n}\)</span> is a <span class="math inline">\(\sigma\)</span>-field. We shall now show that the answer to this question is negative.</p>
+<p><span id="exm:unnamed-chunk-22" class="example"><strong>Example 2.8  (The union of a sequence of sigma-fields need not be a sigma-field)  </strong></span>Let <span class="math inline">\(\mathcal{F}_{1},\mathcal{F}_{2}, \ldots\)</span> be a sequence of <span class="math inline">\(\sigma\)</span>-fields of subsets of the set <span class="math inline">\(\Omega\)</span>. Then their intersection <span class="math inline">\(\bigcap_{n=1}^{\infty} \mathcal{F}_{n}\)</span> is always a <span class="math inline">\(\sigma\)</span>-field and it is natural to ask whether the union <span class="math inline">\(\bigcup_{n=1}^{\infty}\mathcal{F}_{n}\)</span> is a <span class="math inline">\(\sigma\)</span>-field. We shall now show that the answer to this question is negative.</p>
 <p>Consider the set <span class="math inline">\(\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}\)</span> and the following two classes of its subsets: <span class="math inline">\(\mathcal{F}_{1}=\{\emptyset, \{\omega_{1}\}, \{\omega_{2},\omega_{3}\}, \Omega \}\)</span>, <span class="math inline">\(\mathcal{F}_{2}=\{\emptyset, \{\omega_{2}\}, \{\omega_{1},\omega_{3}\}, \Omega \}.\)</span> Then <span class="math inline">\(\mathcal{F}_{1}\)</span> and <span class="math inline">\(\mathcal{F}_{2}\)</span> are fields and hence <span class="math inline">\(\sigma\)</span>-fields. Obviously the intersection <span class="math inline">\(\mathcal{F}_{1}\cap \mathcal{F}_{2} =\{ \emptyset, \Omega \}\)</span>, the trivial <span class="math inline">\(\sigma\)</span>-field. However, the union</p>
 <p><span class="math display">\[\begin{align*}
 \mathcal{F}&amp;=\mathcal{F}_{1} \cup \mathcal{F}_{2}\\

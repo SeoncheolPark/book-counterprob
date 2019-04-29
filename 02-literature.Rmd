@@ -36,6 +36,22 @@ By de Morgan laws, $(A_{1} \cap A_{2})^{C} = A_{1}^{C} \cup A_{2}^{C}$ and $(A_{
 
 ```
 
+```{exercise}
+Which of the followings are $\sigma$-fields of subsets of $\Omega=\{1,2,3,4,5,6\}?$
+
+a) $\{ \{1,2,\}, \{1,2,3,\}, \{4,5,6\}, \emptyset, \Omega \}$.
+
+b) $\{ \{1,2\}, \{3,4,5,6\}, \emptyset, \Omega  \}$.
+
+c) $\{ \{1\}, \{3,4,5,6\}, \{1,3,4,5,6\},\Omega \}$.
+
+```
+
+```{solution}
+b.
+
+```
+
 ```{definition, name="Semi-field"}
 Let $\Omega$ be an arbitrary set. A non-empty class $\mathcal{J}$ of subsets of $\Omega$ is called a **semi-field** if $\Omega = \mathcal{J}, \emptyset \in \mathcal{J}$, $\mathcal{J}$ is closed under the formation of finite intersections, and the complement of any set in $\mathcal{J}$ is a finite sum of disjoint sets of $\mathcal{J}$.
 
@@ -57,7 +73,7 @@ The class $\mathcal{F}$ of subsets of $\Omega$ is called a $\sigma$**-field** if
 
 ```
 
-```{proposition, name="Definition of a sigma-field"}
+```{proposition, name="Definition of a sigma-field", label="sigmafield"}
 The condition 4 of the definition of a sigma-field can be replaced by
 
 4. $A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcap_{n=1}^{\infty}A_{n} \in \mathcal{F}$.
@@ -143,8 +159,8 @@ Remember that we are allowed to determine only whether or not event $A$ occured 
 
 Therefore, we want $\mathcal{F}$ to be large, but not too large.
 
-```{example, name="For countable sample sapce, the sigma-field should be the total sigma-field"}
-Suppose $\Omega$ is a countable set like $\{0,1,2,\ldots, \}$. We certainly want $\mathcal{F}$ to contain each singleton. But any $\sigma$-field that contains each singleton $\omega$ must contain all subsets of $\Omega$. This follows from the fact that any subset $A$ of $\Omega$ is a countable union $\bigcup_{n=1}^{\infty}\{\omega_{i}\}$ of singletons, and $\sigma$-fields are closed under countable unions. Therefore, when the sample space is countable, we should always use the total $\sigma$-field.
+```{example, name="For countable sample space, the sigma-field should be the total sigma-field"}
+Suppose $\Omega$ is a countable set like $\{0,1,2,\ldots, \}$. We certainly want $\mathcal{F}$ to contain each singleton. But any $\sigma$-field that contains each singleton $\omega$ must contain all subsets of $\Omega$. This follows from the fact that any subset $A$ of $\Omega$ is a countable union $\cup_{n=1}^{\infty}\{\omega_{i}\}$ of singletons, and $\sigma$-fields are closed under countable unions. Therefore, when the sample space is countable, we should always use the total $\sigma$-field.
 
 ```
 
@@ -243,8 +259,44 @@ The **extended line** $\bar{\mathbb{R}}$ is $[-\infty, \infty]$, meaning $(-\inf
 
 ```
 
-When considering $\bar{\mathbb{R}}$ instead of $\mathbb{R}$, we must remember to take complements with respect to $\mathbb{R}$.
+When considering $\bar{\mathbb{R}}$ instead of $\mathbb{R}$, we must remember to take complements with respect to $\mathbb{R}$. For instance, the complement of $(0,1]$ is $\bar{\mathbb{R}}\backslash (0,1] = [-\infty, 0]\cup (1,\infty]$, and the complement of $\mathbb{R}=(-\infty, \infty)$ is $\bar{\mathbb{R}}\backslash\mathbb{R} =\{-\infty, \infty\}$.
 
+```{definition, name="Extended Borel sigma-field"}
+The extended Borel $\sigma$-field $\bar{\mathcal{B}}$ is the smallest $\sigma$-field of subsets of $\bar{\mathbb{R}}$ that contains all of the extended intervals.
 
+```
+
+```{proposition, name="Equivalent formulations of extended Borel sigma-field"}
+The flollowing are equivalent.
+
+1. $\bar{\mathcal{B}}$ is the extended Borel $\sigma$-field.
+
+2. $\bar{\mathcal{B}}$ is the smallest $\sigma$-field that contains the two sets $\{-\infty\}$ and $\{+\infty\}$ and all Borel subsets of $\mathbb{R}$.
+
+3. $\bar{\mathcal{B}}$ consists of all Borel subsets $\mathcal{B}$ of $\mathbb{R}$, together with all augumentations $\bar{mathcal{B}}$ of $\mathcal{B}$ by $-\infty$, $\infty$, or both.
+
+```
+
+```{exercise}
+Prove the above proposition.
+
+```
 
 ## High-dimensional sigmal fields
+
+## Infinitely often event
+
+IF $\{A_n\}\in\mathcal{F}$, we can define other events involving the $A_{n}$. We have seen, for example, that $B=\cup_{n=1}^{\infty}A_{n}$ is the event that at least one $A_n$ occurs, while $C=\cap_{n=1}^{\infty}A_n$ is the event that all of the $A_n$ occur. Sometimes there is interest in seeing whether $A_n$ occurs for infinitely many $n$. For instance, in a coin-flipping experiment, let $A_n$ denote the event that the $n$-th coin flip is heads. We might be interested in whether infinitely many flips are heads. We now show that for general $A_1, A_2,\ldots,$ the event that $A_n$ occurs for infinitely many $n$ is a honest (bona fide) event in the sense that it is in $\mathcal{F}$. Note that $\omega \in A_{n}$ for infinitely many $n$ if and only if no matter how large $N$ i, $\omega\in \cap_{N=1}^{\infty}\cup_{n\geq N}A_{n} =\cap_{N=1}^{\infty} B_{N}$, where $B_{N} =\cup_{n\geq N } A_{n}$. Because $B_N$ is a countalbe union of $\mathcal{F}$-sets, $B_N\in\mathcal{F}$. This being true for each $N$, $\cap_{N=1}^{\infty} B_{N} \in\mathcal{F}$ because $\mathcal{F}$ is closed under countable intersections. (refer to Prop \@ref(prp:sigmafield)) Therefore, the event that $A_n$ occurs for infinitely many $n$ is in $\mathcal{F}$. We denote this event by $\{A_n \text{ i.o}\}$, which stands for $A_n$ occurs infinitely often (in $n$).
+
+
+```{proposition, name="The infinitely often event is in sigma-field."}
+If $A_n\in\mathcal{F}$ for $n=1,2,\ldots,$ the event $\{A_n \text{ i.o}\}$, namely $\cap_{N=1}^{\infty}\cup_{n\geq N}A_{n}$ is in $\mathcal{F}$.
+
+```
+
+```{remark}
+The complement of $\{A_n \text{ i.o}\}$, namely that $A_n$ occurs only finitely often, is also in $\mathcal{F}$ because $\mathcal{F}$ is closed under complementation. This event is, by De Morgan's laws, $\{\cap_{N=1}^{\infty}\cup_{n\geq N} A_n \}^{C} = \cup_{N=1}^{\infty}B_{N}^{C} = \cup_{N=1}^{\infty}\cap_{n\geq N} A_{n}^{C}$.
+
+This expression can also be deduced from general principles because if $\omega$ is in only finitely many of the $A_n$, then there must be an $N$ for which $\omega$ is not in $A_{n}$ for any $n\geq N$. That is, $\omega$ must be in $A_{n}^{C}$ for all $n\geq N$. This must occur for at least on $N$, which translates into a union. Thus again we arrive at the expression $\cup_{N=1}^{\infty}\cap_{n\geq N}A_{n}^{C}$ for the event that $A_{n}$ occurs only finitely often.
+
+```

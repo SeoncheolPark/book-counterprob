@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>Counterexamples of Probability</title>
+  <title>3.6 Infinitely often event | Counterexamples of Probability</title>
   <meta name="description" content="하루에 한 개씩!">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="Counterexamples of Probability" />
+  <meta property="og:title" content="3.6 Infinitely often event | Counterexamples of Probability" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="SeoncheolPark/book-counterprob" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Counterexamples of Probability" />
+  <meta name="twitter:title" content="3.6 Infinitely often event | Counterexamples of Probability" />
   
   <meta name="twitter:description" content="하루에 한 개씩!" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-
-<link rel="next" href="2-intro.html">
+<link rel="prev" href="3-5-high-dimensional-sigmal-fields.html">
+<link rel="next" href="4-measures-and-probability-measures.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -167,29 +167,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="header">
-<h1 class="title">Counterexamples of Probability</h1>
-<p class="author"><em>Seoncheol Park</em></p>
-<p class="date"><em>2019-04-29</em></p>
+<div id="infinitely-often-event" class="section level2">
+<h2><span class="header-section-number">3.6</span> Infinitely often event</h2>
+<p>IF <span class="math inline">\(\{A_n\}\in\mathcal{F}\)</span>, we can define other events involving the <span class="math inline">\(A_{n}\)</span>. We have seen, for example, that <span class="math inline">\(B=\cup_{n=1}^{\infty}A_{n}\)</span> is the event that at least one <span class="math inline">\(A_n\)</span> occurs, while <span class="math inline">\(C=\cap_{n=1}^{\infty}A_n\)</span> is the event that all of the <span class="math inline">\(A_n\)</span> occur. Sometimes there is interest in seeing whether <span class="math inline">\(A_n\)</span> occurs for infinitely many <span class="math inline">\(n\)</span>. For instance, in a coin-flipping experiment, let <span class="math inline">\(A_n\)</span> denote the event that the <span class="math inline">\(n\)</span>-th coin flip is heads. We might be interested in whether infinitely many flips are heads. We now show that for general <span class="math inline">\(A_1, A_2,\ldots,\)</span> the event that <span class="math inline">\(A_n\)</span> occurs for infinitely many <span class="math inline">\(n\)</span> is a honest (bona fide) event in the sense that it is in <span class="math inline">\(\mathcal{F}\)</span>. Note that <span class="math inline">\(\omega \in A_{n}\)</span> for infinitely many <span class="math inline">\(n\)</span> if and only if no matter how large <span class="math inline">\(N\)</span> i, <span class="math inline">\(\omega\in \cap_{N=1}^{\infty}\cup_{n\geq N}A_{n} =\cap_{N=1}^{\infty} B_{N}\)</span>, where <span class="math inline">\(B_{N} =\cup_{n\geq N } A_{n}\)</span>. Because <span class="math inline">\(B_N\)</span> is a countalbe union of <span class="math inline">\(\mathcal{F}\)</span>-sets, <span class="math inline">\(B_N\in\mathcal{F}\)</span>. This being true for each <span class="math inline">\(N\)</span>, <span class="math inline">\(\cap_{N=1}^{\infty} B_{N} \in\mathcal{F}\)</span> because <span class="math inline">\(\mathcal{F}\)</span> is closed under countable intersections. (refer to Prop <a href="3-2-field-and-sigma-field.html#prp:sigmafield">2.2</a>) Therefore, the event that <span class="math inline">\(A_n\)</span> occurs for infinitely many <span class="math inline">\(n\)</span> is in <span class="math inline">\(\mathcal{F}\)</span>. We denote this event by <span class="math inline">\(\{A_n \text{ i.o}\}\)</span>, which stands for <span class="math inline">\(A_n\)</span> occurs infinitely often (in <span class="math inline">\(n\)</span>).</p>
+
+<div class="proposition">
+<p><span id="prp:unnamed-chunk-35" class="proposition"><strong>Proposition 2.5  (The infinitely often event is in sigma-field.)  </strong></span>If <span class="math inline">\(A_n\in\mathcal{F}\)</span> for <span class="math inline">\(n=1,2,\ldots,\)</span> the event <span class="math inline">\(\{A_n \text{ i.o}\}\)</span>, namely <span class="math inline">\(\cap_{N=1}^{\infty}\cup_{n\geq N}A_{n}\)</span> is in <span class="math inline">\(\mathcal{F}\)</span>.</p>
 </div>
-<div id="prerequisites" class="section level1">
-<h1><span class="header-section-number">Chapter 1</span> Prerequisites</h1>
-<p>This is a <em>sample</em> book written in <strong>Markdown</strong>. You can use anything that Pandoc’s Markdown supports, e.g., a math equation <span class="math inline">\(a^2 + b^2 = c^2\)</span>.</p>
-<p>The <strong>bookdown</strong> package can be installed from CRAN or Github:</p>
-<pre class="sourceCode r"><code class="sourceCode r"><span class="kw">install.packages</span>(<span class="st">&quot;bookdown&quot;</span>)
-<span class="co"># or the development version</span>
-<span class="co"># devtools::install_github(&quot;rstudio/bookdown&quot;)</span></code></pre>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
+
+
+<div class="remark">
+<p> <span class="remark"><em>Remark. </em></span> The complement of <span class="math inline">\(\{A_n \text{ i.o}\}\)</span>, namely that <span class="math inline">\(A_n\)</span> occurs only finitely often, is also in <span class="math inline">\(\mathcal{F}\)</span> because <span class="math inline">\(\mathcal{F}\)</span> is closed under complementation. This event is, by De Morgan’s laws, <span class="math inline">\(\{\cap_{N=1}^{\infty}\cup_{n\geq N} A_n \}^{C} = \cup_{N=1}^{\infty}B_{N}^{C} = \cup_{N=1}^{\infty}\cap_{n\geq N} A_{n}^{C}\)</span>.</p>
+<p>This expression can also be deduced from general principles because if <span class="math inline">\(\omega\)</span> is in only finitely many of the <span class="math inline">\(A_n\)</span>, then there must be an <span class="math inline">\(N\)</span> for which <span class="math inline">\(\omega\)</span> is not in <span class="math inline">\(A_{n}\)</span> for any <span class="math inline">\(n\geq N\)</span>. That is, <span class="math inline">\(\omega\)</span> must be in <span class="math inline">\(A_{n}^{C}\)</span> for all <span class="math inline">\(n\geq N\)</span>. This must occur for at least on <span class="math inline">\(N\)</span>, which translates into a union. Thus again we arrive at the expression <span class="math inline">\(\cup_{N=1}^{\infty}\cap_{n\geq N}A_{n}^{C}\)</span> for the event that <span class="math inline">\(A_{n}\)</span> occurs only finitely often.</p>
+</div>
+
 
 </div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-
-<a href="2-intro.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="3-5-high-dimensional-sigmal-fields.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-measures-and-probability-measures.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
