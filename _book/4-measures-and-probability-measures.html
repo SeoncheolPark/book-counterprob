@@ -33,7 +33,7 @@
   
   
 <link rel="prev" href="3-6-infinitely-often-event.html">
-<link rel="next" href="5-applications.html">
+<link rel="next" href="4-1-probability.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -140,7 +140,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="3-5-high-dimensional-sigmal-fields.html"><a href="3-5-high-dimensional-sigmal-fields.html"><i class="fa fa-check"></i><b>3.5</b> High-dimensional sigmal fields</a></li>
 <li class="chapter" data-level="3.6" data-path="3-6-infinitely-often-event.html"><a href="3-6-infinitely-often-event.html"><i class="fa fa-check"></i><b>3.6</b> Infinitely often event</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="4-measures-and-probability-measures.html"><a href="4-measures-and-probability-measures.html"><i class="fa fa-check"></i><b>4</b> Measures and Probability Measures</a></li>
+<li class="chapter" data-level="4" data-path="4-measures-and-probability-measures.html"><a href="4-measures-and-probability-measures.html"><i class="fa fa-check"></i><b>4</b> Measures and Probability Measures</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-1-probability.html"><a href="4-1-probability.html"><i class="fa fa-check"></i><b>4.1</b> Probability</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-the-existence-of-lebesgue-measure.html"><a href="4-2-the-existence-of-lebesgue-measure.html"><i class="fa fa-check"></i><b>4.2</b> The existence of Lebesgue measure</a></li>
+<li class="chapter" data-level="4.3" data-path="4-3-properties-of-probability-measures.html"><a href="4-3-properties-of-probability-measures.html"><i class="fa fa-check"></i><b>4.3</b> Properties of probability measures</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="5-applications.html"><a href="5-applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
 <li class="chapter" data-level="5.1" data-path="5-1-example-one.html"><a href="5-1-example-one.html"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
 <li class="chapter" data-level="5.2" data-path="5-2-example-two.html"><a href="5-2-example-two.html"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
@@ -169,8 +173,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="measures-and-probability-measures" class="section level1">
 <h1><span class="header-section-number">Chapter 4</span> Measures and Probability Measures</h1>
-<p>A probability measure <span class="math inline">\(P\)</span> is a function that assigns a probability to the allowable sets <span class="math inline">\(\mathcal{F}\)</span> and that satisfies certain conditions. Ideally, we would like <span class="math inline">\(P\)</span> to satisfiy <span class="math inline">\(P(\Omega)=1\)</span> and <span class="math inline">\(P(\cup_{t}A_t)=\sum_{t}P(A_t)\)</span> for every collection of disjoint sets <span class="math inline">\(A_t\)</span>, even an uncountable collection. Unfortunately, this <strong>uncountable additivity</strong> requirement is too much to ask because it precludes the existence of a “uniform” probability measure <span class="math inline">\(P\)</span> on <span class="math inline">\(\Omega=[0,1]\)</span>. To see this, note that for such a measure, each <span class="math inline">\(\omega=\Omega\)</span> has the same probability <span class="math inline">\(p\)</span>, so if <span class="math inline">\(P\)</span> were uncountably additive, then <span class="math inline">\(1=P(\Omega)=P([0,1])=\sum_{\Omega}p\)</span>. But this produces a contradiction because <span class="math inline">\(\sum_{\Omega}p\)</span> is <span class="math inline">\(0\)</span> if <span class="math inline">\(p=0\)</span> and <span class="math inline">\(\infty\)</span> if <span class="math inline">\(p&gt;0\)</span>. Therefore, uncountable additivity is too strong a condition to require. It turns out the strongest property of this type that we con impose is <strong>countable additivity</strong>.</p>
-
+<p>A probability measure <span class="math inline">\(P\)</span> is a function that assigns a probability to the allowable sets <span class="math inline">\(\mathcal{F}\)</span> and that satisfies certain conditions. Ideally, we would like <span class="math inline">\(P\)</span> to satisfiy <span class="math inline">\(P(\Omega)=1\)</span> and <span class="math inline">\(P(\cup_{t}A_t)=\sum_{t}P(A_t)\)</span> for every collection of disjoint sets <span class="math inline">\(A_t\)</span>, even an uncountable collection. Unfortunately, this <strong>uncountable additivity</strong> requirement is too much to ask because it precludes the existence of a “uniform” probability measure <span class="math inline">\(P\)</span> on <span class="math inline">\(\Omega=[0,1]\)</span>. To see this, note that for such a measure, each <span class="math inline">\(\omega=\Omega\)</span> has the same probability <span class="math inline">\(p\)</span>, so if <span class="math inline">\(P\)</span> were uncountably additive, then <span class="math inline">\(1=P(\Omega)=P([0,1])=\sum_{\Omega}p\)</span>. But this produces a contradiction because <span class="math inline">\(\sum_{\Omega}p\)</span> is <span class="math inline">\(0\)</span> if <span class="math inline">\(p=0\)</span> and <span class="math inline">\(\infty\)</span> if <span class="math inline">\(p&gt;0\)</span>. Therefore, uncountable additivity is too strong a condition to require. It turns out the strongest property of this type that we con impose is <strong>countable additivity</strong>.</p> 
 </div>
             </section>
 
@@ -178,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="3-6-infinitely-often-event.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="5-applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="4-1-probability.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

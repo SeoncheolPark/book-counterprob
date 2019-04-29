@@ -140,7 +140,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="3.5" data-path="3-5-high-dimensional-sigmal-fields.html"><a href="3-5-high-dimensional-sigmal-fields.html"><i class="fa fa-check"></i><b>3.5</b> High-dimensional sigmal fields</a></li>
 <li class="chapter" data-level="3.6" data-path="3-6-infinitely-often-event.html"><a href="3-6-infinitely-often-event.html"><i class="fa fa-check"></i><b>3.6</b> Infinitely often event</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="4-measures-and-probability-measures.html"><a href="4-measures-and-probability-measures.html"><i class="fa fa-check"></i><b>4</b> Measures and Probability Measures</a></li>
+<li class="chapter" data-level="4" data-path="4-measures-and-probability-measures.html"><a href="4-measures-and-probability-measures.html"><i class="fa fa-check"></i><b>4</b> Measures and Probability Measures</a><ul>
+<li class="chapter" data-level="4.1" data-path="4-1-probability.html"><a href="4-1-probability.html"><i class="fa fa-check"></i><b>4.1</b> Probability</a></li>
+<li class="chapter" data-level="4.2" data-path="4-2-the-existence-of-lebesgue-measure.html"><a href="4-2-the-existence-of-lebesgue-measure.html"><i class="fa fa-check"></i><b>4.2</b> The existence of Lebesgue measure</a></li>
+<li class="chapter" data-level="4.3" data-path="4-3-properties-of-probability-measures.html"><a href="4-3-properties-of-probability-measures.html"><i class="fa fa-check"></i><b>4.3</b> Properties of probability measures</a></li>
+</ul></li>
 <li class="chapter" data-level="5" data-path="5-applications.html"><a href="5-applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
 <li class="chapter" data-level="5.1" data-path="5-1-example-one.html"><a href="5-1-example-one.html"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
 <li class="chapter" data-level="5.2" data-path="5-2-example-two.html"><a href="5-2-example-two.html"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
@@ -226,7 +230,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="definition">
 <p><span id="def:unnamed-chunk-11" class="definition"><strong>Definition 2.3  (Sigma-field)  </strong></span>The class <span class="math inline">\(\mathcal{F}\)</span> of subsets of <span class="math inline">\(\Omega\)</span> is called a <span class="math inline">\(\sigma\)</span><strong>-field</strong> if it is a field and closed under the formation of countable unions, that is if:</p>
 <ol start="4" style="list-style-type: decimal">
-<li><span class="math inline">\(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcup_{n=1}^{\infty}A_{n} \in \mathcal{F}\)</span>.</li>
+<li><span class="math inline">\(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \cup_{n=1}^{\infty}A_{n} \in \mathcal{F}\)</span>.</li>
 </ol>
 </div>
 
@@ -234,14 +238,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="proposition">
 <p><span id="prp:sigmafield" class="proposition"><strong>Proposition 2.2  (Definition of a sigma-field)  </strong></span>The condition 4 of the definition of a sigma-field can be replaced by</p>
 <ol start="4" style="list-style-type: decimal">
-<li><span class="math inline">\(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcap_{n=1}^{\infty}A_{n} \in \mathcal{F}\)</span>.</li>
+<li><span class="math inline">\(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \cap_{n=1}^{\infty}A_{n} \in \mathcal{F}\)</span>.</li>
 </ol>
-<p>That means, <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathcal{F}\)</span> is closed under countable intersections because <span class="math inline">\(\bigcap_{n=1}^{\infty}A_{n} = (\bigcup_{n=1}^{\infty}A_{n}^{C})^{C}\)</span> and each <span class="math inline">\(A_{n}^{C}\)</span> belongs to <span class="math inline">\(\mathcal{F}\)</span>.</p>
+<p>That means, <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathcal{F}\)</span> is closed under countable intersections because <span class="math inline">\(\bigcap_{n=1}^{\infty}A_{n} = (\cup_{n=1}^{\infty}A_{n}^{C})^{C}\)</span> and each <span class="math inline">\(A_{n}^{C}\)</span> belongs to <span class="math inline">\(\mathcal{F}\)</span>.</p>
 </div>
 
 
 <div class="proof">
-<p> <span class="proof"><em>Proof. </em></span> By de Morgan lawsand condition 2 of the definition of a field, <span class="math inline">\((\bigcap_{n=1}^{\infty}A_{n})^{C}=\bigcup_{n=1}^{\infty}A_{n}^{C}\in\mathcal{F}\)</span> and <span class="math inline">\((\bigcup_{n=1}^{\infty}A_{n})^{C}=\bigcap_{n=1}^{\infty}A_{n}^{C}\in\mathcal{F}\)</span>. So, we can change the condition 4.</p>
+<p> <span class="proof"><em>Proof. </em></span> By de Morgan laws and condition 2 of the definition of a field, <span class="math inline">\((\cap_{n=1}^{\infty}A_{n})^{C}=\cup_{n=1}^{\infty}A_{n}^{C}\in\mathcal{F}\)</span> and <span class="math inline">\((\cup_{n=1}^{\infty}A_{n})^{C}=\cap_{n=1}^{\infty}A_{n}^{C}\in\mathcal{F}\)</span>. So, we can change the condition 4.</p>
 </div>
 
 <p>Usually, <span class="math inline">\(\mathcal{F}\)</span> is the set of events (subsets of <span class="math inline">\(\Omega\)</span>) we are allowed to consider.</p>
@@ -262,7 +266,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>However, <span class="math inline">\(\mathcal{F}_{2}\)</span> is not a <span class="math inline">\(\sigma\)</span>-field because, for example, the set <span class="math inline">\(A_{n} =[0,\frac{1}{n})\in\mathcal{F}_{1}\)</span> for each <span class="math inline">\(n=1,2,\ldots,\)</span> and the intersection <span class="math inline">\(\bigcap_{n=1}^{\infty}A_{n} =\{0\}\)</span> does not belong to <span class="math inline">\(\mathcal{F}_{1}\)</span>.</p>
 <p>Let us look at two additional cases.</p>
 <ol style="list-style-type: decimal">
-<li><p>Let <span class="math inline">\(\Omega = \mathbb{R}^{1}\)</span> and <span class="math inline">\(\mathcal{F}\)</span> be the class of all finite sums of intervals of the type $(-, a], <span class="math inline">\((b,c]\)</span> and <span class="math inline">\((d,\infty)\)</span>. Then <span class="math inline">\(\mathcal{F}\)</span> is a field. But the intersection <span class="math inline">\(\bigcap_{n=1}^{\infty}(b-\frac{1}{n}, c]\)</span> is equal to <span class="math inline">\([b,c]\)</span> which does not belong to <span class="math inline">\(\mathcal{F}\)</span>. Hence, the field <span class="math inline">\(\mathcal{F}\)</span> is not a <span class="math inline">\(\sigma\)</span>-field.</p></li>
+<li><p>Let <span class="math inline">\(\Omega = \mathbb{R}^{1}\)</span> and <span class="math inline">\(\mathcal{F}\)</span> be the class of all finite sums of intervals of the type $(-, a], <span class="math inline">\((b,c]\)</span> and <span class="math inline">\((d,\infty)\)</span>. Then <span class="math inline">\(\mathcal{F}\)</span> is a field. But the intersection <span class="math inline">\(\cap_{n=1}^{\infty}(b-\frac{1}{n}, c]\)</span> is equal to <span class="math inline">\([b,c]\)</span> which does not belong to <span class="math inline">\(\mathcal{F}\)</span>. Hence, the field <span class="math inline">\(\mathcal{F}\)</span> is not a <span class="math inline">\(\sigma\)</span>-field.</p></li>
 <li>Let <span class="math inline">\(\Omega\)</span> be any infinite set and <span class="math inline">\(\mathcal{A}\)</span> the collection of all subsets <span class="math inline">\(A\in \Omega\)</span> such that either <span class="math inline">\(A\)</span> or <span class="math inline">\(A^{c}\)</span> is finite. Then it is easy to see that <span class="math inline">\(\mathcal{A}\)</span> is a field but not a <span class="math inline">\(\sigma\)</span>-field.</li>
 </ol>
 </div>
@@ -287,7 +291,7 @@ However, <span class="math inline">\((x,\infty)^{C} = (-\infty, x]\notin\mathcal
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\Omega \in \mathcal{D}\)</span>;</p></li>
 <li><p><span class="math inline">\(A,B\in \mathcal{D}\)</span> and <span class="math inline">\(A\subset B \Rightarrow B\backslash A\in\mathcal{D}\)</span>;</p></li>
-<li><span class="math inline">\(A_{n}\in \mathcal{D}, n=1,2,\ldots .\)</span> and <span class="math inline">\(A_{1} \subset A_{2} \subset \ldots \Rightarrow \bigcup_{n=1}^{\infty}A_{n} \in \mathcal{D}\)</span>.</li>
+<li><span class="math inline">\(A_{n}\in \mathcal{D}, n=1,2,\ldots .\)</span> and <span class="math inline">\(A_{1} \subset A_{2} \subset \ldots \Rightarrow \cup_{n=1}^{\infty}A_{n} \in \mathcal{D}\)</span>.</li>
 </ol>
 </div>
 

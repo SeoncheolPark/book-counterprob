@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>References | Counterexamples of Probability</title>
+  <title>4.3 Properties of probability measures | Counterexamples of Probability</title>
   <meta name="description" content="하루에 한 개씩!">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="References | Counterexamples of Probability" />
+  <meta property="og:title" content="4.3 Properties of probability measures | Counterexamples of Probability" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="SeoncheolPark/book-counterprob" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Counterexamples of Probability" />
+  <meta name="twitter:title" content="4.3 Properties of probability measures | Counterexamples of Probability" />
   
   <meta name="twitter:description" content="하루에 한 개씩!" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="6-final-words.html">
-
+<link rel="prev" href="4-2-the-existence-of-lebesgue-measure.html">
+<link rel="next" href="5-applications.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -171,25 +171,38 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="properties-of-probability-measures" class="section level2">
+<h2><span class="header-section-number">4.3</span> Properties of probability measures</h2>
 
-<div id="refs" class="references">
-<div>
-<p>Billingsley, Patrick. 2012. <em>Probability and Measure</em>. 3rd ed. John Wiley; Sons.</p>
+<div class="proposition">
+<p><span id="prp:probproperties" class="proposition"><strong>Proposition 4.1  (Basic properties of probability measures)  </strong></span>If <span class="math inline">\(P\)</span> is a probability measure:</p>
+<ol style="list-style-type: decimal">
+<li><p><span class="math inline">\(P(\emptyset)=0\)</span>.</p></li>
+<li><p>If <span class="math inline">\(E_1, E_2 \in \mathcal{F}\)</span>, <span class="math inline">\(E_1 \subset E_2\)</span>, then <span class="math inline">\(P(E_1)\leq P(E_2)\)</span>.</p></li>
+<li><p><span class="math inline">\(0\leq P(E)\leq 1\)</span> for each <span class="math inline">\(E\in\mathcal{F}\)</span>.</p></li>
+<li><p>If <span class="math inline">\(E\in\mathcal{F}\)</span>, <span class="math inline">\(P(E^C)=1-P(E)\)</span>.</p></li>
+<li>If <span class="math inline">\(E_1, E_2\in\mathcal{F}, P(E_{1}\cup E_{2})=P(E_1) + P(E_2) - P(E_{1}\cap E_{2})\)</span>.</li>
+</ol>
 </div>
-<div>
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.</p>
+
+
+<div class="proof">
+<p> <span class="proof"><em>Proof. </em></span> To see part 1, note that any event <span class="math inline">\(E\)</span> may be written as the disjoint union <span class="math inline">\(E\cup \emptyset\)</span>. By countable additivity, <span class="math inline">\(P(E)=P(E)+P(\emptyset)\)</span>, from which it follows that <span class="math inline">\(P(\emptyset)=0\)</span>.</p>
+<p>To see part 5, note that <span class="math inline">\(E_1 \cup E_2 = E_1 \cup (E_2 \backslash E_1)\)</span>. Because <span class="math inline">\(E_1\)</span> and <span class="math inline">\(E_2 \backslash E_1\)</span> are disjoint,
+<span class="math display">\[P(E_1\cup E_2)=P(E_1) +P(E_2\backslash E_1).\]</span>
+Also, <span class="math inline">\(E_2\)</span> is the union of the disjoint sets <span class="math inline">\(E_1 \cap E_2\)</span> and <span class="math inline">\(E_2\backslash E_1\)</span>, so <span class="math inline">\(P(E_1\cap E_2) +P(E_2\backslash E_1)=P(E_2)\)</span>. Thus, <span class="math inline">\(P(E_2\backslash E_1) = P(E_2) - P(E_1\cap E_2)\)</span>. Substituting this expression into the above equation gives <span class="math inline">\(P(E_1\cup E_2) = P(E_1) + P(E_2) - P(E_1\cap E_2)\)</span>.</p>
 </div>
+
+
 </div>
-</div>
+<!-- </div> -->
             </section>
 
           </div>
         </div>
       </div>
-<a href="6-final-words.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="4-2-the-existence-of-lebesgue-measure.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="5-applications.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

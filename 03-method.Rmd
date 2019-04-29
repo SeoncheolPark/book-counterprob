@@ -1,3 +1,90 @@
 # Measures and Probability Measures
 
 A probability measure $P$ is a function that assigns a probability to the allowable sets $\mathcal{F}$ and that satisfies certain conditions. Ideally, we would like $P$ to satisfiy $P(\Omega)=1$ and $P(\cup_{t}A_t)=\sum_{t}P(A_t)$ for every collection of disjoint sets $A_t$, even an uncountable collection. Unfortunately, this **uncountable additivity** requirement is too much to ask because it precludes the existence of a "uniform" probability measure $P$ on $\Omega=[0,1]$. To see this, note that for such a measure, each $\omega=\Omega$ has the same probability $p$, so if $P$ were uncountably additive, then $1=P(\Omega)=P([0,1])=\sum_{\Omega}p$. But this produces a contradiction because $\sum_{\Omega}p$ is $0$ if $p=0$ and $\infty$ if $p>0$. Therefore, uncountable additivity is too strong a condition to require. It turns out the strongest property of this type that we con impose is **countable additivity**.
+
+## Probability
+
+```{definition, name="Measure and probability measure"}
+Consider a measurable space $(\Omega, \mathcal{F})$. A **measure** $\mu$ is defined for all events $A\in\mathcal{F}$ and satisfies the following (Kolmogorov) axioms.
+
+1. For any $A\in \mathcal{F}$, there exists a number $\mu(A) \geq 0$; the measure of $A$.
+
+2. (**countable additivity**) Let $\{A_n, n\geq 1 \}$ be disjoint. Then
+$$P(\bigcup_{n=1}^{\infty}A_n)=\sum_{n=1}^{\infty}\mu(A_n).$$
+
+A **probability measure** $P$ is a measure such that
+
+3. $P(\Omega)=1$.
+
+```
+
+```{definition, name="Probability space"}
+The triple $(\Omega, \mathcal{F}, P)$ is a **probability (measure) space** if
+
+- $\Omega$ is the sample space, that is, some (possibly abstract) set;
+
+- $\mathcal{F}$ is a $\sigma$-field of sets (events): the measurable subsets of $\Omega$. The "automs", $\{\omega\}$ of $\Omega$, are called elementary events;
+
+- $P$ is a probability measure on $\mathcal{F}$, that is $P$ satisfies conditions of 1, 2, and 3.
+
+```
+
+```{example, name="Counting measure", label="countingmeasure"}
+Let $\Omega=\{x_1, x_2, \ldots \}$ be a countable set and $\mathcal{F}=2^{\Omega}$ be the total $\sigma$-field of all subsets of $\omega$. For $A\in\mathcal{F}$, define $\mu(A)=$the number of elements of $A$. Then $\mu$ is clearly nonnegative and countably additive because the number of elements in the union of disjoint sets in the sum of the numbers of elements in the individual sets. Therefore $\mu$ is a measure called **counting measure**, on $\mathcal{F}$. Counting measure is not a probability measure if $\Omega$ has more than one element because $\mu(\Omega)>1$.
+
+```
+
+```{example, name="A probability mass function defines a measure", label="pmeasure"}
+Let $\Omega$ and $\mathcal{F}$ be as defined in the Example \@ref(exm:countingmeasure). Suppose that $p_i \geq 0$ and $\sum_{i=1}^{\infty}p_{i}=1$. For $A\in\mathcal{F}$, define $P(A)=\sum_{x_i \in A}p_i$. This is well defined because the summand is nonnegative, so we get the same value irrespective of the order in which we add. Then $P$ is nonnegative and countably additive because if $I_i$ and $I$ index the elements of $E_{i}$ and $E=\cup_{j}E_{j}$, resepctively, where $E_1, E_2, \ldots$ are disjoint, then $P(\cup_{j}E_j)=\sum_{j\in I}p_{j}=\sum_{i}\sum_{j\in I_{i}}p_j$. Also $P(\Omega)=\sum_{j=1}^{\infty}p_j =1$. Therefore $P$ is a probability measure on $\mathcal{F}$. This example shows that any probability mass function-the binomial, Poisson, hypergeometric, etc.-specifies a probability measure.
+
+```
+
+Examples \@ref(exm:countingmeasure) and \@ref(exm:pmeasure) involved a countable sample space. The most important measure on the uncountable sample space $\mathbb{R}$ is the following;
+
+```{example, name="Lebesgue measure", label="lmeasure"}
+There is a measure $\mu_{L}$ defined on a $\sigma$-field $\mathcal{L}$ containing the Borel sets such that $\mu_{L}(C) =\text{length}(C)$ is an interval: $\mu_{L}$ is called **Lebesgue measure** and $\mathcal{L}$ are called **Lebesgue sets**. If we restrict attention to Lebesgue sets that are subsets of $[0,1]$, $\mu_{L}$ is a probability measure. We can think of the experiment as picking a number at random from the unit interval. We will see later that Lebesgue measure on $[0,1]$ is the only probability measure we ever need.
+
+```
+
+## The existence of Lebesgue measure
+
+Courses in real analysis spend a good deal of effort proving the existence of Lebesgue measure.
+
+1. Define $\mu(I)=\text{length}(I)$ for any interval $I$.
+
+2. Now extend $\mu$ to an arbitrary set $A$ by defining an **outer measure** $\mu^{*}$ by $\mu^{*}(A)=\inf \sum_{n}\text{length}(I_{n})$, where the infimum is over all countable unions $\cup_{n}I_n$ of intervals $I_n$ such that $A\subset \cup_{n}I_n$. The term outer measure stems from the fact that we are approximating the measure of $A$ from the outside, meaning that we consider the measure of a collection of sets that cover $A$. It is easy to see that $\mu^{*}$ agrees with $\mu$ if $A$ is an interval. But $\mu^{*}$ is not necessarily countably additive on **all sets**, so the next step is:
+
+3. Restrict the class of sets to $\mathcal{L}=\{L : \mu^{*}(A)=\mu^{*}(L\cap A)+\mu^{*}(L^{C}\cap A)$ for every set $A \}$. The collection $\mathcal{L}$, called Lebesgue sets, is then shown to be a $\sigma$-field containing all Borel sets. This restriction of $\mu^{*}$ to $\mathcal{L}$ is Lebesgue measure $\mu_{L}$.
+
+We are often puzzled that each possible outcome $\omega$ has probability $0$, yet the probability of $[0,1]$ is $1$. Every event is "impossible" (i.e., has probability $0$), yet something is sure to happen.
+
+## Properties of probability measures
+
+```{proposition, name="Basic properties of probability measures", label="probproperties"}
+If $P$ is a probability measure:
+
+1. $P(\emptyset)=0$.
+
+2. If $E_1, E_2 \in \mathcal{F}$, $E_1 \subset E_2$, then $P(E_1)\leq P(E_2)$.
+
+3. $0\leq P(E)\leq 1$ for each $E\in\mathcal{F}$.
+
+4. If $E\in\mathcal{F}$, $P(E^C)=1-P(E)$.
+
+5. If $E_1, E_2\in\mathcal{F}, P(E_{1}\cup E_{2})=P(E_1) + P(E_2) - P(E_{1}\cap E_{2})$.
+
+```
+
+```{proof}
+To see part 1, note that any event $E$ may be written as the disjoint union $E\cup \emptyset$. By countable additivity, $P(E)=P(E)+P(\emptyset)$, from which it follows that $P(\emptyset)=0$.
+
+To see part 5, note that $E_1 \cup E_2 = E_1 \cup (E_2 \backslash E_1)$. Because $E_1$ and $E_2 \backslash E_1$ are disjoint,
+$$P(E_1\cup E_2)=P(E_1) +P(E_2\backslash E_1).$$
+Also, $E_2$ is the union of the disjoint sets $E_1 \cap E_2$ and $E_2\backslash E_1$, so $P(E_1\cap E_2) +P(E_2\backslash E_1)=P(E_2)$. Thus, $P(E_2\backslash E_1) = P(E_2) - P(E_1\cap E_2)$. Substituting this expression into the above equation gives $P(E_1\cup E_2) = P(E_1) + P(E_2) - P(E_1\cap E_2)$.
+
+```
+
+
+
+
+

@@ -5,11 +5,11 @@
 
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title>References | Counterexamples of Probability</title>
+  <title>4.1 Probability | Counterexamples of Probability</title>
   <meta name="description" content="하루에 한 개씩!">
   <meta name="generator" content="bookdown  and GitBook 2.6.7">
 
-  <meta property="og:title" content="References | Counterexamples of Probability" />
+  <meta property="og:title" content="4.1 Probability | Counterexamples of Probability" />
   <meta property="og:type" content="book" />
   
   
@@ -17,7 +17,7 @@
   <meta name="github-repo" content="SeoncheolPark/book-counterprob" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | Counterexamples of Probability" />
+  <meta name="twitter:title" content="4.1 Probability | Counterexamples of Probability" />
   
   <meta name="twitter:description" content="하루에 한 개씩!" />
   
@@ -32,8 +32,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   
   
-<link rel="prev" href="6-final-words.html">
-
+<link rel="prev" href="4-measures-and-probability-measures.html">
+<link rel="next" href="4-2-the-existence-of-lebesgue-measure.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -171,25 +171,56 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="probability" class="section level2">
+<h2><span class="header-section-number">4.1</span> Probability</h2>
 
-<div id="refs" class="references">
-<div>
-<p>Billingsley, Patrick. 2012. <em>Probability and Measure</em>. 3rd ed. John Wiley; Sons.</p>
+<div class="definition">
+<p><span id="def:unnamed-chunk-38" class="definition"><strong>Definition 4.1  (Measure and probability measure)  </strong></span>Consider a measurable space <span class="math inline">\((\Omega, \mathcal{F})\)</span>. A <strong>measure</strong> <span class="math inline">\(\mu\)</span> is defined for all events <span class="math inline">\(A\in\mathcal{F}\)</span> and satisfies the following (Kolmogorov) axioms.</p>
+<ol style="list-style-type: decimal">
+<li><p>For any <span class="math inline">\(A\in \mathcal{F}\)</span>, there exists a number <span class="math inline">\(\mu(A) \geq 0\)</span>; the measure of <span class="math inline">\(A\)</span>.</p></li>
+<li><p>(<strong>countable additivity</strong>) Let <span class="math inline">\(\{A_n, n\geq 1 \}\)</span> be disjoint. Then
+<span class="math display">\[P(\bigcup_{n=1}^{\infty}A_n)=\sum_{n=1}^{\infty}\mu(A_n).\]</span></p></li>
+</ol>
+<p>A <strong>probability measure</strong> <span class="math inline">\(P\)</span> is a measure such that</p>
+<ol start="3" style="list-style-type: decimal">
+<li><span class="math inline">\(P(\Omega)=1\)</span>.</li>
+</ol>
 </div>
-<div>
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.name/knitr/">http://yihui.name/knitr/</a>.</p>
+
+
+<div class="definition">
+<p><span id="def:unnamed-chunk-39" class="definition"><strong>Definition 4.2  (Probability space)  </strong></span>The triple <span class="math inline">\((\Omega, \mathcal{F}, P)\)</span> is a <strong>probability (measure) space</strong> if</p>
+<ul>
+<li><p><span class="math inline">\(\Omega\)</span> is the sample space, that is, some (possibly abstract) set;</p></li>
+<li><p><span class="math inline">\(\mathcal{F}\)</span> is a <span class="math inline">\(\sigma\)</span>-field of sets (events): the measurable subsets of <span class="math inline">\(\Omega\)</span>. The “automs”, <span class="math inline">\(\{\omega\}\)</span> of <span class="math inline">\(\Omega\)</span>, are called elementary events;</p></li>
+<li><span class="math inline">\(P\)</span> is a probability measure on <span class="math inline">\(\mathcal{F}\)</span>, that is <span class="math inline">\(P\)</span> satisfies conditions of 1, 2, and 3.</li>
+</ul>
 </div>
+
+
+<div class="example">
+<p><span id="exm:countingmeasure" class="example"><strong>Example 4.1  (Counting measure)  </strong></span>Let <span class="math inline">\(\Omega=\{x_1, x_2, \ldots \}\)</span> be a countable set and <span class="math inline">\(\mathcal{F}=2^{\Omega}\)</span> be the total <span class="math inline">\(\sigma\)</span>-field of all subsets of <span class="math inline">\(\omega\)</span>. For <span class="math inline">\(A\in\mathcal{F}\)</span>, define <span class="math inline">\(\mu(A)=\)</span>the number of elements of <span class="math inline">\(A\)</span>. Then <span class="math inline">\(\mu\)</span> is clearly nonnegative and countably additive because the number of elements in the union of disjoint sets in the sum of the numbers of elements in the individual sets. Therefore <span class="math inline">\(\mu\)</span> is a measure called <strong>counting measure</strong>, on <span class="math inline">\(\mathcal{F}\)</span>. Counting measure is not a probability measure if <span class="math inline">\(\Omega\)</span> has more than one element because <span class="math inline">\(\mu(\Omega)&gt;1\)</span>.</p>
 </div>
+
+
+<div class="example">
+<p><span id="exm:pmeasure" class="example"><strong>Example 4.2  (A probability mass function defines a measure)  </strong></span>Let <span class="math inline">\(\Omega\)</span> and <span class="math inline">\(\mathcal{F}\)</span> be as defined in the Example <a href="4-1-probability.html#exm:countingmeasure">4.1</a>. Suppose that <span class="math inline">\(p_i \geq 0\)</span> and <span class="math inline">\(\sum_{i=1}^{\infty}p_{i}=1\)</span>. For <span class="math inline">\(A\in\mathcal{F}\)</span>, define <span class="math inline">\(P(A)=\sum_{x_i \in A}p_i\)</span>. This is well defined because the summand is nonnegative, so we get the same value irrespective of the order in which we add. Then <span class="math inline">\(P\)</span> is nonnegative and countably additive because if <span class="math inline">\(I_i\)</span> and <span class="math inline">\(I\)</span> index the elements of <span class="math inline">\(E_{i}\)</span> and <span class="math inline">\(E=\cup_{j}E_{j}\)</span>, resepctively, where <span class="math inline">\(E_1, E_2, \ldots\)</span> are disjoint, then <span class="math inline">\(P(\cup_{j}E_j)=\sum_{j\in I}p_{j}=\sum_{i}\sum_{j\in I_{i}}p_j\)</span>. Also <span class="math inline">\(P(\Omega)=\sum_{j=1}^{\infty}p_j =1\)</span>. Therefore <span class="math inline">\(P\)</span> is a probability measure on <span class="math inline">\(\mathcal{F}\)</span>. This example shows that any probability mass function-the binomial, Poisson, hypergeometric, etc.-specifies a probability measure.</p>
+</div>
+
+<p>Examples <a href="4-1-probability.html#exm:countingmeasure">4.1</a> and <a href="4-1-probability.html#exm:pmeasure">4.2</a> involved a countable sample space. The most important measure on the uncountable sample space <span class="math inline">\(\mathbb{R}\)</span> is the following;</p>
+
+<div class="example">
+<p><span id="exm:lmeasure" class="example"><strong>Example 4.3  (Lebesgue measure)  </strong></span>There is a measure <span class="math inline">\(\mu_{L}\)</span> defined on a <span class="math inline">\(\sigma\)</span>-field <span class="math inline">\(\mathcal{L}\)</span> containing the Borel sets such that <span class="math inline">\(\mu_{L}(C) =\text{length}(C)\)</span> is an interval: <span class="math inline">\(\mu_{L}\)</span> is called <strong>Lebesgue measure</strong> and <span class="math inline">\(\mathcal{L}\)</span> are called <strong>Lebesgue sets</strong>. If we restrict attention to Lebesgue sets that are subsets of <span class="math inline">\([0,1]\)</span>, <span class="math inline">\(\mu_{L}\)</span> is a probability measure. We can think of the experiment as picking a number at random from the unit interval. We will see later that Lebesgue measure on <span class="math inline">\([0,1]\)</span> is the only probability measure we ever need.</p>
+</div>
+
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="6-final-words.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="4-measures-and-probability-measures.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="4-2-the-existence-of-lebesgue-measure.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
