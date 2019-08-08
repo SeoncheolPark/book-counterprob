@@ -1,45 +1,52 @@
-\PassOptionsToPackage{unicode=true}{hyperref} % options for packages loaded elsewhere
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
 \PassOptionsToPackage{hyphens}{url}
 \PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
 %
-\documentclass[b5paper,]{scrbook}
+\documentclass[
+  b5paper,
+]{scrbook}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-  \usepackage{textcomp} % provides euro and other symbols
-\else % if luatex or xelatex
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
   \usepackage{unicode-math}
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage[]{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
 \usepackage{xcolor}
-\usepackage{hyperref}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \hypersetup{
-            pdftitle={Counterexamples of Probability},
-            pdfauthor={Seoncheol Park},
-            colorlinks=true,
-            linkcolor=Cerulean,
-            filecolor=Maroon,
-            citecolor=Fuchsia,
-            urlcolor=RedOrange,
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
+  pdftitle={Counterexamples of Probability},
+  pdfauthor={Seoncheol Park},
+  colorlinks=true,
+  linkcolor=Cerulean,
+  filecolor=Maroon,
+  citecolor=Fuchsia,
+  urlcolor=RedOrange,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage[inner=0.75in,outer=0.75in,top=0.6in,bottom=0.9in]{geometry}
 \usepackage{color}
 \usepackage{fancyvrb}
@@ -82,34 +89,25 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
-% Fix footnotes in tables (requires footnote package)
-\IfFileExists{footnote.sty}{\usepackage{footnote}\makesavenoteenv{longtable}}{}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-% set default figure placement to htbp
-\makeatletter
-\def\fps@figure{htbp}
-\makeatother
-
 \usepackage{booktabs}
 \usepackage[]{natbib}
 \bibliographystyle{apalike}
 
 \title{Counterexamples of Probability}
 \author{Seoncheol Park}
-\date{2019-04-27}
+\date{2019-05-20}
 
 \usepackage{amsthm}
 \newtheorem{theorem}{Theorem}[chapter]
@@ -128,6 +126,7 @@
 \newtheorem*{solution}{Solution}
 \let\BeginKnitrBlock\begin \let\EndKnitrBlock\end
 \begin{document}
+\frontmatter
 \maketitle
 
 {
@@ -135,6 +134,7 @@
 \setcounter{tocdepth}{2}
 \tableofcontents
 }
+\mainmatter
 \hypertarget{prerequisites}{%
 \chapter{Prerequisites}\label{prerequisites}}
 
@@ -272,14 +272,32 @@ That means, \(\mathcal{A}\) is closed under finite intersections.
 \iffalse{} {Proof. } \fi{}By de Morgan laws, \((A_{1} \cap A_{2})^{C} = A_{1}^{C} \cup A_{2}^{C}\) and \((A_{1} \cup A_{2})^{c} = A_{1}^{C} \cap A_{2}^{C}\). By the condition 2 of the definition of a field, we can get the desired result.
 \EndKnitrBlock{proof}
 
+\BeginKnitrBlock{exercise}
+\protect\hypertarget{exr:unnamed-chunk-7}{}{\label{exr:unnamed-chunk-7} }Which of the followings are \(\sigma\)-fields of subsets of \(\Omega=\{1,2,3,4,5,6\}?\)
+
+\begin{enumerate}
+\def\labelenumi{\alph{enumi})}
+\item
+  \(\{ \{1,2,\}, \{1,2,3,\}, \{4,5,6\}, \emptyset, \Omega \}\).
+\item
+  \(\{ \{1,2\}, \{3,4,5,6\}, \emptyset, \Omega \}\).
+\item
+  \(\{ \{1\}, \{3,4,5,6\}, \{1,3,4,5,6\},\Omega \}\).
+\end{enumerate}
+\EndKnitrBlock{exercise}
+
+\BeginKnitrBlock{solution}
+\iffalse{} {Solution. } \fi{}b.
+\EndKnitrBlock{solution}
+
 \BeginKnitrBlock{definition}[Semi-field]
-\protect\hypertarget{def:unnamed-chunk-7}{}{\label{def:unnamed-chunk-7} \iffalse (Semi-field) \fi{} }Let \(\Omega\) be an arbitrary set. A non-empty class \(\mathcal{J}\) of subsets of \(\Omega\) is called a \textbf{semi-field} if \(\Omega = \mathcal{J}, \emptyset \in \mathcal{J}\), \(\mathcal{J}\) is closed under the formation of finite intersections, and the complement of any set in \(\mathcal{J}\) is a finite sum of disjoint sets of \(\mathcal{J}\).
+\protect\hypertarget{def:unnamed-chunk-9}{}{\label{def:unnamed-chunk-9} \iffalse (Semi-field) \fi{} }Let \(\Omega\) be an arbitrary set. A non-empty class \(\mathcal{J}\) of subsets of \(\Omega\) is called a \textbf{semi-field} if \(\Omega = \mathcal{J}, \emptyset \in \mathcal{J}\), \(\mathcal{J}\) is closed under the formation of finite intersections, and the complement of any set in \(\mathcal{J}\) is a finite sum of disjoint sets of \(\mathcal{J}\).
 \EndKnitrBlock{definition}
 
 It is easy to see that any field of subsets of \(\Omega\) is also a semi-field. However, the following simple examples show that the converse is not true.
 
 \BeginKnitrBlock{example}[A class of events which is a semi-field but not a field]
-\protect\hypertarget{exm:unnamed-chunk-8}{}{\label{exm:unnamed-chunk-8} \iffalse (A class of events which is a semi-field but not a field) \fi{} }1. Let \(\Omega=[-\infty, \infty)\) and \(\mathcal{J}_{1}\), contain \(\Omega\), \(\{\infty\}\) and all intervals of the type \([a,b)\) where \(-\infty < a \leq b \leq \infty\). Then, \(\emptyset \in \mathcal{J}_{1}\), \(\Omega \in \mathcal{J}_{1}\), \([a_{1}, b_{1}) \cap [a_{2}, b_{2})=[a_{1} \vee a_{2}, b_{1} \wedge b_{2})\in\mathcal{J}_{1}\), and \([a,b)^{C}=[-\infty, a)\cup[b, \infty)\). So, \(\mathcal{J}_{1}\), is a semi-field. Obviously \(\mathcal{J}_{1}\) is not a field (Check \ref{exm:efnsf}).
+\protect\hypertarget{exm:unnamed-chunk-10}{}{\label{exm:unnamed-chunk-10} \iffalse (A class of events which is a semi-field but not a field) \fi{} }1. Let \(\Omega=[-\infty, \infty)\) and \(\mathcal{J}_{1}\), contain \(\Omega\), \(\{\infty\}\) and all intervals of the type \([a,b)\) where \(-\infty < a \leq b \leq \infty\). Then, \(\emptyset \in \mathcal{J}_{1}\), \(\Omega \in \mathcal{J}_{1}\), \([a_{1}, b_{1}) \cap [a_{2}, b_{2})=[a_{1} \vee a_{2}, b_{1} \wedge b_{2})\in\mathcal{J}_{1}\), and \([a,b)^{C}=[-\infty, a)\cup[b, \infty)\). So, \(\mathcal{J}_{1}\), is a semi-field. Obviously \(\mathcal{J}_{1}\) is not a field (Check \ref{exm:efnsf}).
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -291,39 +309,39 @@ It is easy to see that any field of subsets of \(\Omega\) is also a semi-field. 
 \EndKnitrBlock{example}
 
 \BeginKnitrBlock{definition}[Sigma-field]
-\protect\hypertarget{def:unnamed-chunk-9}{}{\label{def:unnamed-chunk-9} \iffalse (Sigma-field) \fi{} }The class \(\mathcal{F}\) of subsets of \(\Omega\) is called a \(\sigma\)\textbf{-field} if it is a field and closed under the formation of countable unions, that is if:
+\protect\hypertarget{def:unnamed-chunk-11}{}{\label{def:unnamed-chunk-11} \iffalse (Sigma-field) \fi{} }The class \(\mathcal{F}\) of subsets of \(\Omega\) is called a \(\sigma\)\textbf{-field} if it is a field and closed under the formation of countable unions, that is if:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{3}
 \tightlist
 \item
-  \(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcup_{n=1}^{\infty}A_{n} \in \mathcal{F}\).
+  \(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \cup_{n=1}^{\infty}A_{n} \in \mathcal{F}\).
 \end{enumerate}
 \EndKnitrBlock{definition}
 
 \BeginKnitrBlock{proposition}[Definition of a sigma-field]
-\protect\hypertarget{prp:unnamed-chunk-10}{}{\label{prp:unnamed-chunk-10} \iffalse (Definition of a sigma-field) \fi{} }The condition 4 of the definition of a sigma-field can be replaced by
+\protect\hypertarget{prp:sigmafield}{}{\label{prp:sigmafield} \iffalse (Definition of a sigma-field) \fi{} }The condition 4 of the definition of a sigma-field can be replaced by
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \setcounter{enumi}{3}
 \tightlist
 \item
-  \(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \bigcap_{n=1}^{\infty}A_{n} \in \mathcal{F}\).
+  \(A_{1}, A_{2}, \ldots, \in \mathcal{F} \Rightarrow \cap_{n=1}^{\infty}A_{n} \in \mathcal{F}\).
 \end{enumerate}
 
-That means, \(\sigma\)-field \(\mathcal{F}\) is closed under countable intersections because \(\bigcap_{n=1}^{\infty}A_{n} = (\bigcup_{n=1}^{\infty}A_{n}^{C})^{C}\) and each \(A_{n}^{C}\) belongs to \(\mathcal{F}\).
+That means, \(\sigma\)-field \(\mathcal{F}\) is closed under countable intersections because \(\bigcap_{n=1}^{\infty}A_{n} = (\cup_{n=1}^{\infty}A_{n}^{C})^{C}\) and each \(A_{n}^{C}\) belongs to \(\mathcal{F}\).
 \EndKnitrBlock{proposition}
 
 \BeginKnitrBlock{proof}
-\iffalse{} {Proof. } \fi{}By de Morgan lawsand condition 2 of the definition of a field, \((\bigcap_{n=1}^{\infty}A_{n})^{C}=\bigcup_{n=1}^{\infty}A_{n}^{C}\in\mathcal{F}\) and \((\bigcup_{n=1}^{\infty}A_{n})^{C}=\bigcap_{n=1}^{\infty}A_{n}^{C}\in\mathcal{F}\). So, we can change the condition 4.
+\iffalse{} {Proof. } \fi{}By de Morgan laws and condition 2 of the definition of a field, \((\cap_{n=1}^{\infty}A_{n})^{C}=\cup_{n=1}^{\infty}A_{n}^{C}\in\mathcal{F}\) and \((\cup_{n=1}^{\infty}A_{n})^{C}=\cap_{n=1}^{\infty}A_{n}^{C}\in\mathcal{F}\). So, we can change the condition 4.
 \EndKnitrBlock{proof}
 
 Usually, \(\mathcal{F}\) is the set of events (subsets of \(\Omega\)) we are allowed to consider.
 
 \BeginKnitrBlock{definition}[Random events (events)]
-\protect\hypertarget{def:unnamed-chunk-12}{}{\label{def:unnamed-chunk-12} \iffalse (Random events (events)) \fi{} }The elements of any field of \(\sigma\)-field are called \textbf{random events} (or simply, \textbf{events}).
+\protect\hypertarget{def:unnamed-chunk-13}{}{\label{def:unnamed-chunk-13} \iffalse (Random events (events)) \fi{} }The elements of any field of \(\sigma\)-field are called \textbf{random events} (or simply, \textbf{events}).
 \EndKnitrBlock{definition}
 
 \BeginKnitrBlock{example}[A class of events which is a field but not a sigma-field]
@@ -348,14 +366,14 @@ Let us look at two additional cases.
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \item
-  Let \(\Omega = \mathbb{R}^{1}\) and \(\mathcal{F}\) be the class of all finite sums of intervals of the type \$(-\infty, a{]}, \((b,c]\) and \((d,\infty)\). Then \(\mathcal{F}\) is a field. But the intersection \(\bigcap_{n=1}^{\infty}(b-\frac{1}{n}, c]\) is equal to \([b,c]\) which does not belong to \(\mathcal{F}\). Hence, the field \(\mathcal{F}\) is not a \(\sigma\)-field.
+  Let \(\Omega = \mathbb{R}^{1}\) and \(\mathcal{F}\) be the class of all finite sums of intervals of the type \$(-\infty, a{]}, \((b,c]\) and \((d,\infty)\). Then \(\mathcal{F}\) is a field. But the intersection \(\cap_{n=1}^{\infty}(b-\frac{1}{n}, c]\) is equal to \([b,c]\) which does not belong to \(\mathcal{F}\). Hence, the field \(\mathcal{F}\) is not a \(\sigma\)-field.
 \item
   Let \(\Omega\) be any infinite set and \(\mathcal{A}\) the collection of all subsets \(A\in \Omega\) such that either \(A\) or \(A^{c}\) is finite. Then it is easy to see that \(\mathcal{A}\) is a field but not a \(\sigma\)-field.
 \end{enumerate}
 \EndKnitrBlock{example}
 
 \BeginKnitrBlock{example}[A class of events can be closed under finite unions and finite intersections but not under complements]
-\protect\hypertarget{exm:unnamed-chunk-13}{}{\label{exm:unnamed-chunk-13} \iffalse (A class of events can be closed under finite unions and finite intersections but not under complements) \fi{} }Let \(\Omega = \mathbb{R}\) and the class \(\mathcal{A}\) consist of intervals of the type \((x,\infty)\), \(x\in\Omega\). Then using the notations \(u = x\wedge y:= \min\{x,y\}\) and \(v=x\vee y:=\max \{x,y\}\) we have:
+\protect\hypertarget{exm:unnamed-chunk-14}{}{\label{exm:unnamed-chunk-14} \iffalse (A class of events can be closed under finite unions and finite intersections but not under complements) \fi{} }Let \(\Omega = \mathbb{R}\) and the class \(\mathcal{A}\) consist of intervals of the type \((x,\infty)\), \(x\in\Omega\). Then using the notations \(u = x\wedge y:= \min\{x,y\}\) and \(v=x\vee y:=\max \{x,y\}\) we have:
 \[(x,\infty) \cup (y,\infty) = (u,\infty)\in\mathcal{A}\]
 \[(x,\infty) \cap (y,\infty) = (v,\infty)\in\mathcal{A}.\]
 However, \((x,\infty)^{C} = (-\infty, x]\notin\mathcal{A}\).
@@ -368,7 +386,7 @@ However, \((x,\infty)^{C} = (-\infty, x]\notin\mathcal{A}\).
 A \(\sigma\)-field is more restrictive than a field. Because we want to be able to consider countable unions, we require the allowable sets \(\mathcal{F}\) to be a \(\sigma\)-field. Therefore, it is understood in probability theory and throughout the remainder we are allowed to consider only the events belonging to the \(\sigma\)-field \(\mathcal{F}\). We will see that fields also play an important role in probability because a common technique is first to define a probability measure on a field and then extend it to a \(\sigma\)-field.
 
 \BeginKnitrBlock{definition}[D-system]
-\protect\hypertarget{def:unnamed-chunk-15}{}{\label{def:unnamed-chunk-15} \iffalse (D-system) \fi{} }A system \(\mathcal{D}\) of subsets of a given set \(\Omega\) is called a \textbf{D-system} (Dynkin system) in \(\Omega\) if the following three conditions hold:
+\protect\hypertarget{def:unnamed-chunk-16}{}{\label{def:unnamed-chunk-16} \iffalse (D-system) \fi{} }A system \(\mathcal{D}\) of subsets of a given set \(\Omega\) is called a \textbf{D-system} (Dynkin system) in \(\Omega\) if the following three conditions hold:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -377,32 +395,40 @@ A \(\sigma\)-field is more restrictive than a field. Because we want to be able 
 \item
   \(A,B\in \mathcal{D}\) and \(A\subset B \Rightarrow B\backslash A\in\mathcal{D}\);
 \item
-  \(A_{n}\in \mathcal{D}, n=1,2,\ldots .\) and \(A_{1} \subset A_{2} \subset \ldots \Rightarrow \bigcup_{n=1}^{\infty}A_{n} \in \mathcal{D}\).
+  \(A_{n}\in \mathcal{D}, n=1,2,\ldots .\) and \(A_{1} \subset A_{2} \subset \ldots \Rightarrow \cup_{n=1}^{\infty}A_{n} \in \mathcal{D}\).
 \end{enumerate}
 \EndKnitrBlock{definition}
 
 It is obvious that every \(\sigma\)-field is a D-system, but the converse may not be true.
 
 \BeginKnitrBlock{example}[Every sigma-field of events is a D-system, but the converse does not always hold]
-\protect\hypertarget{exm:unnamed-chunk-16}{}{\label{exm:unnamed-chunk-16} \iffalse (Every sigma-field of events is a D-system, but the converse does not always hold) \fi{} }Take \(\Omega = \{\omega_{1}, \omega_{2}, \ldots, \omega_{2n}\}, n\in\mathbb{N}\). Denote by \(\mathcal{D}_{e}\) the collection of all subsets \(D\in\Omega\) consisting of an even number of elements. Conditions 1, 2, and 3 above are satisfied, and hence \(\mathcal{D}_{e}\) is a D-system. However, if \(n<1\) and we take \(A=\{\omega_{1}, \omega_{2}\}\) and \(B=\{\omega_{2}, \omega_{3}\}\), we see that \(A\in\mathcal{D}_{e}, B\in \mathcal{D}_{e}\) and \(A\cap B =\{\omega_{2}\}\notin \mathcal{D}_{e}\). Thus \(\mathcal{D}_{e}\) is not even a field and hence not a \(\sigma\)-field.
+\protect\hypertarget{exm:unnamed-chunk-17}{}{\label{exm:unnamed-chunk-17} \iffalse (Every sigma-field of events is a D-system, but the converse does not always hold) \fi{} }Take \(\Omega = \{\omega_{1}, \omega_{2}, \ldots, \omega_{2n}\}, n\in\mathbb{N}\). Denote by \(\mathcal{D}_{e}\) the collection of all subsets \(D\in\Omega\) consisting of an even number of elements. Conditions 1, 2, and 3 above are satisfied, and hence \(\mathcal{D}_{e}\) is a D-system. However, if \(n<1\) and we take \(A=\{\omega_{1}, \omega_{2}\}\) and \(B=\{\omega_{2}, \omega_{3}\}\), we see that \(A\in\mathcal{D}_{e}, B\in \mathcal{D}_{e}\) and \(A\cap B =\{\omega_{2}\}\notin \mathcal{D}_{e}\). Thus \(\mathcal{D}_{e}\) is not even a field and hence not a \(\sigma\)-field.
 \EndKnitrBlock{example}
 
 Note that a D-system \(\mathcal{D}\) is a \(\sigma\)-field if and only if the intersection of any two sets in \(\mathcal{D}\) is again in \(\mathcal{D}\).
 
 \BeginKnitrBlock{example}[Trivial and total sigma-fields]
-\protect\hypertarget{exm:unnamed-chunk-17}{}{\label{exm:unnamed-chunk-17} \iffalse (Trivial and total sigma-fields) \fi{} }For any sample space \(\Omega\), the smallest and largest \(\sigma\)-fields are the \textbf{trivial} \(\sigma\)\textbf{-field} \(2^{\Omega}=\{\emptyset, \Omega\}\) and the \textbf{total} \(\sigma\)\textbf{-field} (also called the power \(\sigma\)-field) \((\Omega)=\{ \text{all subsets of } \Omega \}\), respectively.
+\protect\hypertarget{exm:unnamed-chunk-18}{}{\label{exm:unnamed-chunk-18} \iffalse (Trivial and total sigma-fields) \fi{} }For any sample space \(\Omega\), the smallest and largest \(\sigma\)-fields are the \textbf{trivial} \(\sigma\)\textbf{-field} \(2^{\Omega}=\{\emptyset, \Omega\}\) and the \textbf{total} \(\sigma\)\textbf{-field} (also called the power \(\sigma\)-field) \((\Omega)=\{ \text{all subsets of } \Omega \}\), respectively.
 \EndKnitrBlock{example}
 
 Remember that we are allowed to determine only whether or not event \(A\) occured for \(A\in \mathcal{F}\), not for sets outside \(\mathcal{F}\). The trivial \(\sigma\)-field is not very useful because the only events that we are allowed to consider are the entire sample space and the empty set. In other words, we can determine only whether something or nothing happened. With the total \(\sigma\)-field we can determine, for each subset \(A\subset \Omega\), whether or not event \(A\) occurred. The trouble with \(2^{\Omega}\) is that it may be too large to ensure that the properties we desire for a probability measure hold for all \(A\in\mathcal{F}\).
 
 Therefore, we want \(\mathcal{F}\) to be large, but not too large.
 
-\BeginKnitrBlock{example}[For countable sample sapce, the sigma-field should be the total sigma-field]
-\protect\hypertarget{exm:unnamed-chunk-18}{}{\label{exm:unnamed-chunk-18} \iffalse (For countable sample sapce, the sigma-field should be the total sigma-field) \fi{} }Suppose \(\Omega\) is a countable set like \(\{0,1,2,\ldots, \}\). We certainly want \(\mathcal{F}\) to contain each singleton. But any \(\sigma\)-field that contains each singleton \(\omega\) must contain all subsets of \(\Omega\). This follows from the fact that any subset \(A\) of \(\Omega\) is a countable union \(\bigcup_{n=1}^{\infty}\{\omega_{i}\}\) of singletons, and \(\sigma\)-fields are closed under countable unions. Therefore, when the sample space is countable, we should always use the total \(\sigma\)-field.
+\BeginKnitrBlock{example}[For countable sample space, the sigma-field should be the total sigma-field]
+\protect\hypertarget{exm:unnamed-chunk-19}{}{\label{exm:unnamed-chunk-19} \iffalse (For countable sample space, the sigma-field should be the total sigma-field) \fi{} }Suppose \(\Omega\) is a countable set like \(\{0,1,2,\ldots, \}\). We certainly want \(\mathcal{F}\) to contain each singleton. But any \(\sigma\)-field that contains each singleton \(\omega\) must contain all subsets of \(\Omega\). This follows from the fact that any subset \(A\) of \(\Omega\) is a countable union \(\cup_{n=1}^{\infty}\{\omega_{i}\}\) of singletons, and \(\sigma\)-fields are closed under countable unions. Therefore, when the sample space is countable, we should always use the total \(\sigma\)-field.
 \EndKnitrBlock{example}
 
+\BeginKnitrBlock{proposition}[The intersection of sigma-fields are sigma-fields]
+\protect\hypertarget{prp:unnamed-chunk-20}{}{\label{prp:unnamed-chunk-20} \iffalse (The intersection of sigma-fields are sigma-fields) \fi{} }The intersection \(\bigcap_{t} \mathcal{F}_{t}\) of any collection of \(\sigma\)-fields of \(\Omega\) is a \(\sigma\)-field.
+\EndKnitrBlock{proposition}
+
+\BeginKnitrBlock{proof}
+\iffalse{} {Proof. } \fi{}Note that \(\mathcal{F}\) is nonempty, because \(\emptyset \in \mathcal{F}_{t}\) and \(\Omega\in \mathcal{F}_{t}\) for each \(t\), and therefore \(\emptyset\) and \(\Omega\) belong to \(\mathcal{F} = \bigcap_{t}\mathcal{F}\). Also, if \(A\in\mathcal{F}\), then \(A\) belongs to each \(\mathcal{F}_{t}\). Thus, \(A^{C}\) belongs to each \(\mathcal{F}_{t}\), and therefore \(\mathcal{F}=\bigcap_{t}\mathcal{F}_{t}\). Similarly, if \(A_{1}, A_{2},\ldots\) belong to each \(\mathcal{F}_{t}\), then \(A=\bigcup_{i=1}^{\infty}A_{i}\) also belongs to each \(\mathcal{F}_{t}\), so \(A\) belongs to \(\mathcal{F}=\bigcap_{t}\mathcal{F}_{t}\). It follows that \(\mathcal{F}\) is a \(\sigma\)-field.
+\EndKnitrBlock{proof}
+
 \BeginKnitrBlock{example}[The union of a sequence of sigma-fields need not be a sigma-field]
-\protect\hypertarget{exm:unnamed-chunk-19}{}{\label{exm:unnamed-chunk-19} \iffalse (The union of a sequence of sigma-fields need not be a sigma-field) \fi{} }Let \(\mathcal{F}_{1},\mathcal{F}_{2}, \ldots\) be a sequence of \(\sigma\)-fields of subsets of the set \(\Omega\). Then their intersection \(\bigcap_{n=1}^{\infty} \mathcal{F}_{n}\) is always a \(\sigma\)-field and it is natural to ask whether the union \(\bigcup_{n=1}^{\infty}\mathcal{F}_{n}\) is a \(\sigma\)-field. We shall now show that the answer to this question is negative.
+\protect\hypertarget{exm:unnamed-chunk-22}{}{\label{exm:unnamed-chunk-22} \iffalse (The union of a sequence of sigma-fields need not be a sigma-field) \fi{} }Let \(\mathcal{F}_{1},\mathcal{F}_{2}, \ldots\) be a sequence of \(\sigma\)-fields of subsets of the set \(\Omega\). Then their intersection \(\bigcap_{n=1}^{\infty} \mathcal{F}_{n}\) is always a \(\sigma\)-field and it is natural to ask whether the union \(\bigcup_{n=1}^{\infty}\mathcal{F}_{n}\) is a \(\sigma\)-field. We shall now show that the answer to this question is negative.
 
 Consider the set \(\Omega=\{\omega_{1},\omega_{2},\omega_{3}\}\) and the following two classes of its subsets: \(\mathcal{F}_{1}=\{\emptyset, \{\omega_{1}\}, \{\omega_{2},\omega_{3}\}, \Omega \}\), \(\mathcal{F}_{2}=\{\emptyset, \{\omega_{2}\}, \{\omega_{1},\omega_{3}\}, \Omega \}.\) Then \(\mathcal{F}_{1}\) and \(\mathcal{F}_{2}\) are fields and hence \(\sigma\)-fields. Obviously the intersection \(\mathcal{F}_{1}\cap \mathcal{F}_{2} =\{ \emptyset, \Omega \}\), the trivial \(\sigma\)-field. However, the union
 
@@ -419,10 +445,259 @@ is not a field, and hence not a \(\sigma\)-field because the element \(\{\omega_
 
 We next consider \(\sigma\)-fields when \(\Omega\) is the uncountable set \(\mathbb{R}\) (or an interval). Again, any useful \(\sigma\)-field must contain each singleton \(\omega\).
 
-\hypertarget{methods}{%
-\chapter{Methods}\label{methods}}
+\BeginKnitrBlock{definition}[Co-finite and co-countable]
+\protect\hypertarget{def:unnamed-chunk-23}{}{\label{def:unnamed-chunk-23} \iffalse (Co-finite and co-countable) \fi{} }The set \(A\in\Omega\) is called \textbf{co-finite} set if its complement \(A^C\) is finnite. Further, the set \(A\in\Omega\) is called a \textbf{co-countable} set if \(A^C\) is countable.
+\EndKnitrBlock{definition}
 
-We describe our methods in this chapter.
+Let \(\mathcal{F}_{1}\) consist of the finite and co-finite subsets of \(\Omega\). Then, \(\mathcal{F}_{1}\) is a field. It is a \(\sigma\)-field if and only if \(\Omega\) is finite. Let \(\mathcal{F}_{2}\) consist of the countable and the co-countable subsets of \(\Omega\). Then it is easy to check that \(\mathcal{F}_{2}\) is a \(\sigma\)-field.
+
+\BeginKnitrBlock{exercise}
+\protect\hypertarget{exr:unnamed-chunk-24}{}{\label{exr:unnamed-chunk-24} }Prove that the collection of countable and co-countable sets is itself a \(\sigma\)-field.
+\EndKnitrBlock{exercise}
+
+\BeginKnitrBlock{example}[A sigma-field of subsets of sample space need not contain all subsets of sample space]
+\protect\hypertarget{exm:unnamed-chunk-25}{}{\label{exm:unnamed-chunk-25} \iffalse (A sigma-field of subsets of sample space need not contain all subsets of sample space) \fi{} }Suppose that \(\Omega\) is uncountable. Then \(\Omega\) contains a subset \(A\) such that \(A\) and \(A^C\) are both uncountable. This show that in general a \(\sigma\)-field of \(\Omega\) need not contain all subsets of \(\Omega\) and need not be closed under the formation of arbitrary uncountable unions.
+\EndKnitrBlock{example}
+
+\BeginKnitrBlock{example}[Sigma-field of countable and co-countable sets: too small]
+\protect\hypertarget{exm:unnamed-chunk-26}{}{\label{exm:unnamed-chunk-26} \iffalse (Sigma-field of countable and co-countable sets: too small) \fi{} }Suppose that \(\Omega\) is uncountable set like \(\mathbb{R}\) or \([0,1]\). If we want \(\mathcal{F}\) to include each singleton \(\omega\), then \(\mathcal{F}\) must contain each countable subset \(A\). It must also contain the complement of each countable set. Therefore, any \(\sigma\)-field containing the singletons must contain all countable and co-countable sets. Unfortunately, this \(\sigma\)-field is not large enough to be useful. For instance, if \(\Omega=[0,1]\), then we are not allowed to consider events like \([0,\frac{1}{2}]\) because it is neither countable nor co-countable.
+\EndKnitrBlock{example}
+
+We continue our quest for the smalles \(\sigma\)-field that contains all of the ``useful'' subsets of the uncountable set \(\mathbb{R}\). We have seen that the collection of countable and co-countable sets is not a good choice because it excludes common sets like \([0,\frac{1}{2}]\). We certainly want \(\mathcal{F}\) to include all intervals. But remember that we do not want \(\mathcal{F}\) to be too large, else it might contain ``pathological sets'' that cause probability to behave strangely. Therefore, we would like to find the \textbf{smallest} \(\sigma\)-field \(\mathcal{F}\) that contains all of the intervals. That is, we want \(\mathcal{F}\) to contain all intervals, and if \(\mathcal{G}\) is any other \(\sigma\)-field containing the intervals, then \(\mathcal{F}\subset\mathcal{G}\). The smallest \(\sigma\)-field containing a collection \(\mathcal{A}\), denoted \(\sigma(\mathcal{A})\), is called the \textbf{sigma-field generated by} \(\mathcal{A}\). We want to find \(\sigma(\text{intervals})\). Any \(\sigma\)-field containing the intervals must also contain all finite unions of disjoint sets of the form \((a,b]\), \((-\infty, a]\), or \((b,\infty)\). Therefore, if this latter collection is a \(\sigma\)-field, it must be \(\sigma(\text{intervals})\). Unfortunately, it is not a \(\sigma\)-field.
+
+\BeginKnitrBlock{exercise}
+\protect\hypertarget{exr:unnamed-chunk-27}{}{\label{exr:unnamed-chunk-27} }If \(\mathcal{A}\) is a \(\sigma\)-field, then \(\sigma(\mathcal{A})=\mathcal{A}\).
+\EndKnitrBlock{exercise}
+
+\BeginKnitrBlock{example}[Very important field]
+\protect\hypertarget{exm:unnamed-chunk-28}{}{\label{exm:unnamed-chunk-28} \iffalse (Very important field) \fi{} }If \(\Omega =\mathbb{R}\), the collection \(\mathcal{F}_{0}\) of finite unions of disjoint sets of the form \((a,b]\), \((-\infty,a]\), or \((b,\infty)\) is a field, but not a \(\sigma\)-field. It generates \(\sigma(\text{intervals})\).
+\EndKnitrBlock{example}
+
+\BeginKnitrBlock{exercise}
+\protect\hypertarget{exr:unnamed-chunk-29}{}{\label{exr:unnamed-chunk-29} }Prove the above example.
+\EndKnitrBlock{exercise}
+
+Continuing aour search for \(\sigma(\text{intervals})\), consider the collection \(\{\mathcal{F}_{t}\}_{t\in T}\) of all \(\sigma\)-fields containing the intervals. There are at least one, namely the total \(\sigma\)-field \(2^{\mathbb{R}}\) of all subsets of the line. Let \(\mathcal{F} = \bigcap_{t}\mathcal{F}_{t}\). We claim that \(\mathcal{F}=\sigma(\text{intervals})\). We need only show that \(\mathcal{F}\) is a \(\sigma\)-field, because any other \(\sigma\)-field containing the intervals clearly contains \(\mathcal{F}\).
+
+\hypertarget{borel-sigma-field}{%
+\section{Borel sigma-field}\label{borel-sigma-field}}
+
+\BeginKnitrBlock{definition}[1-dimensional Borel sigma-field]
+\protect\hypertarget{def:unnamed-chunk-30}{}{\label{def:unnamed-chunk-30} \iffalse (1-dimensional Borel sigma-field) \fi{} }The smallest \(\sigma\)-field containing the intervals of \(\mathbb{R}\), namely the intersection of all \(\sigma\)-fields containing the intervals, is called the \textbf{Borel sigma-field} and denoted \(\mathcal{B}\) or \(\mathcal{B}^{1}\). The sets in \(\mathcal{B}\) are called \textbf{Borel sets}. The Borel sets of \(\mathbb{R}\) that are subsets of \([0,1]\) are denoted \(\mathcal{B}_{[0,1]}\).
+\EndKnitrBlock{definition}
+
+The definition of the Borel \(\sigma\)-field is somewhat dissatisfying because it is hard to picture the intersection of all \(\sigma\)-fields containing the intervals. It would be more pleasing if we could begin with the intervals \(\mathcal{I}_1\), throw in all complements and countable unions of sets in \(\mathcal{I}_{1}\) to create \(\mathcal{I}_{2}\), then throw in all complements and countable unions of sets in \(\mathcal{I}_{2}\) to create \(\mathcal{I}_{3}\), etc. It would still be difficult to picture all of the sets, but at least we could imagine how to construct them. Unfortunately, this process must be continued indefinitely. In fact, even \(\bigcup_{i=1}^{\infty}\mathcal{I}_{i}\) does not produce all of the Borel sets. \citep{Billingsley2012}
+
+\BeginKnitrBlock{remark}[The Bore sigma-field is very broad]
+\iffalse{} {Remark (The Bore sigma-field is very broad). } \fi{}The Borel \(\sigma\)-field contains many sets other than intervals, including, for example:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Countable unions of intervals, and therefore all open sets by (Proposition A.15.)
+\item
+  All closed sets by part 1 and the fact that complements of sets in \(\mathcal{B}\) are in \(\mathcal{B}\).
+\item
+  The rational numbers by part 2 because each rational \(r\) is a closed set (it is easy to see that its complement is open), and the set of rational numbers is a countable union of these closed sets.
+\item
+  The irrational numbers, being the complement of the Borel set of rational numbers.
+\end{enumerate}
+\EndKnitrBlock{remark}
+
+It is actually difficult to construct a set that is \textbf{not a Borel set}. Nevertheless, we will see later that an even larger \(\sigma\)-field, called the \textbf{Lebesgue sets}, is also useful in probability and measure theory.
+
+It is sometimes helpful to consider the events \(\{-\infty\}\) or \(\{+\infty\}\). These sets are not in the Borel \(\sigma\)-field because they are not subsets of \(\mathbb{R} = (-\infty, \infty)\). To consider them as events, we must extend the real line by augmenting it with \(\{-\infty, +\infty\}\).
+
+\BeginKnitrBlock{definition}[Extended line and extended intervals]
+\protect\hypertarget{def:unnamed-chunk-32}{}{\label{def:unnamed-chunk-32} \iffalse (Extended line and extended intervals) \fi{} }The \textbf{extended line} \(\bar{\mathbb{R}}\) is \([-\infty, \infty]\), meaning \((-\infty, \infty)\cup \{-\infty, \infty \}\). An extended interval is of the form \([x,y]\), \([x,y)\), \((x,y]\), or \((x,y)\), where \(x\) or \(y\) can be numbers or \(\pm \infty\); \([a,\infty]\) means \([a,\infty)\cup \{\infty\}\), \([-\infty, b]\) means \((-\infty, b] \cup \{-\infty\}\), etc.
+\EndKnitrBlock{definition}
+
+When considering \(\bar{\mathbb{R}}\) instead of \(\mathbb{R}\), we must remember to take complements with respect to \(\mathbb{R}\). For instance, the complement of \((0,1]\) is \(\bar{\mathbb{R}}\backslash (0,1] = [-\infty, 0]\cup (1,\infty]\), and the complement of \(\mathbb{R}=(-\infty, \infty)\) is \(\bar{\mathbb{R}}\backslash\mathbb{R} =\{-\infty, \infty\}\).
+
+\BeginKnitrBlock{definition}[Extended Borel sigma-field]
+\protect\hypertarget{def:unnamed-chunk-33}{}{\label{def:unnamed-chunk-33} \iffalse (Extended Borel sigma-field) \fi{} }The extended Borel \(\sigma\)-field \(\bar{\mathcal{B}}\) is the smallest \(\sigma\)-field of subsets of \(\bar{\mathbb{R}}\) that contains all of the extended intervals.
+\EndKnitrBlock{definition}
+
+\BeginKnitrBlock{proposition}[Equivalent formulations of extended Borel sigma-field]
+\protect\hypertarget{prp:unnamed-chunk-34}{}{\label{prp:unnamed-chunk-34} \iffalse (Equivalent formulations of extended Borel sigma-field) \fi{} }The flollowing are equivalent.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(\bar{\mathcal{B}}\) is the extended Borel \(\sigma\)-field.
+\item
+  \(\bar{\mathcal{B}}\) is the smallest \(\sigma\)-field that contains the two sets \(\{-\infty\}\) and \(\{+\infty\}\) and all Borel subsets of \(\mathbb{R}\).
+\item
+  \(\bar{\mathcal{B}}\) consists of all Borel subsets \(\mathcal{B}\) of \(\mathbb{R}\), together with all augumentations \(\bar{mathcal{B}}\) of \(\mathcal{B}\) by \(-\infty\), \(\infty\), or both.
+\end{enumerate}
+\EndKnitrBlock{proposition}
+
+\BeginKnitrBlock{exercise}
+\protect\hypertarget{exr:unnamed-chunk-35}{}{\label{exr:unnamed-chunk-35} }Prove the above proposition.
+\EndKnitrBlock{exercise}
+
+\hypertarget{high-dimensional-sigma-fields}{%
+\section{High-dimensional sigma fields}\label{high-dimensional-sigma-fields}}
+
+\hypertarget{infinitely-often-event}{%
+\section{Infinitely often event}\label{infinitely-often-event}}
+
+IF \(\{A_n\}\in\mathcal{F}\), we can define other events involving the \(A_{n}\). We have seen, for example, that \(B=\cup_{n=1}^{\infty}A_{n}\) is the event that at least one \(A_n\) occurs, while \(C=\cap_{n=1}^{\infty}A_n\) is the event that all of the \(A_n\) occur. Sometimes there is interest in seeing whether \(A_n\) occurs for infinitely many \(n\). For instance, in a coin-flipping experiment, let \(A_n\) denote the event that the \(n\)-th coin flip is heads. We might be interested in whether infinitely many flips are heads. We now show that for general \(A_1, A_2,\ldots,\) the event that \(A_n\) occurs for infinitely many \(n\) is a honest (bona fide) event in the sense that it is in \(\mathcal{F}\). Note that \(\omega \in A_{n}\) for infinitely many \(n\) if and only if no matter how large \(N\) i, \(\omega\in \cap_{N=1}^{\infty}\cup_{n\geq N}A_{n} =\cap_{N=1}^{\infty} B_{N}\), where \(B_{N} =\cup_{n\geq N } A_{n}\). Because \(B_N\) is a countalbe union of \(\mathcal{F}\)-sets, \(B_N\in\mathcal{F}\). This being true for each \(N\), \(\cap_{N=1}^{\infty} B_{N} \in\mathcal{F}\) because \(\mathcal{F}\) is closed under countable intersections. (refer to Prop \ref{prp:sigmafield}) Therefore, the event that \(A_n\) occurs for infinitely many \(n\) is in \(\mathcal{F}\). We denote this event by \(\{A_n \text{ i.o}\}\), which stands for \(A_n\) occurs infinitely often (in \(n\)).
+
+\BeginKnitrBlock{proposition}[The infinitely often event is in sigma-field.]
+\protect\hypertarget{prp:unnamed-chunk-36}{}{\label{prp:unnamed-chunk-36} \iffalse (The infinitely often event is in sigma-field.) \fi{} }If \(A_n\in\mathcal{F}\) for \(n=1,2,\ldots,\) the event \(\{A_n \text{ i.o}\}\), namely \(\cap_{N=1}^{\infty}\cup_{n\geq N}A_{n}\) is in \(\mathcal{F}\).
+\EndKnitrBlock{proposition}
+
+\BeginKnitrBlock{remark}
+\iffalse{} {Remark. } \fi{}The complement of \(\{A_n \text{ i.o}\}\), namely that \(A_n\) occurs only finitely often, is also in \(\mathcal{F}\) because \(\mathcal{F}\) is closed under complementation. This event is, by De Morgans laws, \(\{\cap_{N=1}^{\infty}\cup_{n\geq N} A_n \}^{C} = \cup_{N=1}^{\infty}B_{N}^{C} = \cup_{N=1}^{\infty}\cap_{n\geq N} A_{n}^{C}\).
+
+This expression can also be deduced from general principles because if \(\omega\) is in only finitely many of the \(A_n\), then there must be an \(N\) for which \(\omega\) is not in \(A_{n}\) for any \(n\geq N\). That is, \(\omega\) must be in \(A_{n}^{C}\) for all \(n\geq N\). This must occur for at least on \(N\), which translates into a union. Thus again we arrive at the expression \(\cup_{N=1}^{\infty}\cap_{n\geq N}A_{n}^{C}\) for the event that \(A_{n}\) occurs only finitely often.
+\EndKnitrBlock{remark}
+
+\hypertarget{measures-and-probability-measures}{%
+\chapter{Measures and Probability Measures}\label{measures-and-probability-measures}}
+
+A probability measure \(P\) is a function that assigns a probability to the allowable sets \(\mathcal{F}\) and that satisfies certain conditions. Ideally, we would like \(P\) to satisfiy \(P(\Omega)=1\) and \(P(\cup_{t}A_t)=\sum_{t}P(A_t)\) for every collection of disjoint sets \(A_t\), even an uncountable collection. Unfortunately, this \textbf{uncountable additivity} requirement is too much to ask because it precludes the existence of a ``uniform'' probability measure \(P\) on \(\Omega=[0,1]\). To see this, note that for such a measure, each \(\omega=\Omega\) has the same probability \(p\), so if \(P\) were uncountably additive, then \(1=P(\Omega)=P([0,1])=\sum_{\Omega}p\). But this produces a contradiction because \(\sum_{\Omega}p\) is \(0\) if \(p=0\) and \(\infty\) if \(p>0\). Therefore, uncountable additivity is too strong a condition to require. It turns out the strongest property of this type that we con impose is \textbf{countable additivity}.
+
+\hypertarget{probability}{%
+\section{Probability}\label{probability}}
+
+\BeginKnitrBlock{definition}[Measure and probability measure]
+\protect\hypertarget{def:unnamed-chunk-38}{}{\label{def:unnamed-chunk-38} \iffalse (Measure and probability measure) \fi{} }Consider a measurable space \((\Omega, \mathcal{F})\). A \textbf{measure} \(\mu\) is defined for all events \(A\in\mathcal{F}\) and satisfies the following (Kolmogorov) axioms.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  For any \(A\in \mathcal{F}\), there exists a number \(\mu(A) \geq 0\); the measure of \(A\).
+\item
+  (\textbf{countable additivity}) Let \(\{A_n, n\geq 1 \}\) be disjoint. Then
+  \[P(\bigcup_{n=1}^{\infty}A_n)=\sum_{n=1}^{\infty}\mu(A_n).\]
+\end{enumerate}
+
+A \textbf{probability measure} \(P\) is a measure such that
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  \(P(\Omega)=1\).
+\end{enumerate}
+\EndKnitrBlock{definition}
+
+\BeginKnitrBlock{definition}[Probability space]
+\protect\hypertarget{def:unnamed-chunk-39}{}{\label{def:unnamed-chunk-39} \iffalse (Probability space) \fi{} }The triple \((\Omega, \mathcal{F}, P)\) is a \textbf{probability (measure) space} if
+
+\begin{itemize}
+\item
+  \(\Omega\) is the sample space, that is, some (possibly abstract) set;
+\item
+  \(\mathcal{F}\) is a \(\sigma\)-field of sets (events): the measurable subsets of \(\Omega\). The ``automs'', \(\{\omega\}\) of \(\Omega\), are called elementary events;
+\item
+  \(P\) is a probability measure on \(\mathcal{F}\), that is \(P\) satisfies conditions of 1, 2, and 3.
+\end{itemize}
+\EndKnitrBlock{definition}
+
+\BeginKnitrBlock{example}[Counting measure]
+\protect\hypertarget{exm:countingmeasure}{}{\label{exm:countingmeasure} \iffalse (Counting measure) \fi{} }Let \(\Omega=\{x_1, x_2, \ldots \}\) be a countable set and \(\mathcal{F}=2^{\Omega}\) be the total \(\sigma\)-field of all subsets of \(\omega\). For \(A\in\mathcal{F}\), define \(\mu(A)=\)the number of elements of \(A\). Then \(\mu\) is clearly nonnegative and countably additive because the number of elements in the union of disjoint sets in the sum of the numbers of elements in the individual sets. Therefore \(\mu\) is a measure called \textbf{counting measure}, on \(\mathcal{F}\). Counting measure is not a probability measure if \(\Omega\) has more than one element because \(\mu(\Omega)>1\).
+\EndKnitrBlock{example}
+
+\BeginKnitrBlock{example}[A probability mass function defines a measure]
+\protect\hypertarget{exm:pmeasure}{}{\label{exm:pmeasure} \iffalse (A probability mass function defines a measure) \fi{} }Let \(\Omega\) and \(\mathcal{F}\) be as defined in the Example \ref{exm:countingmeasure}. Suppose that \(p_i \geq 0\) and \(\sum_{i=1}^{\infty}p_{i}=1\). For \(A\in\mathcal{F}\), define \(P(A)=\sum_{x_i \in A}p_i\). This is well defined because the summand is nonnegative, so we get the same value irrespective of the order in which we add. Then \(P\) is nonnegative and countably additive because if \(I_i\) and \(I\) index the elements of \(E_{i}\) and \(E=\cup_{j}E_{j}\), resepctively, where \(E_1, E_2, \ldots\) are disjoint, then \(P(\cup_{j}E_j)=\sum_{j\in I}p_{j}=\sum_{i}\sum_{j\in I_{i}}p_j\). Also \(P(\Omega)=\sum_{j=1}^{\infty}p_j =1\). Therefore \(P\) is a probability measure on \(\mathcal{F}\). This example shows that any probability mass function-the binomial, Poisson, hypergeometric, etc.-specifies a probability measure.
+\EndKnitrBlock{example}
+
+Examples \ref{exm:countingmeasure} and \ref{exm:pmeasure} involved a countable sample space. The most important measure on the uncountable sample space \(\mathbb{R}\) is the following;
+
+\BeginKnitrBlock{example}[Lebesgue measure]
+\protect\hypertarget{exm:lmeasure}{}{\label{exm:lmeasure} \iffalse (Lebesgue measure) \fi{} }There is a measure \(\mu_{L}\) defined on a \(\sigma\)-field \(\mathcal{L}\) containing the Borel sets such that \(\mu_{L}(C) =\text{length}(C)\) is an interval: \(\mu_{L}\) is called \textbf{Lebesgue measure} and \(\mathcal{L}\) are called \textbf{Lebesgue sets}. If we restrict attention to Lebesgue sets that are subsets of \([0,1]\), \(\mu_{L}\) is a probability measure. We can think of the experiment as picking a number at random from the unit interval. We will see later that Lebesgue measure on \([0,1]\) is the only probability measure we ever need.
+\EndKnitrBlock{example}
+
+\hypertarget{the-existence-of-lebesgue-measure}{%
+\section{The existence of Lebesgue measure}\label{the-existence-of-lebesgue-measure}}
+
+Courses in real analysis spend a good deal of effort proving the existence of Lebesgue measure.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Define \(\mu(I)=\text{length}(I)\) for any interval \(I\).
+\item
+  Now extend \(\mu\) to an arbitrary set \(A\) by defining an \textbf{outer measure} \(\mu^{*}\) by \(\mu^{*}(A)=\inf \sum_{n}\text{length}(I_{n})\), where the infimum is over all countable unions \(\cup_{n}I_n\) of intervals \(I_n\) such that \(A\subset \cup_{n}I_n\). The term outer measure stems from the fact that we are approximating the measure of \(A\) from the outside, meaning that we consider the measure of a collection of sets that cover \(A\). It is easy to see that \(\mu^{*}\) agrees with \(\mu\) if \(A\) is an interval. But \(\mu^{*}\) is not necessarily countably additive on \textbf{all sets}, so the next step is:
+\item
+  Restrict the class of sets to \(\mathcal{L}=\{L : \mu^{*}(A)=\mu^{*}(L\cap A)+\mu^{*}(L^{C}\cap A)\) for every set \(A \}\). The collection \(\mathcal{L}\), called Lebesgue sets, is then shown to be a \(\sigma\)-field containing all Borel sets. This restriction of \(\mu^{*}\) to \(\mathcal{L}\) is Lebesgue measure \(\mu_{L}\).
+\end{enumerate}
+
+We are often puzzled that each possible outcome \(\omega\) has probability \(0\), yet the probability of \([0,1]\) is \(1\). Every event is ``impossible'' (i.e., has probability \(0\)), yet something is sure to happen.
+
+\hypertarget{properties-of-probability-measures}{%
+\section{Properties of probability measures}\label{properties-of-probability-measures}}
+
+\BeginKnitrBlock{proposition}[Basic properties of probability measures]
+\protect\hypertarget{prp:probproperties}{}{\label{prp:probproperties} \iffalse (Basic properties of probability measures) \fi{} }If \(P\) is a probability measure:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \(P(\emptyset)=0\).
+\item
+  If \(E_1, E_2 \in \mathcal{F}\), \(E_1 \subset E_2\), then \(P(E_1)\leq P(E_2)\).
+\item
+  \(0\leq P(E)\leq 1\) for each \(E\in\mathcal{F}\).
+\item
+  If \(E\in\mathcal{F}\), \(P(E^C)=1-P(E)\).
+\item
+  If \(E_1, E_2\in\mathcal{F}, P(E_{1}\cup E_{2})=P(E_1) + P(E_2) - P(E_{1}\cap E_{2})\).
+\end{enumerate}
+\EndKnitrBlock{proposition}
+
+\BeginKnitrBlock{proof}
+\iffalse{} {Proof. } \fi{}To see part 1, note that any event \(E\) may be written as the disjoint union \(E\cup \emptyset\). By countable additivity, \(P(E)=P(E)+P(\emptyset)\), from which it follows that \(P(\emptyset)=0\).
+
+To see part 5, note that \(E_1 \cup E_2 = E_1 \cup (E_2 \backslash E_1)\). Because \(E_1\) and \(E_2 \backslash E_1\) are disjoint,
+\[P(E_1\cup E_2)=P(E_1) +P(E_2\backslash E_1).\]
+Also, \(E_2\) is the union of the disjoint sets \(E_1 \cap E_2\) and \(E_2\backslash E_1\), so \(P(E_1\cap E_2) +P(E_2\backslash E_1)=P(E_2)\). Thus, \(P(E_2\backslash E_1) = P(E_2) - P(E_1\cap E_2)\). Substituting this expression into the above equation gives \(P(E_1\cup E_2) = P(E_1) + P(E_2) - P(E_1\cap E_2)\).
+\EndKnitrBlock{proof}
+
+The following result that any countable union can be written as a countable union of disjoint sets is extremely useful in probability theory.
+
+\BeginKnitrBlock{proposition}[Any countable union can be written as a countable union of disjoint sets]
+\protect\hypertarget{prp:countabledisjointunion}{}{\label{prp:countabledisjointunion} \iffalse (Any countable union can be written as a countable union of disjoint sets) \fi{} }Let \(E_1, E_2, \ldots \in\mathcal{F}\) and define \(D_1 = E_1, D_2 = E_2\backslash E_1, D_3=E_3\backslash (E_1 \cup E_2), \ldots\) Then \(\{D_i\}\) is a collection of disjoint sets and \(\cup_{i=1}^{n}E_i = \cup_{i=1}^{n}D_{i}\) for \(n\) any positive integer or \(+\infty\).
+\EndKnitrBlock{proposition}
+
+\BeginKnitrBlock{proof}
+\iffalse{} {Proof. } \fi{}It is clear that the \(D_i\) defined above are disjoint. We will prove that each \(\omega\in\cup_{i=1}^{n}E_{i}\) is in \(\cup_{i=1}^{n}D_{i}\) and vice versa. Note that each step in the following proof is valid whether \(n\) is a positive integer or \(+\infty\). If \(\omega \in \cup_{i=1}^{n}E_{i}\), then \(\omega \in E_i\) for some finite \(i\leq n\). Let \(I\) be the smallest \(i\leq n\) for which \(\omega \in E_i\). Then by definition, \(\omega \in E_t\) but not in any of the previous \(E_i\). That is, \(\omega \in D_I\), so \(\omega \in \cup_{i=1}^n D_{i}\). Thus, if \(\omega \in \cup_{i=1}^{n} E_{i}\), then \(\omega \in \cup_{i=1}^{n} D_{i}\).
+
+To prove the converse, note that if \(\omega \in \cup_{i=1}^n D_i\), then \(\omega \in D_i\) for some finite \(i\leq n\). But then \(\omega \in E_i\), and hence \(\omega \in \cup_{i=1}^{n}E_i\). We have shown that each \(\omega \in \cup_{i=1}^n E_{i}\) is in \(\cup_{i=1}^{n}D_{i}\) and vice versa, and therefore \(\cup_{i=1}^{n}E_{i} = \cup_{i=1}^{n}D_{i}.\)
+\EndKnitrBlock{proof}
+
+One consequence of Proposition \ref{prp:countabledisjointunion} is the following, which is called \textbf{countable subadditivity}. Ii is also called Boole's inequality, or, when there are only finitely many sets, Bonferroni's ineqaulity.
+
+\BeginKnitrBlock{proposition}[Countable subadditivity (also called Boole's or Bonferroni's inequality]
+\protect\hypertarget{prp:countablesubadditivity}{}{\label{prp:countablesubadditivity} \iffalse (Countable subadditivity (also called Boole's or Bonferroni's inequality) \fi{} }If \(E_1, E_2, \ldots\) are any sets (not necessarily disjoint), then \(P(\cup_i E_i) \leq \sum_{i} P(E_i)\).
+\EndKnitrBlock{proposition}
+
+\BeginKnitrBlock{exercise}
+\protect\hypertarget{exr:unnamed-chunk-42}{}{\label{exr:unnamed-chunk-42} }Prove the above proposition.
+\EndKnitrBlock{exercise}
+
+The importance of Proposition \ref{prp:countablesubadditivity} in probability and statistics cannot be overstated.
+
+Another consequence of Proposition \ref{prp:countabledisjointunion} is a certain continuity property of probability, namely that if a sequence of sets \(E_1, E_2, \ldots\) ``gets closer and closer'' to a set \(E\), then the probability of \(E_i\) also gets ``closer and closer'' to the probability of \(E\). But what does it mean for a sequence of sets \((E_i)_{i=1}^{\infty}\) to ge ``closer and closer'' to \(E\)?
+
+\BeginKnitrBlock{definition}[Increasing and decreasing sets]
+\protect\hypertarget{def:increasingdecreasingsets}{}{\label{def:increasingdecreasingsets} \iffalse (Increasing and decreasing sets) \fi{} }We say that a sequence of sets \((E_i)_{i=1}^{\infty}\) increase to \(E\)\textless{} written \(E_i \uparrow E\), if \(E_1 \subset E_2 \subset E_3 \subset \ldots\) and \(\cup_{i=1}^{\infty}E_{i} = E\). Similarily, \((E_i)_{i=1}^{\infty}\) decreases to \(E\), written \(E_i \downarrow E\), if \(E_1 \supset E_2 \supset E_3 \supset \ldots\) and \(\cap_{i=1}^{\infty}E_i = E\).
+\EndKnitrBlock{definition}
+
+For example, \(E_i=(-\infty, i]\uparrow E = (-\infty, \infty)\) and \(E_i = (-\infty, x+\frac{1}{i})\downarrow E = (-\infty, x]\) (see Figure \ref{fig:increasedecreasesetfig}).
+
+\begin{figure}
+
+{\centering \includegraphics[width=1\linewidth]{images/decreasingset} 
+
+}
+
+\caption{An example of descreasing set.}\label{fig:increasedecreasesetfig}
+\end{figure}
 
 \hypertarget{applications}{%
 \chapter{Applications}\label{applications}}
@@ -440,7 +715,7 @@ Some \emph{significant} applications are demonstrated in this chapter.
 
 We have finished a nice book.
 
-\bibliography{packages.bib}
-\addcontentsline{toc}{chapter}{\bibname}
+\backmatter
+  \bibliography{book.bib}
 
 \end{document}

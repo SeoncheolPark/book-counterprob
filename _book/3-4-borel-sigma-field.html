@@ -25,7 +25,7 @@
 <meta name="author" content="Seoncheol Park">
 
 
-<meta name="date" content="2019-04-29">
+<meta name="date" content="2019-05-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -68,7 +68,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -178,7 +178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p><span id="def:unnamed-chunk-30" class="definition"><strong>Definition 2.7  (1-dimensional Borel sigma-field)  </strong></span>The smallest <span class="math inline">\(\sigma\)</span>-field containing the intervals of <span class="math inline">\(\mathbb{R}\)</span>, namely the intersection of all <span class="math inline">\(\sigma\)</span>-fields containing the intervals, is called the <strong>Borel sigma-field</strong> and denoted <span class="math inline">\(\mathcal{B}\)</span> or <span class="math inline">\(\mathcal{B}^{1}\)</span>. The sets in <span class="math inline">\(\mathcal{B}\)</span> are called <strong>Borel sets</strong>. The Borel sets of <span class="math inline">\(\mathbb{R}\)</span> that are subsets of <span class="math inline">\([0,1]\)</span> are denoted <span class="math inline">\(\mathcal{B}_{[0,1]}\)</span>.</p>
 </div>
 
-<p>The definition of the Borel <span class="math inline">\(\sigma\)</span>-field is somewhat dissatisfying because it is hard to picture the intersection of all <span class="math inline">\(\sigma\)</span>-fields containing the intervals. It would be more pleasing if we could begin with the intervals <span class="math inline">\(\mathcal{I}_1\)</span>, throw in all complements and countable unions of sets in <span class="math inline">\(\mathcal{I}_{1}\)</span> to create <span class="math inline">\(\mathcal{I}_{2}\)</span>, then throw in all complements and countable unions of sets in <span class="math inline">\(\mathcal{I}_{2}\)</span> to create <span class="math inline">\(\mathcal{I}_{3}\)</span>, etc. It would still be difficult to picture all of the sets, but at least we could imagine how to construct them. Unfortunately, this process must be continued indefinitely. In fact, even <span class="math inline">\(\bigcup_{i=1}^{\infty}\mathcal{I}_{i}\)</span> does not produce all of the Borel sets. <span class="citation">(Billingsley <a href="#ref-Billingsley2012">2012</a>)</span></p>
+<p>The definition of the Borel <span class="math inline">\(\sigma\)</span>-field is somewhat dissatisfying because it is hard to picture the intersection of all <span class="math inline">\(\sigma\)</span>-fields containing the intervals. It would be more pleasing if we could begin with the intervals <span class="math inline">\(\mathcal{I}_1\)</span>, throw in all complements and countable unions of sets in <span class="math inline">\(\mathcal{I}_{1}\)</span> to create <span class="math inline">\(\mathcal{I}_{2}\)</span>, then throw in all complements and countable unions of sets in <span class="math inline">\(\mathcal{I}_{2}\)</span> to create <span class="math inline">\(\mathcal{I}_{3}\)</span>, etc. It would still be difficult to picture all of the sets, but at least we could imagine how to construct them. Unfortunately, this process must be continued indefinitely. In fact, even <span class="math inline">\(\bigcup_{i=1}^{\infty}\mathcal{I}_{i}\)</span> does not produce all of the Borel sets. <span class="citation">(Billingsley <a href="#ref-Billingsley2012" role="doc-biblioref">2012</a>)</span></p>
 
 <div class="remark">
 <p> <span class="remark"><em>Remark</em> (The Bore sigma-field is very broad). </span> The Borel <span class="math inline">\(\sigma\)</span>-field contains many sets other than intervals, including, for example:</p>
@@ -186,7 +186,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>Countable unions of intervals, and therefore all open sets by (Proposition A.15.)</p></li>
 <li><p>All closed sets by part 1 and the fact that complements of sets in <span class="math inline">\(\mathcal{B}\)</span> are in <span class="math inline">\(\mathcal{B}\)</span>.</p></li>
 <li><p>The rational numbers by part 2 because each rational <span class="math inline">\(r\)</span> is a closed set (it is easy to see that its complement is open), and the set of rational numbers is a countable union of these closed sets.</p></li>
-<li>The irrational numbers, being the complement of the Borel set of rational numbers.</li>
+<li><p>The irrational numbers, being the complement of the Borel set of rational numbers.</p></li>
 </ol>
 </div>
 
@@ -209,7 +209,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <ol style="list-style-type: decimal">
 <li><p><span class="math inline">\(\bar{\mathcal{B}}\)</span> is the extended Borel <span class="math inline">\(\sigma\)</span>-field.</p></li>
 <li><p><span class="math inline">\(\bar{\mathcal{B}}\)</span> is the smallest <span class="math inline">\(\sigma\)</span>-field that contains the two sets <span class="math inline">\(\{-\infty\}\)</span> and <span class="math inline">\(\{+\infty\}\)</span> and all Borel subsets of <span class="math inline">\(\mathbb{R}\)</span>.</p></li>
-<li><span class="math inline">\(\bar{\mathcal{B}}\)</span> consists of all Borel subsets <span class="math inline">\(\mathcal{B}\)</span> of <span class="math inline">\(\mathbb{R}\)</span>, together with all augumentations <span class="math inline">\(\bar{mathcal{B}}\)</span> of <span class="math inline">\(\mathcal{B}\)</span> by <span class="math inline">\(-\infty\)</span>, <span class="math inline">\(\infty\)</span>, or both.</li>
+<li><p><span class="math inline">\(\bar{\mathcal{B}}\)</span> consists of all Borel subsets <span class="math inline">\(\mathcal{B}\)</span> of <span class="math inline">\(\mathbb{R}\)</span>, together with all augumentations <span class="math inline">\(\bar{mathcal{B}}\)</span> of <span class="math inline">\(\mathcal{B}\)</span> by <span class="math inline">\(-\infty\)</span>, <span class="math inline">\(\infty\)</span>, or both.</p></li>
 </ol>
 </div>
 

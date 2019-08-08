@@ -25,7 +25,7 @@
 <meta name="author" content="Seoncheol Park">
 
 
-<meta name="date" content="2019-04-29">
+<meta name="date" content="2019-05-19">
 
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -68,7 +68,7 @@ a.sourceLine { text-indent: -1em; padding-left: 1em; }
 pre.numberSource a.sourceLine
   { position: relative; left: -4em; }
 pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+  { content: attr(title);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
     border: none; pointer-events: all; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
@@ -181,7 +181,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><p>If <span class="math inline">\(E_1, E_2 \in \mathcal{F}\)</span>, <span class="math inline">\(E_1 \subset E_2\)</span>, then <span class="math inline">\(P(E_1)\leq P(E_2)\)</span>.</p></li>
 <li><p><span class="math inline">\(0\leq P(E)\leq 1\)</span> for each <span class="math inline">\(E\in\mathcal{F}\)</span>.</p></li>
 <li><p>If <span class="math inline">\(E\in\mathcal{F}\)</span>, <span class="math inline">\(P(E^C)=1-P(E)\)</span>.</p></li>
-<li>If <span class="math inline">\(E_1, E_2\in\mathcal{F}, P(E_{1}\cup E_{2})=P(E_1) + P(E_2) - P(E_{1}\cap E_{2})\)</span>.</li>
+<li><p>If <span class="math inline">\(E_1, E_2\in\mathcal{F}, P(E_{1}\cup E_{2})=P(E_1) + P(E_2) - P(E_{1}\cap E_{2})\)</span>.</p></li>
 </ol>
 </div>
 
@@ -191,6 +191,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>To see part 5, note that <span class="math inline">\(E_1 \cup E_2 = E_1 \cup (E_2 \backslash E_1)\)</span>. Because <span class="math inline">\(E_1\)</span> and <span class="math inline">\(E_2 \backslash E_1\)</span> are disjoint,
 <span class="math display">\[P(E_1\cup E_2)=P(E_1) +P(E_2\backslash E_1).\]</span>
 Also, <span class="math inline">\(E_2\)</span> is the union of the disjoint sets <span class="math inline">\(E_1 \cap E_2\)</span> and <span class="math inline">\(E_2\backslash E_1\)</span>, so <span class="math inline">\(P(E_1\cap E_2) +P(E_2\backslash E_1)=P(E_2)\)</span>. Thus, <span class="math inline">\(P(E_2\backslash E_1) = P(E_2) - P(E_1\cap E_2)\)</span>. Substituting this expression into the above equation gives <span class="math inline">\(P(E_1\cup E_2) = P(E_1) + P(E_2) - P(E_1\cap E_2)\)</span>.</p>
+</div>
+
+<p>The following result that any countable union can be written as a countable union of disjoint sets is extremely useful in probability theory.</p>
+
+<div class="proposition">
+<p><span id="prp:unnamed-chunk-41" class="proposition"><strong>Proposition 4.2  (Any countable union can be written as a countable union of disjoint sets)  </strong></span>Let <span class="math inline">\(E_1, E_2, \ldots \in\mathcal{F}\)</span> and define <span class="math inline">\(D_1 = E_1, D_2 = E_2\backslash E_1, D_3=E_3\backslash (E_1 \cup E_2), \ldots\)</span> Then <span class="math inline">\(\{D_i\}\)</span> is a collection of disjoint sets and <span class="math inline">\(\cup_{i=1}^{n}E_i = \cup_{i=1}^{n}D_{i}\)</span> for <span class="math inline">\(n\)</span> any positive integer or <span class="math inline">\(+\infty\)</span>.</p>
 </div>
 
 

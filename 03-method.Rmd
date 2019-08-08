@@ -84,6 +84,46 @@ Also, $E_2$ is the union of the disjoint sets $E_1 \cap E_2$ and $E_2\backslash 
 
 ```
 
+The following result that any countable union can be written as a countable union of disjoint sets is extremely useful in probability theory.
+
+```{proposition, name="Any countable union can be written as a countable union of disjoint sets", label="countabledisjointunion"}
+Let $E_1, E_2, \ldots \in\mathcal{F}$ and define $D_1 = E_1, D_2 = E_2\backslash E_1, D_3=E_3\backslash (E_1 \cup E_2), \ldots$ Then $\{D_i\}$ is a collection of disjoint sets and $\cup_{i=1}^{n}E_i = \cup_{i=1}^{n}D_{i}$ for $n$ any positive integer or $+\infty$.
+
+```
+
+```{proof}
+It is clear that the $D_i$ defined above are disjoint. We will prove that each $\omega\in\cup_{i=1}^{n}E_{i}$ is in $\cup_{i=1}^{n}D_{i}$ and vice versa. Note that each step in the following proof is valid whether $n$ is a positive integer or $+\infty$. If $\omega \in \cup_{i=1}^{n}E_{i}$, then $\omega \in E_i$ for some finite $i\leq n$. Let $I$ be the smallest $i\leq n$ for which $\omega \in E_i$. Then by definition, $\omega \in E_t$ but not in any of the previous $E_i$. That is, $\omega \in D_I$, so $\omega \in \cup_{i=1}^n D_{i}$. Thus, if $\omega \in \cup_{i=1}^{n} E_{i}$, then $\omega \in \cup_{i=1}^{n} D_{i}$. 
+
+To prove the converse, note that if $\omega \in \cup_{i=1}^n D_i$, then $\omega \in D_i$ for some finite $i\leq n$. But then $\omega \in E_i$, and hence $\omega \in \cup_{i=1}^{n}E_i$. We have shown that each $\omega \in \cup_{i=1}^n E_{i}$ is in $\cup_{i=1}^{n}D_{i}$ and vice versa, and therefore $\cup_{i=1}^{n}E_{i} = \cup_{i=1}^{n}D_{i}.$
+
+```
+
+One consequence of Proposition \@ref(prp:countabledisjointunion) is the following, which is called **countable subadditivity**. Ii is also called Boole's inequality, or, when there are only finitely many sets, Bonferroni's ineqaulity.
+
+```{proposition, name="Countable subadditivity (also called Boole's or Bonferroni's inequality", label="countablesubadditivity"}
+If $E_1, E_2, \ldots$ are any sets (not necessarily disjoint), then $P(\cup_i E_i) \leq \sum_{i} P(E_i)$.
+
+```
+
+```{exercise}
+Prove the above proposition.
+
+```
+
+The importance of Proposition \@ref(prp:countablesubadditivity) in probability and statistics cannot be overstated.
+
+Another consequence of Proposition \@ref(prp:countabledisjointunion) is a certain continuity property of probability, namely that if a sequence of sets $E_1, E_2, \ldots$ "gets closer and closer" to a set $E$, then the probability of $E_i$ also gets "closer and closer" to the probability of $E$. But what does it mean for a sequence of sets $(E_i)_{i=1}^{\infty}$ to ge "closer and closer" to $E$?
+
+```{definition, name="Increasing and decreasing sets", label="increasingdecreasingsets"}
+We say that a sequence of sets $(E_i)_{i=1}^{\infty}$ increase to $E$< written $E_i \uparrow E$, if $E_1 \subset E_2 \subset E_3 \subset \ldots$ and $\cup_{i=1}^{\infty}E_{i} = E$. Similarily, $(E_i)_{i=1}^{\infty}$ decreases to $E$, written $E_i \downarrow E$, if $E_1 \supset E_2 \supset E_3 \supset \ldots$ and $\cap_{i=1}^{\infty}E_i = E$.
+
+```
+
+For example, $E_i=(-\infty, i]\uparrow E = (-\infty, \infty)$ and $E_i = (-\infty, x+\frac{1}{i})\downarrow E = (-\infty, x]$ (see Figure \@ref(fig:increasedecreasesetfig)).
+
+```{r increasedecreasesetfig, echo=F, fig.cap='An example of descreasing set.', fig.align='center', out.width='100%'}
+knitr::include_graphics("images/decreasingset.png")
+```
 
 
 
